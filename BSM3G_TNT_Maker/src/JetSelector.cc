@@ -4,6 +4,9 @@ JetSelector::JetSelector(std::string name, TTree* tree, bool debug, const pset& 
 {
   vtx_h_        = ic.consumes<reco::VertexCollection>(iConfig.getParameter<edm::InputTag>("vertices"));
   jets_         = ic.consumes<pat::JetCollection >(iConfig.getParameter<edm::InputTag>("jets"));
+  muon_h_             = ic.consumes<edm::View<pat::Muon> >(iConfig.getParameter<edm::InputTag>("muons"));
+  electron_pat_        = ic.consumes<edm::View<pat::Electron> >(iConfig.getParameter<edm::InputTag>("patElectrons"));
+  taus_                   = ic.consumes<edm::View<pat::Tau> >(iConfig.getParameter<edm::InputTag>("taus"));
   puppijets_    = ic.consumes<pat::JetCollection >(iConfig.getParameter<edm::InputTag>("jetsPUPPI"));
   qgToken_      = ic.consumes<edm::ValueMap<float>>(edm::InputTag("QGTagger", "qgLikelihood"));
   axis2Token_   = ic.consumes<edm::ValueMap<float>>(edm::InputTag("QGTagger", "axis2"));
@@ -34,10 +37,17 @@ JetSelector::JetSelector(std::string name, TTree* tree, bool debug, const pset& 
   jerAK4PFPuppi_   = iConfig.getParameter<edm::FileInPath>("jerAK4PFPuppi").fullPath();
   jerAK4PFPuppiSF_ = iConfig.getParameter<edm::FileInPath>("jerAK4PFPuppiSF").fullPath();
   _Jet_pt_min     = iConfig.getParameter<double>("Jet_pt_min");
+  _Muon_pt_min        = iConfig.getParameter<double>("Muon_pt_min");
+  _Muon_eta_max       = iConfig.getParameter<double>("Muon_eta_max");
+  _patElectron_pt_min  = iConfig.getParameter<double>("patElectron_pt_min");
+  _patElectron_eta_max = iConfig.getParameter<double>("patElectron_eta_max");
+  _Tau_pt_min     	  = iConfig.getParameter<double>("Tau_pt_min");
+  _Tau_eta_max    	  = iConfig.getParameter<double>("Tau_eta_max");
   _super_TNT      = iConfig.getParameter<bool>("super_TNT");
   _is_data = iConfig.getParameter<bool>("is_data");
   _PuppiVar = iConfig.getParameter<bool>("PuppiVar");
   _qglVar             = iConfig.getParameter<bool>("qglVar");
+  _is_MC2016             = iConfig.getParameter<bool>("MC2016");
   JECInitialization();
   SetBranches();
 }
@@ -51,8 +61,15 @@ void JetSelector::Fill(const edm::Event& iEvent){
   /////  
   edm::Handle<reco::VertexCollection> vertices;
   iEvent.getByToken(vtx_h_, vertices);
-  edm::Handle<pat::JetCollection> jets;                                       
+  edm::Handle<pat::JetCollection> jets; 
   iEvent.getByToken(jets_, jets);                                         
+  edm::Handle<edm::View<pat::Muon> > muon_h;
+  iEvent.getByToken(muon_h_, muon_h);
+  edm::Handle<edm::View<pat::Electron> > electron_pat;
+  iEvent.getByToken(electron_pat_, electron_pat);
+  edm::Handle<edm::View<pat::Tau> > taus;
+  iEvent.getByToken(taus_, taus);
+  
   edm::Handle<pat::JetCollection> puppijets;                                       
   iEvent.getByToken(puppijets_, puppijets); 
   edm::Handle<edm::ValueMap<float>> qgHandle;
@@ -126,6 +143,88 @@ void JetSelector::Fill(const edm::Event& iEvent){
         Jet_ptD.push_back(-999);
         Jet_mult.push_back(-999);
     }
+    //Match Indices
+    //match muons
+    int currmupos = 0;
+    int mu_number = 0;
+    for(edm::View<pat::Muon>::const_iterator mu = muon_h->begin(); mu != muon_h->end(); mu++){
+        //Acceptance 
+        if(mu->pt() < _Muon_pt_min)         continue;
+        if(fabs(mu->eta()) > _Muon_eta_max) continue; 
+        bool isMatch = false; 
+        for(unsigned int i1 = 0 ; i1 < mu->numberOfSourceCandidatePtrs();i1++){
+            const reco::CandidatePtr  &c1s=mu->sourceCandidatePtr(i1);
+            for(unsigned int i2 = 0 ; i2 < j.numberOfSourceCandidatePtrs();i2++) {
+                const reco::CandidatePtr  &c2s=j.sourceCandidatePtr(i2);
+                if(c2s== c1s){
+                    isMatch = true;
+                    break;
+                }
+            }
+            if(isMatch)break;
+        }
+        if(isMatch){
+            Jet_mu_indices.push_back(currmupos);
+            mu_number++;
+            //std::cout<< " Jet p4 "<< j.p4()<< " Match to Muon p4 "<< mu->p4() << " mu_number " << mu_number << " currmupos "<< currmupos << std::endl;
+        }
+        currmupos++;
+    }
+    //std::cout << " mu_number outside the Muon match loop " << mu_number << std::endl;
+    Jet_mu_number.push_back(mu_number);
+    //match electrons
+    int currelepos = 0;
+    int ele_number = 0;
+    for(edm::View<pat::Electron>::const_iterator el = electron_pat->begin(); el != electron_pat->end(); el++){
+        //Acceptance 
+        if(el->pt() < _patElectron_pt_min)         continue;
+        if(fabs(el->eta()) > _patElectron_eta_max) continue;  
+        bool isMatch = false; 
+        for(unsigned int i1 = 0 ; i1 < el->numberOfSourceCandidatePtrs();i1++){
+            const reco::CandidatePtr  &c1s=el->sourceCandidatePtr(i1);
+            for(unsigned int i2 = 0 ; i2 < j.numberOfSourceCandidatePtrs();i2++) {
+                const reco::CandidatePtr  &c2s=j.sourceCandidatePtr(i2);
+                if(c2s== c1s){
+                    isMatch = true;
+                    break;
+                }
+            }
+            if(isMatch)break;
+        }
+        if(isMatch){
+            Jet_ele_indices.push_back(currelepos);
+            ele_number ++;
+        }
+        currelepos++;
+    }
+    Jet_ele_number.push_back(ele_number);
+    //match taus
+    int currtaupos = 0;
+    int tau_number = 0;
+    for(edm::View<pat::Tau>::const_iterator tau = taus->begin(); tau != taus->end(); tau++){
+        //Acceptance 
+        if(tau->pt() < _Tau_pt_min) continue;
+        if(fabs(tau->eta()) > _Tau_eta_max) continue;
+        bool isMatch = false; 
+        for(unsigned int i1 = 0 ; i1 < tau->numberOfSourceCandidatePtrs();i1++){
+            const reco::CandidatePtr  &c1s=tau->sourceCandidatePtr(i1);
+            for(unsigned int i2 = 0 ; i2 < j.numberOfSourceCandidatePtrs();i2++) {
+                const reco::CandidatePtr  &c2s=j.sourceCandidatePtr(i2);
+                if(c2s== c1s){
+                    isMatch = true;
+                    break;
+                }
+            }
+            if(isMatch)break;
+        }
+        if(isMatch){
+            Jet_tau_indices.push_back(currtaupos);
+            tau_number ++;
+        }
+        currtaupos++;
+    }
+    Jet_tau_number.push_back(tau_number);
+    //
     //Energy
     Jet_neutralHadEnergyFraction.push_back(j.neutralHadronEnergyFraction());                               
     Jet_neutralEmEnergyFraction.push_back(j.neutralEmEnergyFraction());                                   
@@ -397,6 +496,13 @@ void JetSelector::SetBranches(){
   AddBranch(&Jet_axis2            ,"Jet_axis2");
   AddBranch(&Jet_ptD              ,"Jet_ptD");
   AddBranch(&Jet_mult             ,"Jet_mult");
+  //Match Indices
+  AddBranch(&Jet_ele_indices             ,"Jet_ele_indices");
+  AddBranch(&Jet_ele_number             ,"Jet_ele_number");
+  AddBranch(&Jet_mu_indices             ,"Jet_mu_indices");
+  AddBranch(&Jet_mu_number             ,"Jet_mu_number");
+  AddBranch(&Jet_tau_indices             ,"Jet_tau_indices");
+  AddBranch(&Jet_tau_number             ,"Jet_tau_number");
   //Energy
   AddBranch(&Jet_neutralHadEnergyFraction    ,"Jet_neutralHadEnergyFraction");
   AddBranch(&Jet_neutralEmEnergyFraction     ,"Jet_neutralEmEnergyFraction");
@@ -516,6 +622,13 @@ void JetSelector::Clear(){
   Jet_axis2.clear();
   Jet_ptD.clear();
   Jet_mult.clear();
+  //Match Indices
+  Jet_ele_indices.clear();
+  Jet_ele_number.clear();
+  Jet_mu_indices.clear();
+  Jet_mu_number.clear();
+  Jet_tau_indices.clear();
+  Jet_tau_number.clear();
   //Energy
   Jet_neutralHadEnergyFraction.clear();
   Jet_neutralEmEnergyFraction.clear();
@@ -602,59 +715,115 @@ void JetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK4PFchs,
   double cFactorJERdown = 1.0;
   double cFactorJERup = 1.0;
   //https://twiki.cern.ch/twiki/bin/view/CMS/JetResolution#JER_Scaling_factors_and_Unce_AN1
-  // 2017 numbers only, FIXME 
-  if( jetEta<0.522 ){ 
-    cFactorJER = 1.1432; 
-    cFactorJERdown = 1.1432-0.0222;
-    cFactorJERup   = 1.1432+0.0222; 
-  } else if( jetEta<0.783 ){ 
-    cFactorJER = 1.1815; 
-    cFactorJERdown = 1.1815-0.0484;
-    cFactorJERup   = 1.1815+0.0484; 
-  } else if( jetEta<1.131 ){ 
-    cFactorJER = 1.0989; 
-    cFactorJERdown = 1.0989-0.0456;
-    cFactorJERup   = 1.0989+0.0456; 
-  } else if( jetEta<1.305 ){ 
-    cFactorJER = 1.1137; 
-    cFactorJERdown = 1.1137-0.1397;
-    cFactorJERup   = 1.1137+0.1397; 
-  } else if( jetEta<1.740 ){ 
-    cFactorJER = 1.1307; 
-    cFactorJERdown = 1.1307-0.1470;
-    cFactorJERup   = 1.1307+0.1470; 
-  } else if( jetEta<1.930 ){ 
-    cFactorJER = 1.1600; 
-    cFactorJERdown = 1.1600-0.0976;
-    cFactorJERup   = 1.1600+0.0976; 
-  } else if( jetEta<2.043 ){ 
-    cFactorJER = 1.2393; 
-    cFactorJERdown = 1.2393-0.1909;
-    cFactorJERup   = 1.2393+0.1909; 
-  } else if( jetEta<2.322 ){ 
-    cFactorJER = 1.2604; 
-    cFactorJERdown = 1.2604-0.1501;
-    cFactorJERup   = 1.2604+0.1501; 
-  } else if( jetEta<2.5 ){ 
-    cFactorJER = 1.4085; 
-    cFactorJERdown = 1.4085-0.2020;
-    cFactorJERup   = 1.4085+0.2020; 
-  } else if( jetEta<2.853 ){ 
-    cFactorJER = 1.9909; 
-    cFactorJERdown = 1.9909-0.5684;
-    cFactorJERup   = 1.9909+0.5684; 
-  } else if( jetEta<2.964 ){ 
-    cFactorJER = 2.2923; 
-    cFactorJERdown = 2.2923-0.3743;
-    cFactorJERup   = 2.2923+0.3743; 
-  } else if( jetEta<3.139 ){ 
-    cFactorJER = 1.2696; 
-    cFactorJERdown = 1.2696-0.1089;
-    cFactorJERup   = 1.2696+0.1089; 
-  } else if( jetEta<5.191 ){ 
-    cFactorJER = 1.1542; 
-    cFactorJERdown = 1.1542-0.1524;
-    cFactorJERup   = 1.1542+0.1524;
+  
+  if(_is_MC2016){
+      if( jetEta<0.522 ){ 
+        cFactorJER = 1.1595; 
+        cFactorJERdown = 1.1595-0.0645;
+        cFactorJERup   = 1.1595+0.0645; 
+      } else if( jetEta<0.783 ){ 
+        cFactorJER = 1.1948; 
+        cFactorJERdown = 1.1948-0.0652;
+        cFactorJERup   = 1.1948+0.0652; 
+      } else if( jetEta<1.131 ){ 
+        cFactorJER = 1.1464; 
+        cFactorJERdown = 1.1464-0.0632;
+        cFactorJERup   = 1.1464+0.0632; 
+      } else if( jetEta<1.305 ){ 
+        cFactorJER = 1.1609; 
+        cFactorJERdown = 1.1609-0.1025;
+        cFactorJERup   = 1.1609+0.1025; 
+      } else if( jetEta<1.740 ){ 
+        cFactorJER = 1.1278; 
+        cFactorJERdown = 1.1278-0.0986;
+        cFactorJERup   = 1.1278+0.0986; 
+      } else if( jetEta<1.930 ){ 
+        cFactorJER = 1.1000; 
+        cFactorJERdown = 1.1000-0.1079;
+        cFactorJERup   = 1.1000+0.1079; 
+      } else if( jetEta<2.043 ){ 
+        cFactorJER = 1.1426; 
+        cFactorJERdown = 1.1426-0.1214;
+        cFactorJERup   = 1.1426+0.1214; 
+      } else if( jetEta<2.322 ){ 
+        cFactorJER = 1.1512; 
+        cFactorJERdown = 1.1512-0.1140;
+        cFactorJERup   = 1.1512+0.1140; 
+      } else if( jetEta<2.5 ){ 
+        cFactorJER = 1.2963; 
+        cFactorJERdown = 1.2963-0.2371;
+        cFactorJERup   = 1.2963+0.2371; 
+      } else if( jetEta<2.853 ){ 
+        cFactorJER = 1.3418; 
+        cFactorJERdown = 1.3418-0.2091;
+        cFactorJERup   = 1.3418+0.2091; 
+      } else if( jetEta<2.964 ){ 
+        cFactorJER = 1.7788; 
+        cFactorJERdown = 1.7788-0.2008;
+        cFactorJERup   = 1.7788+0.2008; 
+      } else if( jetEta<3.139 ){ 
+        cFactorJER = 1.1869; 
+        cFactorJERdown = 1.1869-0.1243;
+        cFactorJERup   = 1.1869+0.1243; 
+      } else if( jetEta<5.191 ){ 
+        cFactorJER = 1.1922; 
+        cFactorJERdown = 1.1922-0.1488;
+        cFactorJERup   = 1.1922+0.1488;
+      }
+  }else{
+      if( jetEta<0.522 ){ 
+        cFactorJER = 1.1432; 
+        cFactorJERdown = 1.1432-0.0222;
+        cFactorJERup   = 1.1432+0.0222; 
+      } else if( jetEta<0.783 ){ 
+        cFactorJER = 1.1815; 
+        cFactorJERdown = 1.1815-0.0484;
+        cFactorJERup   = 1.1815+0.0484; 
+      } else if( jetEta<1.131 ){ 
+        cFactorJER = 1.0989; 
+        cFactorJERdown = 1.0989-0.0456;
+        cFactorJERup   = 1.0989+0.0456; 
+      } else if( jetEta<1.305 ){ 
+        cFactorJER = 1.1137; 
+        cFactorJERdown = 1.1137-0.1397;
+        cFactorJERup   = 1.1137+0.1397; 
+      } else if( jetEta<1.740 ){ 
+        cFactorJER = 1.1307; 
+        cFactorJERdown = 1.1307-0.1470;
+        cFactorJERup   = 1.1307+0.1470; 
+      } else if( jetEta<1.930 ){ 
+        cFactorJER = 1.1600; 
+        cFactorJERdown = 1.1600-0.0976;
+        cFactorJERup   = 1.1600+0.0976; 
+      } else if( jetEta<2.043 ){ 
+        cFactorJER = 1.2393; 
+        cFactorJERdown = 1.2393-0.1909;
+        cFactorJERup   = 1.2393+0.1909; 
+      } else if( jetEta<2.322 ){ 
+        cFactorJER = 1.2604; 
+        cFactorJERdown = 1.2604-0.1501;
+        cFactorJERup   = 1.2604+0.1501; 
+      } else if( jetEta<2.5 ){ 
+        cFactorJER = 1.4085; 
+        cFactorJERdown = 1.4085-0.2020;
+        cFactorJERup   = 1.4085+0.2020; 
+      } else if( jetEta<2.853 ){ 
+        cFactorJER = 1.9909; 
+        cFactorJERdown = 1.9909-0.5684;
+        cFactorJERup   = 1.9909+0.5684; 
+      } else if( jetEta<2.964 ){ 
+        cFactorJER = 2.2923; 
+        cFactorJERdown = 2.2923-0.3743;
+        cFactorJERup   = 2.2923+0.3743; 
+      } else if( jetEta<3.139 ){ 
+        cFactorJER = 1.2696; 
+        cFactorJERdown = 1.2696-0.1089;
+        cFactorJERup   = 1.2696+0.1089; 
+      } else if( jetEta<5.191 ){ 
+        cFactorJER = 1.1542; 
+        cFactorJERdown = 1.1542-0.1524;
+        cFactorJERup   = 1.1542+0.1524;
+      }
   }
   //double recoJetPt = jet.pt();//(jet.correctedJet("Uncorrected").pt())*JesSF;
   double recoJetPt = (jet.correctedJet("Uncorrected").pt())*JesSF;

@@ -12,7 +12,6 @@ ElectronPatSelector::ElectronPatSelector(std::string name, TTree* tree, bool deb
   jets_                = ic.consumes<pat::JetCollection >(iConfig.getParameter<edm::InputTag>("lepjets"));
   jetsToken            = ic.consumes<edm::View<pat::Jet>>(iConfig.getParameter<edm::InputTag>("jets"));
   qgToken              = ic.consumes<edm::ValueMap<float>>(edm::InputTag("QGTagger", "qgLikelihood"));
-  rhopogHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
   _patElectron_pt_min  = iConfig.getParameter<double>("patElectron_pt_min");
   _patElectron_eta_max = iConfig.getParameter<double>("patElectron_eta_max");
   _vtx_ndof_min        = iConfig.getParameter<int>("vtx_ndof_min");
@@ -23,6 +22,11 @@ ElectronPatSelector::ElectronPatSelector(std::string name, TTree* tree, bool deb
   _qglVar              = iConfig.getParameter<bool>("qglVar");
   _is_data             = iConfig.getParameter<bool>("is_data");
   _is_MC2016             = iConfig.getParameter<bool>("MC2016");
+  if(_is_MC2016){
+      rhopogHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
+  }else{
+      rhopogHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
+  }
   SetBranches();
 }
 ElectronPatSelector::~ElectronPatSelector(){
@@ -1106,13 +1110,23 @@ double ElectronPatSelector::get_isosumraw(const std::vector<const pat::PackedCan
 double ElectronPatSelector::get_effarea(double eta){
   //https://github.com/cms-sw/cmssw/blob/CMSSW_10_4_X/RecoEgamma/ElectronIdentification/data/Fall17/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt
   double effarea = -1;
-  if(abs(eta) < 1.0)        effarea = 0.1440;
-  else if(abs(eta) < 1.479) effarea = 0.1562;
-  else if(abs(eta) < 2.0)   effarea = 0.1032;
-  else if(abs(eta) < 2.2)   effarea = 0.0859;
-  else if(abs(eta) < 2.3)   effarea = 0.1116;
-  else if(abs(eta) < 2.4)   effarea = 0.1321;
-  else                      effarea = 0.1654;
+  if(_is_MC2016){
+    if(abs(eta) < 1.0)        effarea = 0.1752;
+    else if(abs(eta) < 1.479) effarea = 0.1862;
+    else if(abs(eta) < 2.0)   effarea = 0.1411;
+    else if(abs(eta) < 2.2)   effarea = 0.1534;
+    else if(abs(eta) < 2.3)   effarea = 0.1903;
+    else if(abs(eta) < 2.4)   effarea = 0.2243;
+    else                      effarea = 0.2687;
+  }else{
+    if(abs(eta) < 1.0)        effarea = 0.1440;
+    else if(abs(eta) < 1.479) effarea = 0.1562;
+    else if(abs(eta) < 2.0)   effarea = 0.1032;
+    else if(abs(eta) < 2.2)   effarea = 0.0859;
+    else if(abs(eta) < 2.3)   effarea = 0.1116;
+    else if(abs(eta) < 2.4)   effarea = 0.1321;
+    else                      effarea = 0.1654;
+  }
   return effarea;
 }
 void ElectronPatSelector::get_elejet_info(edm::View<pat::Electron>::const_iterator& ele, const edm::Event& iEvent, const edm::EventSetup& iSetup, double& elejet_l1corr, double& elejetislep,

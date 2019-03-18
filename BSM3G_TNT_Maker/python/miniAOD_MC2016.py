@@ -20,13 +20,12 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 #####
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
-    '/store/mc/RunIISummer16MiniAODv3/ttHToNonbb_M125_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/F24F2D5E-DDEC-E811-AF50-90B11C08AD7D.root',
-    #'/store/mc/RunIISummer16MiniAODv3/TprimeBToTZ_M-900_LH_TuneCUETP8M1_13TeV-madgraph-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/10000/2C0646E3-650D-E911-AA52-003048FFD772.root'
-    #'/store/mc/RunIIFall17MiniAOD/ttHJetToNonbb_M125_TuneCP5_13TeV_amcatnloFXFX_madspin_pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v1/20000/0CF65340-0200-E811-ABB7-0025905C53F0.root',
+    # ttH run II 2016 sync file
+    '/store/mc/RunIISummer16MiniAODv3/ttHToNonbb_M125_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/F24F2D5E-DDEC-E811-AF50-90B11C08AD7D.root'
   ),
   skipEvents = cms.untracked.uint32(0)
 )
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
 
 ##### JEC
 from PhysicsTools.PatAlgos.tools.jetTools import updateJetCollection
@@ -193,7 +192,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   # Choose format 
   MiniAODv2 = cms.bool(True),
   is_data   = cms.bool(False),
-  tthlepfilter   = cms.bool(True),
+  tthlepfilter   = cms.bool(False),
   reHLT     = cms.bool(True),
   debug_    = cms.bool(False),
   super_TNT = cms.bool(False),

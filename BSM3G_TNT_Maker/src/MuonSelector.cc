@@ -11,7 +11,7 @@
 #include "DataFormats/TrackReco/interface/TrackFwd.h"
 #include "DataFormats/TrackReco/interface/TrackExtra.h"
 #include "DataFormats/VertexReco/interface/Vertex.h"
-#include "TrackingTools/PatternTools/interface/TwoTrackMinimumDistance.h"
+//#include "TrackingTools/PatternTools/interface/TwoTrackMinimumDistance.h"
 #include "RecoVertex/KinematicFitPrimitives/interface/KinematicParticleFactoryFromTransientTrack.h"
 #include "TrackingTools/IPTools/interface/IPTools.h"
 #include "RecoBTag/BTagTools/interface/SignedTransverseImpactParameter.h"
@@ -47,8 +47,6 @@ MuonSelector::MuonSelector(std::string name, TTree* tree, bool debug, const pset
   jets_               = ic.consumes<pat::JetCollection >(iConfig.getParameter<edm::InputTag>("lepjets"));
   jetsToken           = ic.consumes<edm::View<pat::Jet>>(iConfig.getParameter<edm::InputTag>("jets"));
   pfToken_            = ic.consumes<pat::PackedCandidateCollection>(edm::InputTag("packedPFCandidates"));
-  //rhoHandle_          = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
-  rhoHandle_          = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
   qgToken_            = ic.consumes<edm::ValueMap<float>>(edm::InputTag("QGTagger", "qgLikelihood"));
   _Muon_pt_min        = iConfig.getParameter<double>("Muon_pt_min");
   _Muon_eta_max       = iConfig.getParameter<double>("Muon_eta_max");
@@ -60,6 +58,12 @@ MuonSelector::MuonSelector(std::string name, TTree* tree, bool debug, const pset
   _AJVar              = iConfig.getParameter<bool>("AJVar");
   _tthlepVar          = iConfig.getParameter<bool>("tthlepVar");
   _qglVar             = iConfig.getParameter<bool>("qglVar");
+  _is_MC2016             = iConfig.getParameter<bool>("MC2016");
+  if(_is_MC2016){
+      rhoHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
+  }else{
+      rhoHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
+  }
   SetBranches();
 }
 MuonSelector::~MuonSelector(){
@@ -1019,11 +1023,19 @@ double MuonSelector::get_isosumraw(const std::vector<const pat::PackedCandidate 
 double MuonSelector::get_effarea(double eta){
   // https://github.com/cms-data/PhysicsTools-NanoAOD/blob/master/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt
   double effarea = -1;
-  if(abs(eta) < 0.8)      effarea = 0.0566;
-  else if(abs(eta) < 1.3) effarea = 0.0562;
-  else if(abs(eta) < 2.0) effarea = 0.0363;
-  else if(abs(eta) < 2.2) effarea = 0.0119;
-  else                    effarea = 0.0064;
+  if(_is_MC2016){
+    if(abs(eta) < 0.8)      effarea = 0.0735;
+    else if(abs(eta) < 1.3) effarea = 0.0619;
+    else if(abs(eta) < 2.0) effarea = 0.0465;
+    else if(abs(eta) < 2.2) effarea = 0.0433;
+    else                    effarea = 0.0577;
+  }else{
+    if(abs(eta) < 0.8)      effarea = 0.0566;
+    else if(abs(eta) < 1.3) effarea = 0.0562;
+    else if(abs(eta) < 2.0) effarea = 0.0363;
+    else if(abs(eta) < 2.2) effarea = 0.0119;
+    else                    effarea = 0.0064;
+  }
   return effarea;
 }
 void MuonSelector::get_mujet_info(const pat::Muon& mu, const edm::Event& iEvent, const edm::EventSetup& iSetup, double& mujet_l1corr, double& mujetislep,

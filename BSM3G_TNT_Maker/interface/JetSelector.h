@@ -29,6 +29,7 @@
 #include "DataFormats/VertexReco/interface/VertexFwd.h"
 #include "DataFormats/VertexReco/interface/Vertex.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
+#include "DataFormats/PatCandidates/interface/Muon.h"
 #include "DataFormats/PatCandidates/interface/Electron.h"
 #include "DataFormats/PatCandidates/interface/Tau.h"
 #include "DataFormats/PatCandidates/interface/Photon.h"
@@ -82,6 +83,9 @@ class JetSelector : public  baseTree{
   /////
   edm::EDGetTokenT<reco::VertexCollection> vtx_h_;
   edm::EDGetTokenT<pat::JetCollection> jets_;
+  edm::EDGetTokenT<edm::View<pat::Muon> > muon_h_;
+  edm::EDGetTokenT<edm::View<pat::Electron> > electron_pat_;
+  edm::EDGetTokenT<edm::View<pat::Tau> > taus_;
   edm::EDGetTokenT<edm::ValueMap<float> > qgToken_;
   edm::EDGetTokenT<edm::ValueMap<float> > axis2Token_;
   edm::EDGetTokenT<edm::ValueMap<float> > ptDToken_;
@@ -112,9 +116,16 @@ class JetSelector : public  baseTree{
   std::string jerAK4PFPuppi_;
   std::string jerAK4PFPuppiSF_;
   double _Jet_pt_min;
+  double _Muon_pt_min;
+  double _Muon_eta_max;
+  double _patElectron_pt_min;
+  double _patElectron_eta_max;
+  double _Tau_pt_min;
+  double _Tau_eta_max;
   bool _super_TNT;
   bool _PuppiVar;
   bool _is_data;
+  bool _is_MC2016;
   bool _qglVar;
   /////
   //   JEC
@@ -153,6 +164,10 @@ class JetSelector : public  baseTree{
   vector<double> Jet_puppi_pt, Jet_puppi_eta, Jet_puppi_phi, Jet_puppi_energy, Jet_puppi_mass, Jet_puppi_px, Jet_puppi_py, Jet_puppi_pz, Jet_puppi_Uncorr_pt;
   //ID
   vector<double> Jet_puppi_pfCombinedInclusiveSecondaryVertexV2BJetTags, Jet_puppi_pfCombinedMVAV2BJetTags, Jet_puppi_pfJetProbabilityBJetTags, Jet_puppi_pfCombinedCvsLJetTags, Jet_puppi_pfCombinedCvsBJetTags, Jet_puppi_pileupId, Jet_puppi_isPFJet, Jet_puppi_isCaloJet;
+  //Match Indices
+  vector<int> Jet_ele_indices, Jet_ele_number;
+  vector<int> Jet_mu_indices, Jet_mu_number;
+  vector<int> Jet_tau_indices, Jet_tau_number;
   //Energy
   vector<double> Jet_puppi_neutralHadEnergyFraction, Jet_puppi_neutralEmEnergyFraction, Jet_puppi_chargedHadronEnergyFraction, Jet_puppi_chargedEmEnergyFraction, Jet_puppi_muonEnergyFraction, Jet_puppi_electronEnergy, Jet_puppi_photonEnergy, Jet_puppi_emEnergyFraction;
   //Other prop

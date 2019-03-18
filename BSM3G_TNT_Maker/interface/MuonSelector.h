@@ -58,7 +58,7 @@
 #include "DataFormats/TrackReco/interface/TrackFwd.h"
 #include "DataFormats/TrackReco/interface/TrackExtra.h"
 #include "DataFormats/VertexReco/interface/Vertex.h"
-#include "TrackingTools/PatternTools/interface/TwoTrackMinimumDistance.h"
+//#include "TrackingTools/PatternTools/interface/TwoTrackMinimumDistance.h"
 #include "RecoVertex/KinematicFitPrimitives/interface/KinematicParticleFactoryFromTransientTrack.h"
 #include "TrackingTools/IPTools/interface/IPTools.h"
 #include "RecoBTag/BTagTools/interface/SignedTransverseImpactParameter.h"
@@ -111,6 +111,7 @@ class MuonSelector : public  baseTree{
   double _vtx_position_z_max;
   bool   _super_TNT; //super tiny ntuple?
   bool   _is_data;
+  bool   _is_MC2016;
   bool _AJVar;
   bool _tthlepVar;
   bool _qglVar;
