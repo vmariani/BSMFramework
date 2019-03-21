@@ -226,18 +226,30 @@ void JetSelector::Fill(const edm::Event& iEvent){
     Jet_tau_number.push_back(tau_number);
     //
     //Energy
-    Jet_neutralHadEnergyFraction.push_back(j.neutralHadronEnergyFraction());                               
-    Jet_neutralEmEnergyFraction.push_back(j.neutralEmEnergyFraction());                                   
-    Jet_chargedHadronEnergyFraction.push_back(j.chargedHadronEnergyFraction());                               
-    Jet_chargedEmEnergyFraction.push_back(j.chargedEmEnergyFraction());                              
-    Jet_muonEnergyFraction.push_back(j.muonEnergyFraction());                                  
-    Jet_electronEnergy.push_back(j.electronEnergy());                               
-    Jet_photonEnergy.push_back(j.photonEnergy());                                 
+    if(j.isPFJet() || j.isJPTJet()){
+        Jet_neutralHadEnergyFraction.push_back(j.neutralHadronEnergyFraction());                               
+        Jet_neutralEmEnergyFraction.push_back(j.neutralEmEnergyFraction());                                   
+        Jet_chargedHadronEnergyFraction.push_back(j.chargedHadronEnergyFraction());                               
+        Jet_chargedEmEnergyFraction.push_back(j.chargedEmEnergyFraction());                              
+        Jet_muonEnergyFraction.push_back(j.muonEnergyFraction());                                  
+        Jet_electronEnergy.push_back(j.electronEnergy());                               
+        Jet_photonEnergy.push_back(j.photonEnergy());                                 
+        Jet_numberOfConstituents.push_back(j.chargedMultiplicity() + j.neutralMultiplicity());                                  
+        Jet_chargedMultiplicity.push_back(j.chargedMultiplicity());
+    }else{
+        Jet_neutralHadEnergyFraction.push_back(-999);
+        Jet_neutralEmEnergyFraction.push_back(-999);
+        Jet_chargedHadronEnergyFraction.push_back(-999);
+        Jet_chargedEmEnergyFraction.push_back(-999);
+        Jet_muonEnergyFraction.push_back(-999);
+        Jet_electronEnergy.push_back(-999);
+        Jet_photonEnergy.push_back(-999);
+        Jet_numberOfConstituents.push_back(-999);
+        Jet_chargedMultiplicity.push_back(-999);
+    }
     if(j.isCaloJet()) Jet_emEnergyFraction.push_back(j.emEnergyFraction());
     else              Jet_emEnergyFraction.push_back(-999);
     //Other prop
-    Jet_numberOfConstituents.push_back(j.chargedMultiplicity() + j.neutralMultiplicity());                                  
-    Jet_chargedMultiplicity.push_back(j.chargedMultiplicity());
     Jet_vtxMass.push_back(-99);//j.userFloat("vtxMass"));
     Jet_vtxNtracks.push_back(-99);//j.userFloat("vtxNtracks"));
     Jet_vtx3DVal.push_back(-99);//j.userFloat("vtx3DVal"));

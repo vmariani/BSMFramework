@@ -66,15 +66,27 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
     BoostedJet_pfCombinedCvsLJetTags.push_back(j.bDiscriminator("pfCombinedCvsLJetTags"));
     BoostedJet_pfCombinedCvsBJetTags.push_back(j.bDiscriminator("pfCombinedCvsBJetTags"));
     //Energy related variables
-    BoostedJet_neutralHadEnergyFraction.push_back(j.neutralHadronEnergyFraction());                               
-    BoostedJet_neutralEmEmEnergyFraction.push_back(j.neutralEmEnergyFraction());                                   
-    BoostedJet_chargedHadronEnergyFraction.push_back(j.chargedHadronEnergyFraction());                               
-    BoostedJet_chargedEmEnergyFraction.push_back(j.chargedEmEnergyFraction());                              
-    BoostedJet_muonEnergyFraction.push_back(j.muonEnergyFraction());                                  
-    BoostedJet_numberOfConstituents.push_back(j.chargedMultiplicity() + j.neutralMultiplicity());                                  
-    BoostedJet_chargedMultiplicity.push_back(j.chargedMultiplicity());
-    BoostedJet_electronEnergy.push_back(j.electronEnergy());                               
-    BoostedJet_photonEnergy.push_back(j.photonEnergy());
+    if(j.isPFJet() || j.isJPTJet()){
+        BoostedJet_neutralHadEnergyFraction.push_back(j.neutralHadronEnergyFraction());                               
+        BoostedJet_neutralEmEmEnergyFraction.push_back(j.neutralEmEnergyFraction());                                   
+        BoostedJet_chargedHadronEnergyFraction.push_back(j.chargedHadronEnergyFraction());                               
+        BoostedJet_chargedEmEnergyFraction.push_back(j.chargedEmEnergyFraction());                              
+        BoostedJet_muonEnergyFraction.push_back(j.muonEnergyFraction());                                  
+        BoostedJet_numberOfConstituents.push_back(j.chargedMultiplicity() + j.neutralMultiplicity());                                  
+        BoostedJet_chargedMultiplicity.push_back(j.chargedMultiplicity());
+        BoostedJet_electronEnergy.push_back(j.electronEnergy());                               
+        BoostedJet_photonEnergy.push_back(j.photonEnergy());
+    }else{
+        BoostedJet_neutralHadEnergyFraction.push_back(-999);                               
+        BoostedJet_neutralEmEmEnergyFraction.push_back(-999);
+        BoostedJet_chargedHadronEnergyFraction.push_back(-999);
+        BoostedJet_chargedEmEnergyFraction.push_back(-999);
+        BoostedJet_muonEnergyFraction.push_back(-999);
+        BoostedJet_numberOfConstituents.push_back(-999);
+        BoostedJet_chargedMultiplicity.push_back(-999);
+        BoostedJet_electronEnergy.push_back(-999);
+        BoostedJet_photonEnergy.push_back(-999);
+    }
     //Boosted jet prop
     BoostedJet_tau1.push_back(j.userFloat("ak8PFJetsCHSValueMap:NjettinessAK8CHSTau1"));    //
     BoostedJet_tau2.push_back(j.userFloat("ak8PFJetsCHSValueMap:NjettinessAK8CHSTau2"));    //  Access the n-subjettiness variables

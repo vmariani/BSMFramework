@@ -145,11 +145,11 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
     #'/store/data/Run2017B/SingleMuon/MINIAOD/17Nov2017-v1/40000/0021369B-9BD8-E711-BFE9-FA163EAA42CB.root'
-    '/store/data/Run2017B/SingleMuon/MINIAOD/31Mar2018-v1/100000/005EF8EB-6338-E811-B31C-0025905A6066.root',
+    '/store/data/Run2017F/SingleMuon/MINIAOD/31Mar2018-v1/30000/00F35A30-6037-E811-9435-E0071B73C610.root',
   ),
-  skipEvents = cms.untracked.uint32(0)
+  skipEvents = cms.untracked.uint32(6250)
 )
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
 
 ##### JEC
 from PhysicsTools.PatAlgos.tools.jetTools import updateJetCollection
@@ -374,18 +374,18 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   jerAK8PFPuppi   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Fall17_V3_MC_PtResolution_AK8PFPuppi.txt"),
   jerAK8PFPuppiSF =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Fall17_V3_MC_SF_AK8PFPuppi.txt"),
   # JEC - CORRECTIONS ON FLY
-  jecPayloadNamesAK4PFchsMC1   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_L1FastJet_AK4PFchs.txt"),
-  jecPayloadNamesAK4PFchsMC2   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_L2Relative_AK4PFchs.txt"),
-  jecPayloadNamesAK4PFchsMC3   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_L3Absolute_AK4PFchs.txt"),
-  jecPayloadNamesAK4PFchsMCUnc = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFchs.txt"),
-  jecPayloadNamesAK4PFPuppiMC1   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_L1FastJet_AK4PFPuppi.txt"),
-  jecPayloadNamesAK4PFPuppiMC2   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi.txt"),
-  jecPayloadNamesAK4PFPuppiMC3   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_L3Absolute_AK4PFPuppi.txt"),
-  jecPayloadNamesAK4PFPuppiMCUnc = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFPuppi.txt"),
-  jecPayloadNamesAK8PFchsMC1   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_L1FastJet_AK8PFchs.txt"),
-  jecPayloadNamesAK8PFchsMC2   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_L2Relative_AK8PFchs.txt"),
-  jecPayloadNamesAK8PFchsMC3   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_L3Absolute_AK8PFchs.txt"),
-  jecPayloadNamesAK8PFchsMCUnc = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V32_MC/Fall17_17Nov2017_V32_MC_Uncertainty_AK8PFchs.txt"),
+  jecPayloadNamesAK4PFchsMC1   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_L1FastJet_AK4PFchs.txt"),
+  jecPayloadNamesAK4PFchsMC2   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_L2Relative_AK4PFchs.txt"),
+  jecPayloadNamesAK4PFchsMC3   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_L3Absolute_AK4PFchs.txt"),
+  jecPayloadNamesAK4PFchsMCUnc = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_Uncertainty_AK4PFchs.txt"),
+  jecPayloadNamesAK4PFPuppiMC1   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_L1FastJet_AK4PFPuppi.txt"),
+  jecPayloadNamesAK4PFPuppiMC2   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_L2Relative_AK4PFPuppi.txt"),
+  jecPayloadNamesAK4PFPuppiMC3   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_L3Absolute_AK4PFPuppi.txt"),
+  jecPayloadNamesAK4PFPuppiMCUnc = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_Uncertainty_AK4PFPuppi.txt"),
+  jecPayloadNamesAK8PFchsMC1   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_L1FastJet_AK8PFchs.txt"),
+  jecPayloadNamesAK8PFchsMC2   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_L2Relative_AK8PFchs.txt"),
+  jecPayloadNamesAK8PFchsMC3   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_L3Absolute_AK8PFchs.txt"),
+  jecPayloadNamesAK8PFchsMCUnc = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Fall17_17Nov2017_V8_MC/Fall17_17Nov2017_V8_MC_Uncertainty_AK8PFchs.txt"),
    #=== DATA ===
    jecPayloadNamesAK4PFchsDATA1   = cms.FileInPath(options.optionJECAK4PFchsDATA1),
    jecPayloadNamesAK4PFchsDATA2   = cms.FileInPath(options.optionJECAK4PFchsDATA2),
