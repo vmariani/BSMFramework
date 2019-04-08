@@ -21,7 +21,7 @@ void TriggerSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSet
     iEvent.getByLabel(triggerBits_, triggerBits);
     const edm::TriggerNames &trigNames = iEvent.triggerNames(*triggerBits);
     for(double tv=0.; tv<=_maxtriggerversion; tv++){ 
-      char buffer[10]; sprintf(buffer,"%g",tv);
+      char buffer[20]; sprintf(buffer,"%g",tv);
       uint HLT_PFHT650_WideJetMJJ900DEtaJJ1p5_v(trigNames.triggerIndex(("HLT_PFHT650_WideJetMJJ900DEtaJJ1p5_v"+string(buffer)).c_str()));
       if(HLT_PFHT650_WideJetMJJ900DEtaJJ1p5_v<triggerBits->size()) HLT_PFHT650_WideJetMJJ900DEtaJJ1p5 = triggerBits->accept(HLT_PFHT650_WideJetMJJ900DEtaJJ1p5_v);
       uint HLT_PFHT650_WideJetMJJ950DEtaJJ1p5_v(trigNames.triggerIndex(("HLT_PFHT650_WideJetMJJ950DEtaJJ1p5_v"+string(buffer)).c_str()));

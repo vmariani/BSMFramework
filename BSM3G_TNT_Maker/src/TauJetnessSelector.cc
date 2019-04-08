@@ -12,7 +12,7 @@
 #include "DataFormats/TrackReco/interface/TrackFwd.h"
 #include "DataFormats/TrackReco/interface/TrackExtra.h"
 #include "DataFormats/VertexReco/interface/Vertex.h"
-#include "TrackingTools/PatternTools/interface/TwoTrackMinimumDistance.h"
+//#include "TrackingTools/PatternTools/interface/TwoTrackMinimumDistance.h"
 #include "RecoVertex/KinematicFitPrimitives/interface/KinematicParticleFactoryFromTransientTrack.h"
 #include "TrackingTools/IPTools/interface/IPTools.h"
 #include "RecoBTag/BTagTools/interface/SignedTransverseImpactParameter.h"
@@ -833,6 +833,7 @@ void TauJetnessSelector::get_2trksinfo(vector<Track> trks, const TransientTrackB
 pair<double,double> TauJetnessSelector::dca2trks(Track tkA, Track tkB, const TransientTrackBuilder& ttrkbuilder){
   double dca3d2trks_sig = 0;
   double dca2d2trks_sig = 0;
+  /*
   TransientTrack ttkA = get_ttrk(tkA, ttrkbuilder);
   TransientTrack ttkB = get_ttrk(tkB, ttrkbuilder);
   if(ttkA.impactPointTSCP().isValid() && ttkB.impactPointTSCP().isValid()){
@@ -883,6 +884,7 @@ pair<double,double> TauJetnessSelector::dca2trks(Track tkA, Track tkB, const Tra
       else                 dca2d2trks_sig = twoTkDist2D/sqrt(twoTkDist2D); 
     }//if(minDist.status())
   }//ttkA.impactPointTSCP().isValid() && ttkB.impactPointTSCP().isValid()
+  */
   return make_pair(dca3d2trks_sig,dca2d2trks_sig);
 }
 void TauJetnessSelector::get_avip3d(vector<Track> trks, const TransientTrackBuilder& ttrkbuilder, reco::Vertex vtx, vector<tuple<double, double, double> >& tausdir, double& tauchtrks_avip3d_val, double& tauchtrks_avip3d_sig, double& tauchtrks_avsip3d_val, double& tauchtrks_avsip3d_sig){

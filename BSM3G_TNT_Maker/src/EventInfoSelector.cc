@@ -9,9 +9,9 @@ EventInfoSelector::EventInfoSelector(std::string name, TTree* tree, bool debug, 
   fixedGridRhoFastjetCentralHandle_  = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentral"));
   fixedGridRhoFastjetCentralChargedPileUpHandle_  = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralChargedPileUp"));
   fixedGridRhoFastjetCentralNeutralHandle_  = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
-  prefweight_token = ic.consumes< double >(edm::InputTag("prefiringweight:NonPrefiringProb"));
-  prefweightup_token = ic.consumes< double >(edm::InputTag("prefiringweight:NonPrefiringProbUp"));
-  prefweightdown_token = ic.consumes< double >(edm::InputTag("prefiringweight:NonPrefiringProbDown"));
+  prefweight_token = ic.consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProb"));
+  prefweightup_token = ic.consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbUp"));
+  prefweightdown_token = ic.consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbDown"));
   metFilterBits_ = ic.consumes<edm::TriggerResults>(iConfig.getParameter<edm::InputTag>("metFilterBits"));
   ecalBadCalibFilterUpdate_token= ic.consumes< bool >(edm::InputTag("ecalBadCalibReducedMINIAODFilter"));
   _is_data = iConfig.getParameter<bool>("is_data");

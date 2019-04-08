@@ -13,7 +13,7 @@
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "FWCore/Framework/interface/ESHandle.h"
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
-#include "HLTrigger/Muon/interface/HLTMuonIsoFilter.h"
+//#include "HLTrigger/Muon/interface/HLTMuonIsoFilter.h"
 #include "DataFormats/HLTReco/interface/TriggerFilterObjectWithRefs.h"
 #include "FWCore/Common/interface/TriggerNames.h"
 #include "FWCore/Common/interface/TriggerResultsByName.h"

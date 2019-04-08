@@ -11,7 +11,7 @@ process.load("Configuration.StandardSequences.MagneticField_cff")
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 process.load("Geometry.CaloEventSetup.CaloTowerConstituents_cfi")
 from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag.globaltag = '94X_mcRun2_asymptotic_v3'
+process.GlobalTag.globaltag = '102X_mcRun2_asymptotic_v6'
 process.load('Configuration.StandardSequences.Services_cff')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 
@@ -25,7 +25,7 @@ process.source = cms.Source("PoolSource",
   ),
   skipEvents = cms.untracked.uint32(0)
 )
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
 
 ##### JEC
 from PhysicsTools.PatAlgos.tools.jetTools import updateJetCollection
@@ -52,16 +52,12 @@ jetsNameAK4="selectedUpdatedPatJetsNewDFTraining"
 
 
 ##### L1 Prefire
-process.prefiringweight = cms.EDProducer("L1ECALPrefiringWeightProducer",
-        ThePhotons = cms.InputTag("slimmedPhotons"),
-        #TheJets = cms.InputTag("slimmedJets"),
-        TheJets = cms.InputTag(jetsNameAK4),
-        #L1Maps = cms.string("/afs/cern.ch/work/b/binghuan/private/BSMFWTest/CMSSW_9_4_10/src/L1Prefiring/EventWeightProducer/files/L1PrefiringMaps_new.root"), # update this line with the location of this file
-        L1Maps = cms.string("L1PrefiringMaps_new.root"), 
-        DataEra = cms.string("2016BtoH"), #Use 2016BtoH for 2016
-        UseJetEMPt = cms.bool(False), #can be set to true to use jet prefiring maps parametrized vs pt(em) instead of pt
-        PrefiringRateSystematicUncty = cms.double(0.2) #Minimum relative prefiring uncty per object
-                                                                                                                                                                                                                              )
+from PhysicsTools.PatUtils.l1ECALPrefiringWeightProducer_cfi import l1ECALPrefiringWeightProducer
+process.prefiringweight = l1ECALPrefiringWeightProducer.clone(
+    DataEra = cms.string("2016BtoH"), # 2017BtoF
+    UseJetEMPt = cms.bool(False),
+    PrefiringRateSystematicUncty = cms.double(0.2),
+    SkipWarnings = False)
  
 
 #####
