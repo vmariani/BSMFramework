@@ -16,6 +16,9 @@ cmsenv
 
 git cms-init
 
+# set merge limit variable
+git config merge.renameLimit 999999
+
 ## set up bTagDeepFlavour
 ## https://twiki.cern.ch/twiki/bin/view/CMS/DeepJet
 git cms-addpkg RecoBTag/TensorFlow
