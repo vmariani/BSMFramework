@@ -55,7 +55,7 @@ cd ..
 scram b -j 8
 
 ## To Run ##
-# MC for three years are tested
+# MC for three years are running without any problems
 # RD is depreciated and RD2018 is missing
 cd BSMFramework/BSM3G_TNT_Maker/python/
 cmsRun miniAOD_MC(RD)2017(2016)(2018).py 
