@@ -272,7 +272,6 @@ void JetSelector::Fill(const edm::Event& iEvent){
     double corrUpAK4PFchs   = 1;
     double corrDownAK4PFchs = 1;
     //==================================Factorised JES Unc.=========================================
-    /*
     double corrUpAK4PFchs_AbsoluteStat_up   = 1;
     double corrDownAK4PFchs_AbsoluteStat_down = 1;
     double corrUpAK4PFchs_AbsoluteScale_up   = 1;
@@ -359,7 +358,6 @@ void JetSelector::Fill(const edm::Event& iEvent){
     double corrDownAK4PFchs_FlavorPureCharm_down = 1;
     double corrUpAK4PFchs_FlavorPureBottom_up   = 1;
     double corrDownAK4PFchs_FlavorPureBottom_down = 1;
-    */
     //===========================================================================
     
     reco::Candidate::LorentzVector uncorrJetAK4PFchs = j.correctedP4(0);
@@ -378,7 +376,6 @@ void JetSelector::Fill(const edm::Event& iEvent){
       jecAK4PFchsMCUnc_->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
       corrDownAK4PFchs = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_->getUncertainty(-1)) );
             //================================================Factorised JES Unc.===================================================
-  /*
       jecAK4PFchsMCUnc_AbsoluteStat->setJetEta( uncorrJetAK4PFchs.eta() );
       jecAK4PFchsMCUnc_AbsoluteStat->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
       corrUpAK4PFchs_AbsoluteStat_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_AbsoluteStat->getUncertainty(1)));
@@ -720,7 +717,6 @@ void JetSelector::Fill(const edm::Event& iEvent){
       jecAK4PFchsMCUnc_FlavorPureBottom->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
 
       corrDownAK4PFchs_FlavorPureBottom_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_FlavorPureBottom->getUncertainty(-1)) );
-    */ 
     } else {
       jecAK4PFchsDATA_->setJetEta( uncorrJetAK4PFchs.eta()    );
       jecAK4PFchsDATA_->setJetPt ( uncorrJetAK4PFchs.pt()     );
@@ -742,7 +738,6 @@ void JetSelector::Fill(const edm::Event& iEvent){
     Jet_JesSFdown.push_back(corrDownAK4PFchs);
     
     //================================== Store Factorised JEC info =============================================
-    /*
     Jet_JesSF_AbsoluteStat_up.push_back(corrUpAK4PFchs_AbsoluteStat_up);
     Jet_JesSF_AbsoluteStat_down.push_back(corrDownAK4PFchs_AbsoluteStat_down);
     Jet_JesSF_AbsoluteScale_up.push_back(corrUpAK4PFchs_AbsoluteScale_up);
@@ -829,7 +824,6 @@ void JetSelector::Fill(const edm::Event& iEvent){
     Jet_JesSF_FlavorPureCharm_down.push_back(corrDownAK4PFchs_FlavorPureCharm_down);
     Jet_JesSF_FlavorPureBottom_up.push_back(corrUpAK4PFchs_FlavorPureBottom_up);
     Jet_JesSF_FlavorPureBottom_down.push_back(corrDownAK4PFchs_FlavorPureBottom_down);
-    */
     //===============================================================================
     //JER scale factor and uncertainties
     float JERScaleFactor     = 1; 
@@ -966,23 +960,20 @@ void JetSelector::JECInitialization(){
   }
   //std::cout<< " JEC Initialize jecAK4PFchsMC_ " << std::endl;
   jecAK4PFchsMC_    = boost::shared_ptr<FactorizedJetCorrector>  ( new FactorizedJetCorrector(vParAK4PFchsMC) );
-  jecAK4PFchsMCUnc_ = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(jecPayloadNamesAK4PFchsMCUnc_.fullPath()) );
-  /*
-  std::cout<< " JEC Initialize Start Components " << std::endl;
+  //jecAK4PFchsMCUnc_ = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(jecPayloadNamesAK4PFchsMCUnc_.fullPath()) );
+  jecAK4PFchsMCUnc_   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "Total"))));
+  //std::cout<< " JEC Initialize Start Components " << std::endl;
+  
   jecAK4PFchsMCUnc_AbsoluteStat   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteStat"))));
-  //jecAK4PFchsMCUnc_AbsoluteStat   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteStat"));
-  std::cout<< " JEC Initialize AbsoluteStat " << std::endl;
   jecAK4PFchsMCUnc_AbsoluteScale   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteScale"))));
   jecAK4PFchsMCUnc_AbsoluteFlavMap   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteFlavMap"))));
   jecAK4PFchsMCUnc_AbsoluteMPFBias   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteMPFBias"))));
   jecAK4PFchsMCUnc_Fragmentation   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "Fragmentation"))));
-  std::cout<< " JEC Initialize Fragmentation " << std::endl;
   jecAK4PFchsMCUnc_SinglePionECAL   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SinglePionECAL"))));
   jecAK4PFchsMCUnc_SinglePionHCAL   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SinglePionHCAL"))));
   jecAK4PFchsMCUnc_FlavorQCD   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorQCD"))));
   jecAK4PFchsMCUnc_TimePtEta   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "TimePtEta"))));
   jecAK4PFchsMCUnc_RelativeJEREC1   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeJEREC1"))));
-  std::cout<< " JEC Initialize RelativeJEREC1 " << std::endl;
   jecAK4PFchsMCUnc_RelativeJEREC2   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeJEREC2"))));
   jecAK4PFchsMCUnc_RelativeJERHF   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeJERHF"))));
   jecAK4PFchsMCUnc_RelativePtBB   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativePtBB"))));
@@ -994,7 +985,6 @@ void JetSelector::JECInitialization(){
   jecAK4PFchsMCUnc_RelativeStatFSR   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeStatFSR"))));
   jecAK4PFchsMCUnc_RelativeStatEC   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeStatEC"))));
   jecAK4PFchsMCUnc_RelativeStatHF   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeStatHF"))));
-  std::cout<< " JEC Initialize RelativeStatHF " << std::endl;
   jecAK4PFchsMCUnc_PileUpDataMC   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpDataMC"))));
   jecAK4PFchsMCUnc_PileUpPtRef   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpPtRef"))));
   jecAK4PFchsMCUnc_PileUpPtBB   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpPtBB"))));
@@ -1012,13 +1002,12 @@ void JetSelector::JECInitialization(){
   jecAK4PFchsMCUnc_TotalNoFlavor   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "TotalNoFlavor"))));
   jecAK4PFchsMCUnc_TotalNoFlavorNoTime   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "TotalNoFlavorNoTime"))));
   jecAK4PFchsMCUnc_FlavorZJet   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorZJet"))));
-  std::cout<< " JEC Initialize FlavorZJet " << std::endl;
   jecAK4PFchsMCUnc_FlavorPhotonJet   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPhotonJet"))));
   jecAK4PFchsMCUnc_FlavorPureGluon   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPureGluon"))));
   jecAK4PFchsMCUnc_FlavorPureQuark   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPureQuark"))));
   jecAK4PFchsMCUnc_FlavorPureCharm   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPureCharm"))));
   jecAK4PFchsMCUnc_FlavorPureBottom   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPureBottom"))));
-  */
+  
   //AK4chs - DATA: Get the factorized jet corrector parameters. 
   std::vector<std::string> jecPayloadNamesAK4PFchsDATA_;
   jecPayloadNamesAK4PFchsDATA_.push_back(jecPayloadNamesAK4PFchsDATA1_.fullPath());
@@ -1135,7 +1124,6 @@ void JetSelector::SetBranches(){
   AddBranch(&Jet_JerSF                ,"Jet_JerSF");
   AddBranch(&Jet_JerSFup              ,"Jet_JerSFup");
   AddBranch(&Jet_JerSFdown            ,"Jet_JerSFdown");
-  /*
   AddBranch(&Jet_JesSF_AbsoluteStat_up                ,"Jet_JesSF_AbsoluteStat_up");
   AddBranch(&Jet_JesSF_AbsoluteStat_down                ,"Jet_JesSF_AbsoluteStat_down");
   AddBranch(&Jet_JesSF_AbsoluteScale_up                ,"Jet_JesSF_AbsoluteScale_up");
@@ -1172,6 +1160,8 @@ void JetSelector::SetBranches(){
   AddBranch(&Jet_JesSF_RelativeBal_down                ,"Jet_JesSF_RelativeBal_down");
   AddBranch(&Jet_JesSF_RelativeFSR_up                ,"Jet_JesSF_RelativeFSR_up");
   AddBranch(&Jet_JesSF_RelativeFSR_down                ,"Jet_JesSF_RelativeFSR_down");
+  AddBranch(&Jet_JesSF_RelativeStatFSR_up                ,"Jet_JesSF_RelativeStatFSR_up");
+  AddBranch(&Jet_JesSF_RelativeStatFSR_down                ,"Jet_JesSF_RelativeStatFSR_down");
   AddBranch(&Jet_JesSF_RelativeStatEC_up                ,"Jet_JesSF_RelativeStatEC_up");
   AddBranch(&Jet_JesSF_RelativeStatEC_down                ,"Jet_JesSF_RelativeStatEC_down");
   AddBranch(&Jet_JesSF_RelativeStatHF_up                ,"Jet_JesSF_RelativeStatHF_up");
@@ -1220,7 +1210,6 @@ void JetSelector::SetBranches(){
   AddBranch(&Jet_JesSF_FlavorPureCharm_down                ,"Jet_JesSF_FlavorPureCharm_down");
   AddBranch(&Jet_JesSF_FlavorPureBottom_up                ,"Jet_JesSF_FlavorPureBottom_up");
   AddBranch(&Jet_JesSF_FlavorPureBottom_down                ,"Jet_JesSF_FlavorPureBottom_down");
-  */
   //MC
   if(!_is_data) {
     AddBranch(&Jet_partonFlavour        ,"Jet_partonFlavour");
@@ -1348,7 +1337,6 @@ void JetSelector::Clear(){
   Jet_JesSF.clear();
   Jet_JesSFup.clear();
   Jet_JesSFdown.clear();
-  /*
   Jet_JesSF_AbsoluteStat_up.clear();
   Jet_JesSF_AbsoluteStat_down.clear();
   Jet_JesSF_AbsoluteScale_up.clear();
@@ -1435,7 +1423,6 @@ void JetSelector::Clear(){
   Jet_JesSF_FlavorPureCharm_down.clear();
   Jet_JesSF_FlavorPureBottom_up.clear();
   Jet_JesSF_FlavorPureBottom_down.clear();
-  */
   Jet_JerSF.clear();
   Jet_JerSFup.clear();
   Jet_JerSFdown.clear(); 

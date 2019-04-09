@@ -136,7 +136,6 @@ class JetSelector : public  baseTree{
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_;
   
   //===========================================================================
-  /*
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_AbsoluteStat;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_AbsoluteScale;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_AbsoluteFlavMap;
@@ -173,8 +172,6 @@ class JetSelector : public  baseTree{
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_SubTotalAbsolute;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_SubTotalMC;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_TotalNoFlavor;
-  //boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_PileUpBias;
-  //boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_TotalNoTime;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_TotalNoFlavorNoTime;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_FlavorZJet;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_FlavorPhotonJet;
@@ -182,7 +179,6 @@ class JetSelector : public  baseTree{
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_FlavorPureQuark;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_FlavorPureCharm;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFchsMCUnc_FlavorPureBottom;
-  */
   //===========================================================================
   
   boost::shared_ptr<FactorizedJetCorrector>   jecAK4PFchsDATA_;
@@ -231,7 +227,6 @@ class JetSelector : public  baseTree{
   //Jet Energy Corrections and Uncertainties
   vector<double> Jet_puppi_JesSF, Jet_puppi_JesSFup, Jet_puppi_JesSFdown, Jet_puppi_JerSF, Jet_puppi_JerSFup, Jet_puppi_JerSFdown; 
   //Factorised
-  /*
   vector<double> Jet_JesSF_AbsoluteStat_up;
   vector<double> Jet_JesSF_AbsoluteStat_down;
   vector<double> Jet_JesSF_AbsoluteScale_up;
@@ -268,7 +263,7 @@ class JetSelector : public  baseTree{
   vector<double> Jet_JesSF_RelativeBal_down;
   vector<double> Jet_JesSF_RelativeFSR_up;
   vector<double> Jet_JesSF_RelativeFSR_down;
-  vector<double> Jet_JesSF_RelativeStatFSR_up;
+  vector<double> Jet_JesSF_RelativeStatFSR_up; //FIXME
   vector<double> Jet_JesSF_RelativeStatFSR_down;
   vector<double> Jet_JesSF_RelativeStatEC_up;
   vector<double> Jet_JesSF_RelativeStatEC_down;
@@ -304,8 +299,6 @@ class JetSelector : public  baseTree{
   vector<double> Jet_JesSF_SubTotalMC_down;
   vector<double> Jet_JesSF_TotalNoFlavor_up;
   vector<double> Jet_JesSF_TotalNoFlavor_down;
-  vector<double> Jet_JesSF_TotalNoTime_up;
-  vector<double> Jet_JesSF_TotalNoTime_down;
   vector<double> Jet_JesSF_TotalNoFlavorNoTime_up;
   vector<double> Jet_JesSF_TotalNoFlavorNoTime_down;
   vector<double> Jet_JesSF_FlavorZJet_up;
@@ -320,7 +313,6 @@ class JetSelector : public  baseTree{
   vector<double> Jet_JesSF_FlavorPureCharm_down;
   vector<double> Jet_JesSF_FlavorPureBottom_up;
   vector<double> Jet_JesSF_FlavorPureBottom_down;
-  */
   //MC 
   vector<double> Jet_puppi_partonFlavour, Jet_puppi_hadronFlavour;
 };
