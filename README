@@ -68,6 +68,7 @@ python multicrab_MC(DATA)2016(2017)(2018).py
 ## To Do ###
 - write miniAOD_RD.py for three years
 - write multicrab_MC(DATA).py for three years
+- update PileUp reweight class for three years ( or leave it because we can always reweight it at a later stage)
 
 ## Notice ###
 - JER 2018 && HLT is preliminary
