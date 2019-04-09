@@ -9,12 +9,15 @@ EventInfoSelector::EventInfoSelector(std::string name, TTree* tree, bool debug, 
   fixedGridRhoFastjetCentralHandle_  = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentral"));
   fixedGridRhoFastjetCentralChargedPileUpHandle_  = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralChargedPileUp"));
   fixedGridRhoFastjetCentralNeutralHandle_  = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
-  prefweight_token = ic.consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProb"));
-  prefweightup_token = ic.consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbUp"));
-  prefweightdown_token = ic.consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbDown"));
   metFilterBits_ = ic.consumes<edm::TriggerResults>(iConfig.getParameter<edm::InputTag>("metFilterBits"));
   ecalBadCalibFilterUpdate_token= ic.consumes< bool >(edm::InputTag("ecalBadCalibReducedMINIAODFilter"));
   _is_data = iConfig.getParameter<bool>("is_data");
+  _dataEra             = iConfig.getParameter<int>("dataEra");
+  if(_dataEra!=2018){
+    prefweight_token = ic.consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProb"));
+    prefweightup_token = ic.consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbUp"));
+    prefweightdown_token = ic.consumes< double >(edm::InputTag("prefiringweight:nonPrefiringProbDown"));
+  }
   if(debug) std::cout<<"in EventInfoSelector constructor"<<std::endl;
   SetBranches();
   read_PDFSet = new (LHAPDF::PDFSet)("NNPDF30_nlo_as_0118");
@@ -180,20 +183,26 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
   EVENT_fixedGridRhoFastjetCentralNeutral = fixedGridRhoFastjetCentralNeutral;
 
   // L1 prefire
-  edm::Handle< double > theprefweight;
-  iEvent.getByToken(prefweight_token, theprefweight ) ;
-  double _prefiringweight =(*theprefweight);
-  EVENT_prefireWeight_ = _prefiringweight;
+  if(_dataEra!=2018){
+    edm::Handle< double > theprefweight;
+    iEvent.getByToken(prefweight_token, theprefweight ) ;
+    double _prefiringweight =(*theprefweight);
+    EVENT_prefireWeight_ = _prefiringweight;
 
-  edm::Handle< double > theprefweightup;
-  iEvent.getByToken(prefweightup_token, theprefweightup ) ;
-  double _prefiringweightup =(*theprefweightup);
-  EVENT_prefireWeightUp_ = _prefiringweightup;
+    edm::Handle< double > theprefweightup;
+    iEvent.getByToken(prefweightup_token, theprefweightup ) ;
+    double _prefiringweightup =(*theprefweightup);
+    EVENT_prefireWeightUp_ = _prefiringweightup;
 
-  edm::Handle< double > theprefweightdown;
-  iEvent.getByToken(prefweightdown_token, theprefweightdown ) ;
-  double _prefiringweightdown =(*theprefweightdown);
-  EVENT_prefireWeightDown_ = _prefiringweightdown;
+    edm::Handle< double > theprefweightdown;
+    iEvent.getByToken(prefweightdown_token, theprefweightdown ) ;
+    double _prefiringweightdown =(*theprefweightdown);
+    EVENT_prefireWeightDown_ = _prefiringweightdown;
+  }else{
+    EVENT_prefireWeight_ = 1;
+    EVENT_prefireWeightUp_ = 1;
+    EVENT_prefireWeightDown_ = 1;
+  }
 
   //Event filters
   edm::Handle<edm::TriggerResults> metFilterBits;
