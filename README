@@ -71,9 +71,11 @@ python multicrab_MC(DATA)2016(2017)(2018).py
 
 ## Notice ###
 - JER 2018 && HLT is preliminary
+- Effective Area may require updates for 2018
 - Always check HLT, make sure
     HLT you want is contained in TriggerSelector
     ifevtriggers in miniADO_RD(MC).py is set to true (false)
+- Always check the dataEra
 - Always check the global tag in miniAOD_RD(MC).py 
 - Always check the JSON file in multicrab_DATA.py
 
