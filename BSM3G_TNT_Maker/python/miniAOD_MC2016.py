@@ -197,7 +197,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   bjetnessselfilter = cms.bool(False),
   PuppiVar  = cms.bool(False),
   qglVar    = cms.bool(True),#FF
-  MC2016    = cms.bool(True),
+  dataEra   = cms.int32(2016),
   # Input tags 
   bits                = cms.InputTag("TriggerResults","","HLT"),
   prescales           = cms.InputTag("patTrigger"),
@@ -341,23 +341,23 @@ process.printGenParticleList = cms.EDAnalyzer("ParticleListDrawer",
 )
 
 #QG likelihood
-qgDatabaseVersion = 'v2b' # check https://twiki.cern.ch/twiki/bin/viewauth/CMS/QGDataBaseVersion
-from CondCore.DBCommon.CondDBSetup_cfi import *
+#qgDatabaseVersion = 'v2b' # check https://twiki.cern.ch/twiki/bin/viewauth/CMS/QGDataBaseVersion
+#from CondCore.DBCommon.CondDBSetup_cfi import *
 #from CondCore.CondDB.CondDB_cfi import *
-QGPoolDBESSource = cms.ESSource("PoolDBESSource",
-    CondDBSetup,
+#QGPoolDBESSource = cms.ESSource("PoolDBESSource",
+#    CondDBSetup,
     #CondDB,
-    toGet = cms.VPSet(),
-    connect = cms.string('frontier://FrontierProd/CMS_COND_PAT_000'),
-)
+#    toGet = cms.VPSet(),
+#    connect = cms.string('frontier://FrontierProd/CMS_COND_PAT_000'),
+#)
 
-QGPoolDBESSource.toGet.extend(cms.VPSet(cms.PSet(
-    record = cms.string('QGLikelihoodRcd'),
-    tag    = cms.string('QGLikelihoodObject_'+qgDatabaseVersion+'_AK4PFchs'),
-    label  = cms.untracked.string('QGL_AK4PFchs')
-    )))
+#QGPoolDBESSource.toGet.extend(cms.VPSet(cms.PSet(
+#    record = cms.string('QGLikelihoodRcd'),
+#    tag    = cms.string('QGLikelihoodObject_'+qgDatabaseVersion+'_AK4PFchs'),
+#    label  = cms.untracked.string('QGL_AK4PFchs')
+#    )))
 
-process.load('BSMFramework.BSM3G_TNT_Maker.QGTagger_cfi')
+process.load('RecoJets.JetProducers.QGTagger_cfi')
 #process.QGTagger.srcJets       = cms.InputTag('slimmedJets')
 process.QGTagger.srcJets       = cms.InputTag(jetsNameAK4)
 process.QGTagger.jetsLabel     = cms.string('QGL_AK4PFchs')

@@ -21,8 +21,8 @@ ElectronPatSelector::ElectronPatSelector(std::string name, TTree* tree, bool deb
   _tthlepVar           = iConfig.getParameter<bool>("tthlepVar");
   _qglVar              = iConfig.getParameter<bool>("qglVar");
   _is_data             = iConfig.getParameter<bool>("is_data");
-  _is_MC2016             = iConfig.getParameter<bool>("MC2016");
-  if(_is_MC2016){
+  _dataEra             = iConfig.getParameter<int>("dataEra");
+  if(_dataEra==2016){
       rhopogHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
   }else{
       rhopogHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
@@ -148,7 +148,7 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
     patElectron_mvaCategory_nonIso_.push_back(el->userInt("ElectronMVAEstimatorRun2Fall17NoIsoV2Categories"));
     patElectron_mvaValue_Iso_.push_back(el->userFloat("ElectronMVAEstimatorRun2Fall17IsoV2Values"));
     patElectron_mvaCategory_Iso_.push_back(el->userInt("ElectronMVAEstimatorRun2Fall17IsoV2Categories"));
-    if(_is_MC2016){
+    if(_dataEra==2016){
         passVetoOldId_.push_back  ( el->electronID("cutBasedElectronID-Summer16-80X-V1-veto"));
         passLooseOldId_.push_back ( el->electronID("cutBasedElectronID-Summer16-80X-V1-loose"));
         passMediumOldId_.push_back( el->electronID("cutBasedElectronID-Summer16-80X-V1-medium"));
@@ -1110,7 +1110,7 @@ double ElectronPatSelector::get_isosumraw(const std::vector<const pat::PackedCan
 double ElectronPatSelector::get_effarea(double eta){
   //https://github.com/cms-sw/cmssw/blob/CMSSW_10_4_X/RecoEgamma/ElectronIdentification/data/Fall17/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt
   double effarea = -1;
-  if(_is_MC2016){
+  if(_dataEra==2016){
     if(abs(eta) < 1.0)        effarea = 0.1752;
     else if(abs(eta) < 1.479) effarea = 0.1862;
     else if(abs(eta) < 2.0)   effarea = 0.1411;

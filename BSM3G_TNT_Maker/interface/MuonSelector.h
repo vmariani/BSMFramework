@@ -111,7 +111,7 @@ class MuonSelector : public  baseTree{
   double _vtx_position_z_max;
   bool   _super_TNT; //super tiny ntuple?
   bool   _is_data;
-  bool   _is_MC2016;
+  int  _dataEra; // which year?
   bool _AJVar;
   bool _tthlepVar;
   bool _qglVar;

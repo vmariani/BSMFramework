@@ -127,7 +127,7 @@ class JetSelector : public  baseTree{
   bool _super_TNT;
   bool _PuppiVar;
   bool _is_data;
-  bool _is_MC2016;
+  int  _dataEra; // which year?
   bool _qglVar;
   /////
   //   JEC

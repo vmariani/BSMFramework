@@ -58,8 +58,8 @@ MuonSelector::MuonSelector(std::string name, TTree* tree, bool debug, const pset
   _AJVar              = iConfig.getParameter<bool>("AJVar");
   _tthlepVar          = iConfig.getParameter<bool>("tthlepVar");
   _qglVar             = iConfig.getParameter<bool>("qglVar");
-  _is_MC2016             = iConfig.getParameter<bool>("MC2016");
-  if(_is_MC2016){
+  _dataEra             = iConfig.getParameter<int>("dataEra");
+  if(_dataEra==2016){
       rhoHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
   }else{
       rhoHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
@@ -1023,7 +1023,7 @@ double MuonSelector::get_isosumraw(const std::vector<const pat::PackedCandidate 
 double MuonSelector::get_effarea(double eta){
   // https://github.com/cms-data/PhysicsTools-NanoAOD/blob/master/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt
   double effarea = -1;
-  if(_is_MC2016){
+  if(_dataEra==2016){
     if(abs(eta) < 0.8)      effarea = 0.0735;
     else if(abs(eta) < 1.3) effarea = 0.0619;
     else if(abs(eta) < 2.0) effarea = 0.0465;

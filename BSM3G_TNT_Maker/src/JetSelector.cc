@@ -47,7 +47,7 @@ JetSelector::JetSelector(std::string name, TTree* tree, bool debug, const pset& 
   _is_data = iConfig.getParameter<bool>("is_data");
   _PuppiVar = iConfig.getParameter<bool>("PuppiVar");
   _qglVar             = iConfig.getParameter<bool>("qglVar");
-  _is_MC2016             = iConfig.getParameter<bool>("MC2016");
+  _dataEra             = iConfig.getParameter<int>("dataEra");
   JECInitialization();
   SetBranches();
 }
@@ -1503,7 +1503,8 @@ void JetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK4PFchs,
   double cFactorJERup = 1.0;
   //https://twiki.cern.ch/twiki/bin/view/CMS/JetResolution#JER_Scaling_factors_and_Unce_AN1
   
-  if(_is_MC2016){
+  if(_dataEra==2016){
+      // Summer16_25nsV1
       if( jetEta<0.522 ){ 
         cFactorJER = 1.1595; 
         cFactorJERdown = 1.1595-0.0645;
@@ -1557,7 +1558,8 @@ void JetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK4PFchs,
         cFactorJERdown = 1.1922-0.1488;
         cFactorJERup   = 1.1922+0.1488;
       }
-  }else{
+  }else if(_dataEra==2017){
+      // Fall17_V3
       if( jetEta<0.522 ){ 
         cFactorJER = 1.1432; 
         cFactorJERdown = 1.1432-0.0222;
@@ -1611,6 +1613,65 @@ void JetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK4PFchs,
         cFactorJERdown = 1.1542-0.1524;
         cFactorJERup   = 1.1542+0.1524;
       }
+  }else if(_dataEra==2018){
+      // Autumn18_v1
+      // Temporary version to be used  for Moriond 2019 analyses
+      // Averaged over all runs
+      if( jetEta<0.522 ){ 
+        cFactorJER = 1.15; 
+        cFactorJERdown = 1.15-0.043;
+        cFactorJERup   = 1.15+0.043; 
+      } else if( jetEta<0.783 ){ 
+        cFactorJER = 1.134; 
+        cFactorJERdown = 1.134-0.08;
+        cFactorJERup   = 1.134+0.08; 
+      } else if( jetEta<1.131 ){ 
+        cFactorJER = 1.102; 
+        cFactorJERdown = 1.102-0.052;
+        cFactorJERup   = 1.102+0.052; 
+      } else if( jetEta<1.305 ){ 
+        cFactorJER = 1.134; 
+        cFactorJERdown = 1.134-0.112;
+        cFactorJERup   = 1.134+0.112; 
+      } else if( jetEta<1.740 ){ 
+        cFactorJER = 1.104; 
+        cFactorJERdown = 1.104-0.211;
+        cFactorJERup   = 1.104+0.211; 
+      } else if( jetEta<1.930 ){ 
+        cFactorJER = 1.149; 
+        cFactorJERdown = 1.149-0.159;
+        cFactorJERup   = 1.149+0.159; 
+      } else if( jetEta<2.043 ){ 
+        cFactorJER = 1.148; 
+        cFactorJERdown = 1.148-0.209;
+        cFactorJERup   = 1.148+0.209; 
+      } else if( jetEta<2.322 ){ 
+        cFactorJER = 1.114; 
+        cFactorJERdown = 1.114-0.191;
+        cFactorJERup   = 1.114+0.191; 
+      } else if( jetEta<2.5 ){ 
+        cFactorJER = 1.347; 
+        cFactorJERdown = 1.347-0.274;
+        cFactorJERup   = 1.347+0.274; 
+      } else if( jetEta<2.853 ){ 
+        cFactorJER = 2.137; 
+        cFactorJERdown = 2.137-0.524;
+        cFactorJERup   = 2.137+0.524; 
+      } else if( jetEta<2.964 ){ 
+        cFactorJER = 1.65; 
+        cFactorJERdown = 1.65-0.941;
+        cFactorJERup   = 1.65+0.941; 
+      } else if( jetEta<3.139 ){ 
+        cFactorJER = 1.225; 
+        cFactorJERdown = 1.225-0.194;
+        cFactorJERup   = 1.225+0.194; 
+      } else if( jetEta<5.191 ){ 
+        cFactorJER = 1.082; 
+        cFactorJERdown = 1.082-0.198;
+        cFactorJERup   = 1.082+0.198;
+      }
+  }else{
+    std::cout<<" ERROR dataEra must be 2016/2017/2018 " <<std::endl;
   }
   //double recoJetPt = jet.pt();//(jet.correctedJet("Uncorrected").pt())*JesSF;
   double recoJetPt = (jet.correctedJet("Uncorrected").pt())*JesSF;
