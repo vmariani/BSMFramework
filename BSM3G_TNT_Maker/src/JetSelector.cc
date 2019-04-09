@@ -258,6 +258,97 @@ void JetSelector::Fill(const edm::Event& iEvent){
     double corrAK4PFchs     = 1;
     double corrUpAK4PFchs   = 1;
     double corrDownAK4PFchs = 1;
+    //==================================Factorised JES Unc.=========================================
+    /*
+    double corrUpAK4PFchs_AbsoluteStat_up   = 1;
+    double corrDownAK4PFchs_AbsoluteStat_down = 1;
+    double corrUpAK4PFchs_AbsoluteScale_up   = 1;
+    double corrDownAK4PFchs_AbsoluteScale_down = 1;
+    double corrUpAK4PFchs_AbsoluteFlavMap_up   = 1;
+    double corrDownAK4PFchs_AbsoluteFlavMap_down = 1;
+    double corrUpAK4PFchs_AbsoluteMPFBias_up   = 1;
+    double corrDownAK4PFchs_AbsoluteMPFBias_down = 1;
+    double corrUpAK4PFchs_Fragmentation_up   = 1;
+    double corrDownAK4PFchs_Fragmentation_down = 1;
+    double corrUpAK4PFchs_SinglePionECAL_up   = 1;
+    double corrDownAK4PFchs_SinglePionECAL_down = 1;
+    double corrUpAK4PFchs_SinglePionHCAL_up   = 1;
+    double corrDownAK4PFchs_SinglePionHCAL_down = 1;
+    double corrUpAK4PFchs_FlavorQCD_up   = 1;
+    double corrDownAK4PFchs_FlavorQCD_down = 1;
+    double corrUpAK4PFchs_TimePtEta_up   = 1;
+    double corrDownAK4PFchs_TimePtEta_down = 1;
+    double corrUpAK4PFchs_RelativeJEREC1_up   = 1;
+    double corrDownAK4PFchs_RelativeJEREC1_down = 1;
+    double corrUpAK4PFchs_RelativeJEREC2_up   = 1;
+    double corrDownAK4PFchs_RelativeJEREC2_down = 1;
+    double corrUpAK4PFchs_RelativeJERHF_up   = 1;
+    double corrDownAK4PFchs_RelativeJERHF_down = 1;
+    double corrUpAK4PFchs_RelativePtBB_up   = 1;
+    double corrDownAK4PFchs_RelativePtBB_down = 1;
+    double corrUpAK4PFchs_RelativePtEC1_up   = 1;
+    double corrDownAK4PFchs_RelativePtEC1_down = 1;
+    double corrUpAK4PFchs_RelativePtEC2_up   = 1;
+    double corrDownAK4PFchs_RelativePtEC2_down = 1;
+    double corrUpAK4PFchs_RelativePtHF_up   = 1;
+    double corrDownAK4PFchs_RelativePtHF_down = 1;
+    double corrUpAK4PFchs_RelativeBal_up   = 1;
+    double corrDownAK4PFchs_RelativeBal_down = 1;
+    double corrUpAK4PFchs_RelativeFSR_up   = 1;
+    double corrDownAK4PFchs_RelativeFSR_down = 1;
+    double corrUpAK4PFchs_RelativeStatFSR_up   = 1;
+    double corrDownAK4PFchs_RelativeStatFSR_down = 1;
+    double corrUpAK4PFchs_RelativeStatEC_up   = 1;
+    double corrDownAK4PFchs_RelativeStatEC_down = 1;
+    double corrUpAK4PFchs_RelativeStatHF_up   = 1;
+    double corrDownAK4PFchs_RelativeStatHF_down = 1;
+    double corrUpAK4PFchs_PileUpDataMC_up   = 1;
+    double corrDownAK4PFchs_PileUpDataMC_down = 1;
+    double corrUpAK4PFchs_PileUpPtRef_up   = 1;
+    double corrDownAK4PFchs_PileUpPtRef_down = 1;
+    double corrUpAK4PFchs_PileUpPtBB_up   = 1;
+    double corrDownAK4PFchs_PileUpPtBB_down = 1;
+    double corrUpAK4PFchs_PileUpPtEC1_up   = 1;
+    double corrDownAK4PFchs_PileUpPtEC1_down = 1;
+    double corrUpAK4PFchs_PileUpPtEC2_up   = 1;
+    double corrDownAK4PFchs_PileUpPtEC2_down = 1;
+    double corrUpAK4PFchs_PileUpPtHF_up   = 1;
+    double corrDownAK4PFchs_PileUpPtHF_down = 1;
+    double corrUpAK4PFchs_PileUpMuZero_up   = 1;
+    double corrDownAK4PFchs_PileUpMuZero_down = 1;
+    double corrUpAK4PFchs_PileUpEnvelope_up   = 1;
+    double corrDownAK4PFchs_PileUpEnvelope_down = 1;
+    double corrUpAK4PFchs_SubTotalPileUp_up   = 1;
+    double corrDownAK4PFchs_SubTotalPileUp_down = 1;
+    double corrUpAK4PFchs_SubTotalRelative_up   = 1;
+    double corrDownAK4PFchs_SubTotalRelative_down = 1;
+    double corrUpAK4PFchs_SubTotalPt_up   = 1;
+    double corrDownAK4PFchs_SubTotalPt_down = 1;
+    double corrUpAK4PFchs_SubTotalScale_up   = 1;
+    double corrDownAK4PFchs_SubTotalScale_down = 1;
+    double corrUpAK4PFchs_SubTotalAbsolute_up   = 1;
+    double corrDownAK4PFchs_SubTotalAbsolute_down = 1;
+    double corrUpAK4PFchs_SubTotalMC_up   = 1;
+    double corrDownAK4PFchs_SubTotalMC_down = 1;
+    double corrUpAK4PFchs_TotalNoFlavor_up   = 1;
+    double corrDownAK4PFchs_TotalNoFlavor_down = 1;
+    double corrUpAK4PFchs_TotalNoFlavorNoTime_up   = 1;
+    double corrDownAK4PFchs_TotalNoFlavorNoTime_down = 1;
+    double corrUpAK4PFchs_FlavorZJet_up   = 1;
+    double corrDownAK4PFchs_FlavorZJet_down = 1;
+    double corrUpAK4PFchs_FlavorPhotonJet_up   = 1;
+    double corrDownAK4PFchs_FlavorPhotonJet_down = 1;
+    double corrUpAK4PFchs_FlavorPureGluon_up   = 1;
+    double corrDownAK4PFchs_FlavorPureGluon_down = 1;
+    double corrUpAK4PFchs_FlavorPureQuark_up   = 1;
+    double corrDownAK4PFchs_FlavorPureQuark_down = 1;
+    double corrUpAK4PFchs_FlavorPureCharm_up   = 1;
+    double corrDownAK4PFchs_FlavorPureCharm_down = 1;
+    double corrUpAK4PFchs_FlavorPureBottom_up   = 1;
+    double corrDownAK4PFchs_FlavorPureBottom_down = 1;
+    */
+    //===========================================================================
+    
     reco::Candidate::LorentzVector uncorrJetAK4PFchs = j.correctedP4(0);
     if(!_is_data){
       jecAK4PFchsMC_->setJetEta( uncorrJetAK4PFchs.eta()    );
@@ -273,6 +364,350 @@ void JetSelector::Fill(const edm::Event& iEvent){
       jecAK4PFchsMCUnc_->setJetEta( uncorrJetAK4PFchs.eta() );
       jecAK4PFchsMCUnc_->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
       corrDownAK4PFchs = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_->getUncertainty(-1)) );
+            //================================================Factorised JES Unc.===================================================
+  /*
+      jecAK4PFchsMCUnc_AbsoluteStat->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_AbsoluteStat->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_AbsoluteStat_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_AbsoluteStat->getUncertainty(1)));
+      jecAK4PFchsMCUnc_AbsoluteStat->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_AbsoluteStat->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_AbsoluteStat_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_AbsoluteStat->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_AbsoluteScale->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_AbsoluteScale->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_AbsoluteScale_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_AbsoluteScale->getUncertainty(1)));
+      jecAK4PFchsMCUnc_AbsoluteScale->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_AbsoluteScale->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_AbsoluteScale_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_AbsoluteScale->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_AbsoluteFlavMap->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_AbsoluteFlavMap->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_AbsoluteFlavMap_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_AbsoluteFlavMap->getUncertainty(1)));
+      jecAK4PFchsMCUnc_AbsoluteFlavMap->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_AbsoluteFlavMap->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_AbsoluteFlavMap_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_AbsoluteFlavMap->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_AbsoluteMPFBias->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_AbsoluteMPFBias->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_AbsoluteMPFBias_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_AbsoluteMPFBias->getUncertainty(1)));
+      jecAK4PFchsMCUnc_AbsoluteMPFBias->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_AbsoluteMPFBias->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_AbsoluteMPFBias_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_AbsoluteMPFBias->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_Fragmentation->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_Fragmentation->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_Fragmentation_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_Fragmentation->getUncertainty(1)));
+      jecAK4PFchsMCUnc_Fragmentation->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_Fragmentation->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_Fragmentation_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_Fragmentation->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_SinglePionECAL->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SinglePionECAL->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_SinglePionECAL_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_SinglePionECAL->getUncertainty(1)));
+      jecAK4PFchsMCUnc_SinglePionECAL->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SinglePionECAL->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_SinglePionECAL_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_SinglePionECAL->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_SinglePionHCAL->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SinglePionHCAL->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_SinglePionHCAL_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_SinglePionHCAL->getUncertainty(1)));
+      jecAK4PFchsMCUnc_SinglePionHCAL->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SinglePionHCAL->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_SinglePionHCAL_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_SinglePionHCAL->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_FlavorQCD->setJetEta( uncorrJetAK4PFchs.eta() );
+
+      jecAK4PFchsMCUnc_FlavorQCD->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_FlavorQCD_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_FlavorQCD->getUncertainty(1)));
+      jecAK4PFchsMCUnc_FlavorQCD->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorQCD->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_FlavorQCD_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_FlavorQCD->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_TimePtEta->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_TimePtEta->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_TimePtEta_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_TimePtEta->getUncertainty(1)));
+      jecAK4PFchsMCUnc_TimePtEta->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_TimePtEta->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_TimePtEta_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_TimePtEta->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_RelativeJEREC1->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeJEREC1->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativeJEREC1_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativeJEREC1->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativeJEREC1->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeJEREC1->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_RelativeJEREC1_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativeJEREC1->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_RelativeJEREC2->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeJEREC2->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativeJEREC2_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativeJEREC2->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativeJEREC2->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeJEREC2->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_RelativeJEREC2_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativeJEREC2->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_RelativeJERHF->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeJERHF->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativeJERHF_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativeJERHF->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativeJERHF->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeJERHF->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_RelativeJERHF_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativeJERHF->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_RelativePtBB->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativePtBB->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativePtBB_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativePtBB->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativePtBB->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativePtBB->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_RelativePtBB_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativePtBB->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_RelativePtEC1->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativePtEC1->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativePtEC1_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativePtEC1->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativePtEC1->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativePtEC1->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_RelativePtEC1_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativePtEC1->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_RelativePtEC2->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativePtEC2->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativePtEC2_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativePtEC2->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativePtEC2->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativePtEC2->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_RelativePtEC2_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativePtEC2->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_RelativePtHF->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativePtHF->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativePtHF_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativePtHF->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativePtHF->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativePtHF->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_RelativePtHF_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativePtHF->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_RelativeBal->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeBal->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativeBal_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativeBal->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativeBal->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeBal->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_RelativeBal_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativeBal->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_RelativeFSR->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeFSR->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativeFSR_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativeFSR->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativeFSR->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeFSR->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_RelativeFSR_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativeFSR->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_RelativeStatFSR->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeStatFSR->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativeStatFSR_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativeStatFSR->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativeStatFSR->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeStatFSR->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_RelativeStatFSR_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativeStatFSR->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_RelativeStatEC->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeStatEC->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativeStatEC_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativeStatEC->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativeStatEC->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeStatEC->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_RelativeStatEC_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativeStatEC->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_RelativeStatHF->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeStatHF->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_RelativeStatHF_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_RelativeStatHF->getUncertainty(1)));
+      jecAK4PFchsMCUnc_RelativeStatHF->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_RelativeStatHF->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_RelativeStatHF_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_RelativeStatHF->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_PileUpDataMC->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpDataMC->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_PileUpDataMC_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_PileUpDataMC->getUncertainty(1)));
+      jecAK4PFchsMCUnc_PileUpDataMC->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpDataMC->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_PileUpDataMC_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_PileUpDataMC->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_PileUpPtRef->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtRef->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_PileUpPtRef_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_PileUpPtRef->getUncertainty(1)));
+      jecAK4PFchsMCUnc_PileUpPtRef->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtRef->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_PileUpPtRef_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_PileUpPtRef->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_PileUpPtBB->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtBB->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_PileUpPtBB_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_PileUpPtBB->getUncertainty(1)));
+      jecAK4PFchsMCUnc_PileUpPtBB->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtBB->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_PileUpPtBB_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_PileUpPtBB->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_PileUpPtEC1->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtEC1->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_PileUpPtEC1_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_PileUpPtEC1->getUncertainty(1)));
+      jecAK4PFchsMCUnc_PileUpPtEC1->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtEC1->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_PileUpPtEC1_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_PileUpPtEC1->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_PileUpPtEC2->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtEC2->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_PileUpPtEC2_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_PileUpPtEC2->getUncertainty(1)));
+      jecAK4PFchsMCUnc_PileUpPtEC2->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtEC2->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_PileUpPtEC2_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_PileUpPtEC2->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_PileUpPtHF->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtHF->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_PileUpPtHF_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_PileUpPtHF->getUncertainty(1)));
+      jecAK4PFchsMCUnc_PileUpPtHF->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpPtHF->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_PileUpPtHF_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_PileUpPtHF->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_PileUpMuZero->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpMuZero->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_PileUpMuZero_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_PileUpMuZero->getUncertainty(1)));
+      jecAK4PFchsMCUnc_PileUpMuZero->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpMuZero->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_PileUpMuZero_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_PileUpMuZero->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_PileUpEnvelope->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpEnvelope->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_PileUpEnvelope_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_PileUpEnvelope->getUncertainty(1)));
+      jecAK4PFchsMCUnc_PileUpEnvelope->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_PileUpEnvelope->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_PileUpEnvelope_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_PileUpEnvelope->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_SubTotalPileUp->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalPileUp->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_SubTotalPileUp_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_SubTotalPileUp->getUncertainty(1)));
+      jecAK4PFchsMCUnc_SubTotalPileUp->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalPileUp->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_SubTotalPileUp_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_SubTotalPileUp->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_SubTotalRelative->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalRelative->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_SubTotalRelative_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_SubTotalRelative->getUncertainty(1)));
+      jecAK4PFchsMCUnc_SubTotalRelative->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalRelative->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_SubTotalRelative_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_SubTotalRelative->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_SubTotalPt->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalPt->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_SubTotalPt_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_SubTotalPt->getUncertainty(1)));
+      jecAK4PFchsMCUnc_SubTotalPt->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalPt->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_SubTotalPt_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_SubTotalPt->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_SubTotalScale->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalScale->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_SubTotalScale_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_SubTotalScale->getUncertainty(1)));
+      jecAK4PFchsMCUnc_SubTotalScale->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalScale->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_SubTotalScale_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_SubTotalScale->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_SubTotalAbsolute->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalAbsolute->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_SubTotalAbsolute_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_SubTotalAbsolute->getUncertainty(1)));
+      jecAK4PFchsMCUnc_SubTotalAbsolute->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalAbsolute->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_SubTotalAbsolute_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_SubTotalAbsolute->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_SubTotalMC->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalMC->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_SubTotalMC_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_SubTotalMC->getUncertainty(1)));
+      jecAK4PFchsMCUnc_SubTotalMC->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_SubTotalMC->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_SubTotalMC_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_SubTotalMC->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_TotalNoFlavor->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_TotalNoFlavor->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_TotalNoFlavor_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_TotalNoFlavor->getUncertainty(1)));
+      jecAK4PFchsMCUnc_TotalNoFlavor->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_TotalNoFlavor->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_TotalNoFlavor_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_TotalNoFlavor->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_TotalNoFlavorNoTime->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_TotalNoFlavorNoTime->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_TotalNoFlavorNoTime_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_TotalNoFlavorNoTime->getUncertainty(1)));
+      jecAK4PFchsMCUnc_TotalNoFlavorNoTime->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_TotalNoFlavorNoTime->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_TotalNoFlavorNoTime_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_TotalNoFlavorNoTime->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_FlavorZJet->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorZJet->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_FlavorZJet_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_FlavorZJet->getUncertainty(1)));
+      jecAK4PFchsMCUnc_FlavorZJet->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorZJet->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrDownAK4PFchs_FlavorZJet_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_FlavorZJet->getUncertainty(-1)) );
+
+
+      jecAK4PFchsMCUnc_FlavorPhotonJet->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPhotonJet->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_FlavorPhotonJet_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_FlavorPhotonJet->getUncertainty(1)));
+      jecAK4PFchsMCUnc_FlavorPhotonJet->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPhotonJet->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_FlavorPhotonJet_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_FlavorPhotonJet->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_FlavorPureGluon->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPureGluon->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_FlavorPureGluon_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_FlavorPureGluon->getUncertainty(1)));
+      jecAK4PFchsMCUnc_FlavorPureGluon->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPureGluon->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_FlavorPureGluon_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_FlavorPureGluon->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_FlavorPureQuark->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPureQuark->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_FlavorPureQuark_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_FlavorPureQuark->getUncertainty(1)));
+      jecAK4PFchsMCUnc_FlavorPureQuark->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPureQuark->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_FlavorPureQuark_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_FlavorPureQuark->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_FlavorPureCharm->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPureCharm->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_FlavorPureCharm_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_FlavorPureCharm->getUncertainty(1)));
+      jecAK4PFchsMCUnc_FlavorPureCharm->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPureCharm->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_FlavorPureCharm_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_FlavorPureCharm->getUncertainty(-1)) );
+
+      jecAK4PFchsMCUnc_FlavorPureBottom->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPureBottom->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+      corrUpAK4PFchs_FlavorPureBottom_up = corrAK4PFchs * (1 + fabs(jecAK4PFchsMCUnc_FlavorPureBottom->getUncertainty(1)));
+      jecAK4PFchsMCUnc_FlavorPureBottom->setJetEta( uncorrJetAK4PFchs.eta() );
+      jecAK4PFchsMCUnc_FlavorPureBottom->setJetPt( corrAK4PFchs * uncorrJetAK4PFchs.pt() );
+
+      corrDownAK4PFchs_FlavorPureBottom_down = corrAK4PFchs * ( 1 - fabs(jecAK4PFchsMCUnc_FlavorPureBottom->getUncertainty(-1)) );
+    */ 
     } else {
       jecAK4PFchsDATA_->setJetEta( uncorrJetAK4PFchs.eta()    );
       jecAK4PFchsDATA_->setJetPt ( uncorrJetAK4PFchs.pt()     );
@@ -292,6 +727,97 @@ void JetSelector::Fill(const edm::Event& iEvent){
     Jet_JesSF.push_back(corrAK4PFchs);
     Jet_JesSFup.push_back(corrUpAK4PFchs);
     Jet_JesSFdown.push_back(corrDownAK4PFchs);
+    
+    //================================== Store Factorised JEC info =============================================
+    /*
+    Jet_JesSF_AbsoluteStat_up.push_back(corrUpAK4PFchs_AbsoluteStat_up);
+    Jet_JesSF_AbsoluteStat_down.push_back(corrDownAK4PFchs_AbsoluteStat_down);
+    Jet_JesSF_AbsoluteScale_up.push_back(corrUpAK4PFchs_AbsoluteScale_up);
+    Jet_JesSF_AbsoluteScale_down.push_back(corrDownAK4PFchs_AbsoluteScale_down);
+    Jet_JesSF_AbsoluteFlavMap_up.push_back(corrUpAK4PFchs_AbsoluteFlavMap_up);
+    Jet_JesSF_AbsoluteFlavMap_down.push_back(corrDownAK4PFchs_AbsoluteFlavMap_down);
+    Jet_JesSF_AbsoluteMPFBias_up.push_back(corrUpAK4PFchs_AbsoluteMPFBias_up);
+    Jet_JesSF_AbsoluteMPFBias_down.push_back(corrDownAK4PFchs_AbsoluteMPFBias_down);
+    Jet_JesSF_Fragmentation_up.push_back(corrUpAK4PFchs_Fragmentation_up);
+    Jet_JesSF_Fragmentation_down.push_back(corrDownAK4PFchs_Fragmentation_down);
+    Jet_JesSF_SinglePionECAL_up.push_back(corrUpAK4PFchs_SinglePionECAL_up);
+    Jet_JesSF_SinglePionECAL_down.push_back(corrDownAK4PFchs_SinglePionECAL_down);
+    Jet_JesSF_SinglePionHCAL_up.push_back(corrUpAK4PFchs_SinglePionHCAL_up);
+    Jet_JesSF_SinglePionHCAL_down.push_back(corrDownAK4PFchs_SinglePionHCAL_down);
+    Jet_JesSF_FlavorQCD_up.push_back(corrUpAK4PFchs_FlavorQCD_up);
+    Jet_JesSF_FlavorQCD_down.push_back(corrDownAK4PFchs_FlavorQCD_down);
+    Jet_JesSF_TimePtEta_up.push_back(corrUpAK4PFchs_TimePtEta_up);
+    Jet_JesSF_TimePtEta_down.push_back(corrDownAK4PFchs_TimePtEta_down);
+    Jet_JesSF_RelativeJEREC1_up.push_back(corrUpAK4PFchs_RelativeJEREC1_up);
+    Jet_JesSF_RelativeJEREC1_down.push_back(corrDownAK4PFchs_RelativeJEREC1_down);
+    Jet_JesSF_RelativeJEREC2_up.push_back(corrUpAK4PFchs_RelativeJEREC2_up);
+    Jet_JesSF_RelativeJEREC2_down.push_back(corrDownAK4PFchs_RelativeJEREC2_down);
+    Jet_JesSF_RelativeJERHF_up.push_back(corrUpAK4PFchs_RelativeJERHF_up);
+    Jet_JesSF_RelativeJERHF_down.push_back(corrDownAK4PFchs_RelativeJERHF_down);
+    Jet_JesSF_RelativePtBB_up.push_back(corrUpAK4PFchs_RelativePtBB_up);
+    Jet_JesSF_RelativePtBB_down.push_back(corrDownAK4PFchs_RelativePtBB_down);
+    Jet_JesSF_RelativePtEC1_up.push_back(corrUpAK4PFchs_RelativePtEC1_up);
+    Jet_JesSF_RelativePtEC1_down.push_back(corrDownAK4PFchs_RelativePtEC1_down);
+    Jet_JesSF_RelativePtEC2_up.push_back(corrUpAK4PFchs_RelativePtEC2_up);
+    Jet_JesSF_RelativePtEC2_down.push_back(corrDownAK4PFchs_RelativePtEC2_down);
+    Jet_JesSF_RelativePtHF_up.push_back(corrUpAK4PFchs_RelativePtHF_up);
+    Jet_JesSF_RelativePtHF_down.push_back(corrDownAK4PFchs_RelativePtHF_down);
+    Jet_JesSF_RelativeBal_up.push_back(corrUpAK4PFchs_RelativeBal_up);
+    Jet_JesSF_RelativeBal_down.push_back(corrDownAK4PFchs_RelativeBal_down);
+    Jet_JesSF_RelativeFSR_up.push_back(corrUpAK4PFchs_RelativeFSR_up);
+    Jet_JesSF_RelativeFSR_down.push_back(corrDownAK4PFchs_RelativeFSR_down);
+    Jet_JesSF_RelativeStatFSR_up.push_back(corrUpAK4PFchs_RelativeStatFSR_up);
+    Jet_JesSF_RelativeStatFSR_down.push_back(corrDownAK4PFchs_RelativeStatFSR_down);
+    Jet_JesSF_RelativeStatEC_up.push_back(corrUpAK4PFchs_RelativeStatEC_up);
+    Jet_JesSF_RelativeStatEC_down.push_back(corrDownAK4PFchs_RelativeStatEC_down);
+    Jet_JesSF_RelativeStatHF_up.push_back(corrUpAK4PFchs_RelativeStatHF_up);
+    Jet_JesSF_RelativeStatHF_down.push_back(corrDownAK4PFchs_RelativeStatHF_down);
+    Jet_JesSF_PileUpDataMC_up.push_back(corrUpAK4PFchs_PileUpDataMC_up);
+    Jet_JesSF_PileUpDataMC_down.push_back(corrDownAK4PFchs_PileUpDataMC_down);
+    Jet_JesSF_PileUpPtRef_up.push_back(corrUpAK4PFchs_PileUpPtRef_up);
+    Jet_JesSF_PileUpPtRef_down.push_back(corrDownAK4PFchs_PileUpPtRef_down);
+    Jet_JesSF_PileUpPtBB_up.push_back(corrUpAK4PFchs_PileUpPtBB_up);
+    Jet_JesSF_PileUpPtBB_down.push_back(corrDownAK4PFchs_PileUpPtBB_down);
+    Jet_JesSF_PileUpPtEC1_up.push_back(corrUpAK4PFchs_PileUpPtEC1_up);
+    Jet_JesSF_PileUpPtEC1_down.push_back(corrDownAK4PFchs_PileUpPtEC1_down);
+    Jet_JesSF_PileUpPtEC2_up.push_back(corrUpAK4PFchs_PileUpPtEC2_up);
+    Jet_JesSF_PileUpPtEC2_down.push_back(corrDownAK4PFchs_PileUpPtEC2_down);
+    Jet_JesSF_PileUpPtHF_up.push_back(corrUpAK4PFchs_PileUpPtHF_up);
+    Jet_JesSF_PileUpPtHF_down.push_back(corrDownAK4PFchs_PileUpPtHF_down);
+    Jet_JesSF_PileUpMuZero_up.push_back(corrUpAK4PFchs_PileUpMuZero_up);
+    Jet_JesSF_PileUpMuZero_down.push_back(corrDownAK4PFchs_PileUpMuZero_down);
+    Jet_JesSF_PileUpEnvelope_up.push_back(corrUpAK4PFchs_PileUpEnvelope_up);
+    Jet_JesSF_PileUpEnvelope_down.push_back(corrDownAK4PFchs_PileUpEnvelope_down);
+    Jet_JesSF_SubTotalPileUp_up.push_back(corrUpAK4PFchs_SubTotalPileUp_up);
+    Jet_JesSF_SubTotalPileUp_down.push_back(corrDownAK4PFchs_SubTotalPileUp_down);
+    Jet_JesSF_SubTotalRelative_up.push_back(corrUpAK4PFchs_SubTotalRelative_up);
+    Jet_JesSF_SubTotalRelative_down.push_back(corrDownAK4PFchs_SubTotalRelative_down);
+    Jet_JesSF_SubTotalPt_up.push_back(corrUpAK4PFchs_SubTotalPt_up);
+    Jet_JesSF_SubTotalPt_down.push_back(corrDownAK4PFchs_SubTotalPt_down);
+    Jet_JesSF_SubTotalScale_up.push_back(corrUpAK4PFchs_SubTotalScale_up);
+    Jet_JesSF_SubTotalScale_down.push_back(corrDownAK4PFchs_SubTotalScale_down);
+    Jet_JesSF_SubTotalAbsolute_up.push_back(corrUpAK4PFchs_SubTotalAbsolute_up);
+    Jet_JesSF_SubTotalAbsolute_down.push_back(corrDownAK4PFchs_SubTotalAbsolute_down);
+    Jet_JesSF_SubTotalMC_up.push_back(corrUpAK4PFchs_SubTotalMC_up);
+    Jet_JesSF_SubTotalMC_down.push_back(corrDownAK4PFchs_SubTotalMC_down);
+    Jet_JesSF_TotalNoFlavor_up.push_back(corrUpAK4PFchs_TotalNoFlavor_up);
+    Jet_JesSF_TotalNoFlavor_down.push_back(corrDownAK4PFchs_TotalNoFlavor_down);
+    Jet_JesSF_TotalNoFlavorNoTime_up.push_back(corrUpAK4PFchs_TotalNoFlavorNoTime_up);
+    Jet_JesSF_TotalNoFlavorNoTime_down.push_back(corrDownAK4PFchs_TotalNoFlavorNoTime_down);
+    Jet_JesSF_FlavorZJet_up.push_back(corrUpAK4PFchs_FlavorZJet_up);
+    Jet_JesSF_FlavorZJet_down.push_back(corrDownAK4PFchs_FlavorZJet_down);
+    Jet_JesSF_FlavorPhotonJet_up.push_back(corrUpAK4PFchs_FlavorPhotonJet_up);
+    Jet_JesSF_FlavorPhotonJet_down.push_back(corrDownAK4PFchs_FlavorPhotonJet_down);
+    Jet_JesSF_FlavorPureGluon_up.push_back(corrUpAK4PFchs_FlavorPureGluon_up);
+    Jet_JesSF_FlavorPureGluon_down.push_back(corrDownAK4PFchs_FlavorPureGluon_down);
+    Jet_JesSF_FlavorPureQuark_up.push_back(corrUpAK4PFchs_FlavorPureQuark_up);
+    Jet_JesSF_FlavorPureQuark_down.push_back(corrDownAK4PFchs_FlavorPureQuark_down);
+    Jet_JesSF_FlavorPureCharm_up.push_back(corrUpAK4PFchs_FlavorPureCharm_up);
+    Jet_JesSF_FlavorPureCharm_down.push_back(corrDownAK4PFchs_FlavorPureCharm_down);
+    Jet_JesSF_FlavorPureBottom_up.push_back(corrUpAK4PFchs_FlavorPureBottom_up);
+    Jet_JesSF_FlavorPureBottom_down.push_back(corrDownAK4PFchs_FlavorPureBottom_down);
+    */
+    //===============================================================================
     //JER scale factor and uncertainties
     float JERScaleFactor     = 1; 
     float JERScaleFactorUP   = 1;
@@ -414,6 +940,7 @@ void JetSelector::Fill(const edm::Event& iEvent){
 }
 void JetSelector::JECInitialization(){
   //AK4chs - MC: Get the factorized jet corrector parameters. 
+  //std::cout<< " JEC Initialize  " << std::endl;
   std::vector<std::string> jecPayloadNamesAK4PFchsMC_;
   jecPayloadNamesAK4PFchsMC_.push_back(jecPayloadNamesAK4PFchsMC1_.fullPath());
   jecPayloadNamesAK4PFchsMC_.push_back(jecPayloadNamesAK4PFchsMC2_.fullPath());
@@ -424,8 +951,61 @@ void JetSelector::JECInitialization(){
     JetCorrectorParameters pars(*ipayload);
     vParAK4PFchsMC.push_back(pars);
   }
+  //std::cout<< " JEC Initialize jecAK4PFchsMC_ " << std::endl;
   jecAK4PFchsMC_    = boost::shared_ptr<FactorizedJetCorrector>  ( new FactorizedJetCorrector(vParAK4PFchsMC) );
   jecAK4PFchsMCUnc_ = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(jecPayloadNamesAK4PFchsMCUnc_.fullPath()) );
+  /*
+  std::cout<< " JEC Initialize Start Components " << std::endl;
+  jecAK4PFchsMCUnc_AbsoluteStat   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteStat"))));
+  //jecAK4PFchsMCUnc_AbsoluteStat   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteStat"));
+  std::cout<< " JEC Initialize AbsoluteStat " << std::endl;
+  jecAK4PFchsMCUnc_AbsoluteScale   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteScale"))));
+  jecAK4PFchsMCUnc_AbsoluteFlavMap   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteFlavMap"))));
+  jecAK4PFchsMCUnc_AbsoluteMPFBias   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "AbsoluteMPFBias"))));
+  jecAK4PFchsMCUnc_Fragmentation   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "Fragmentation"))));
+  std::cout<< " JEC Initialize Fragmentation " << std::endl;
+  jecAK4PFchsMCUnc_SinglePionECAL   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SinglePionECAL"))));
+  jecAK4PFchsMCUnc_SinglePionHCAL   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SinglePionHCAL"))));
+  jecAK4PFchsMCUnc_FlavorQCD   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorQCD"))));
+  jecAK4PFchsMCUnc_TimePtEta   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "TimePtEta"))));
+  jecAK4PFchsMCUnc_RelativeJEREC1   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeJEREC1"))));
+  std::cout<< " JEC Initialize RelativeJEREC1 " << std::endl;
+  jecAK4PFchsMCUnc_RelativeJEREC2   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeJEREC2"))));
+  jecAK4PFchsMCUnc_RelativeJERHF   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeJERHF"))));
+  jecAK4PFchsMCUnc_RelativePtBB   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativePtBB"))));
+  jecAK4PFchsMCUnc_RelativePtEC1   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativePtEC1"))));
+  jecAK4PFchsMCUnc_RelativePtEC2   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativePtEC2"))));
+  jecAK4PFchsMCUnc_RelativePtHF   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativePtHF"))));
+  jecAK4PFchsMCUnc_RelativeBal   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeBal"))));
+  jecAK4PFchsMCUnc_RelativeFSR   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeFSR"))));
+  jecAK4PFchsMCUnc_RelativeStatFSR   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeStatFSR"))));
+  jecAK4PFchsMCUnc_RelativeStatEC   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeStatEC"))));
+  jecAK4PFchsMCUnc_RelativeStatHF   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "RelativeStatHF"))));
+  std::cout<< " JEC Initialize RelativeStatHF " << std::endl;
+  jecAK4PFchsMCUnc_PileUpDataMC   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpDataMC"))));
+  jecAK4PFchsMCUnc_PileUpPtRef   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpPtRef"))));
+  jecAK4PFchsMCUnc_PileUpPtBB   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpPtBB"))));
+  jecAK4PFchsMCUnc_PileUpPtEC1   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpPtEC1"))));
+  jecAK4PFchsMCUnc_PileUpPtEC2   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpPtEC2"))));
+  jecAK4PFchsMCUnc_PileUpPtHF   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpPtHF"))));
+  jecAK4PFchsMCUnc_PileUpMuZero   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpMuZero"))));
+  jecAK4PFchsMCUnc_PileUpEnvelope   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "PileUpEnvelope"))));
+  jecAK4PFchsMCUnc_SubTotalPileUp   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SubTotalPileUp"))));
+  jecAK4PFchsMCUnc_SubTotalRelative   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SubTotalRelative"))));
+  jecAK4PFchsMCUnc_SubTotalPt   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SubTotalPt"))));
+  jecAK4PFchsMCUnc_SubTotalScale   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SubTotalScale"))));
+  jecAK4PFchsMCUnc_SubTotalAbsolute   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SubTotalAbsolute"))));
+  jecAK4PFchsMCUnc_SubTotalMC   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "SubTotalMC"))));
+  jecAK4PFchsMCUnc_TotalNoFlavor   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "TotalNoFlavor"))));
+  jecAK4PFchsMCUnc_TotalNoFlavorNoTime   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "TotalNoFlavorNoTime"))));
+  jecAK4PFchsMCUnc_FlavorZJet   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorZJet"))));
+  std::cout<< " JEC Initialize FlavorZJet " << std::endl;
+  jecAK4PFchsMCUnc_FlavorPhotonJet   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPhotonJet"))));
+  jecAK4PFchsMCUnc_FlavorPureGluon   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPureGluon"))));
+  jecAK4PFchsMCUnc_FlavorPureQuark   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPureQuark"))));
+  jecAK4PFchsMCUnc_FlavorPureCharm   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPureCharm"))));
+  jecAK4PFchsMCUnc_FlavorPureBottom   = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(*(new JetCorrectorParameters(jecPayloadNamesAK4PFchsMCUnc_.fullPath(), "FlavorPureBottom"))));
+  */
   //AK4chs - DATA: Get the factorized jet corrector parameters. 
   std::vector<std::string> jecPayloadNamesAK4PFchsDATA_;
   jecPayloadNamesAK4PFchsDATA_.push_back(jecPayloadNamesAK4PFchsDATA1_.fullPath());
@@ -538,6 +1118,92 @@ void JetSelector::SetBranches(){
   AddBranch(&Jet_JerSF                ,"Jet_JerSF");
   AddBranch(&Jet_JerSFup              ,"Jet_JerSFup");
   AddBranch(&Jet_JerSFdown            ,"Jet_JerSFdown");
+  /*
+  AddBranch(&Jet_JesSF_AbsoluteStat_up                ,"Jet_JesSF_AbsoluteStat_up");
+  AddBranch(&Jet_JesSF_AbsoluteStat_down                ,"Jet_JesSF_AbsoluteStat_down");
+  AddBranch(&Jet_JesSF_AbsoluteScale_up                ,"Jet_JesSF_AbsoluteScale_up");
+  AddBranch(&Jet_JesSF_AbsoluteScale_down                ,"Jet_JesSF_AbsoluteScale_down");
+  AddBranch(&Jet_JesSF_AbsoluteFlavMap_up                ,"Jet_JesSF_AbsoluteFlavMap_up");
+  AddBranch(&Jet_JesSF_AbsoluteFlavMap_down                ,"Jet_JesSF_AbsoluteFlavMap_down");
+  AddBranch(&Jet_JesSF_AbsoluteMPFBias_up                ,"Jet_JesSF_AbsoluteMPFBias_up");
+  AddBranch(&Jet_JesSF_AbsoluteMPFBias_down                ,"Jet_JesSF_AbsoluteMPFBias_down");
+  AddBranch(&Jet_JesSF_Fragmentation_up                ,"Jet_JesSF_Fragmentation_up");
+  AddBranch(&Jet_JesSF_Fragmentation_down                ,"Jet_JesSF_Fragmentation_down");
+  AddBranch(&Jet_JesSF_SinglePionECAL_up               ,"Jet_JesSF_SinglePionECAL_up");
+  AddBranch(&Jet_JesSF_SinglePionECAL_down               ,"Jet_JesSF_SinglePionECAL_down");
+  AddBranch(&Jet_JesSF_SinglePionHCAL_up                ,"Jet_JesSF_SinglePionHCAL_up");
+  AddBranch(&Jet_JesSF_SinglePionHCAL_down                ,"Jet_JesSF_SinglePionHCAL_down");
+  AddBranch(&Jet_JesSF_FlavorQCD_up                ,"Jet_JesSF_FlavorQCD_up");
+  AddBranch(&Jet_JesSF_FlavorQCD_down                ,"Jet_JesSF_FlavorQCD_down");
+  AddBranch(&Jet_JesSF_TimePtEta_up                ,"Jet_JesSF_TimePtEta_up");
+  AddBranch(&Jet_JesSF_TimePtEta_down                ,"Jet_JesSF_TimePtEta_down");
+  AddBranch(&Jet_JesSF_RelativeJEREC1_up                ,"Jet_JesSF_RelativeJEREC1_up");
+  AddBranch(&Jet_JesSF_RelativeJEREC1_down                ,"Jet_JesSF_RelativeJEREC1_down");
+  AddBranch(&Jet_JesSF_RelativeJEREC2_up                ,"Jet_JesSF_RelativeJEREC2_up");
+  AddBranch(&Jet_JesSF_RelativeJEREC2_down                ,"Jet_JesSF_RelativeJEREC2_down");
+  AddBranch(&Jet_JesSF_RelativeJERHF_up                ,"Jet_JesSF_RelativeJERHF_up");
+  AddBranch(&Jet_JesSF_RelativeJERHF_down                ,"Jet_JesSF_RelativeJERHF_down");
+  AddBranch(&Jet_JesSF_RelativePtBB_up                ,"Jet_JesSF_RelativePtBB_up");
+  AddBranch(&Jet_JesSF_RelativePtBB_down                ,"Jet_JesSF_RelativePtBB_down");
+  AddBranch(&Jet_JesSF_RelativePtEC1_up                ,"Jet_JesSF_RelativePtEC1_up");
+  AddBranch(&Jet_JesSF_RelativePtEC1_down                ,"Jet_JesSF_RelativePtEC1_down");
+  AddBranch(&Jet_JesSF_RelativePtEC2_up                ,"Jet_JesSF_RelativePtEC2_up");
+  AddBranch(&Jet_JesSF_RelativePtEC2_down                ,"Jet_JesSF_RelativePtEC2_down");
+  AddBranch(&Jet_JesSF_RelativePtHF_up                ,"Jet_JesSF_RelativePtHF_up");
+  AddBranch(&Jet_JesSF_RelativePtHF_down                ,"Jet_JesSF_RelativePtHF_down");
+  AddBranch(&Jet_JesSF_RelativeBal_up                ,"Jet_JesSF_RelativeBal_up");
+  AddBranch(&Jet_JesSF_RelativeBal_down                ,"Jet_JesSF_RelativeBal_down");
+  AddBranch(&Jet_JesSF_RelativeFSR_up                ,"Jet_JesSF_RelativeFSR_up");
+  AddBranch(&Jet_JesSF_RelativeFSR_down                ,"Jet_JesSF_RelativeFSR_down");
+  AddBranch(&Jet_JesSF_RelativeStatEC_up                ,"Jet_JesSF_RelativeStatEC_up");
+  AddBranch(&Jet_JesSF_RelativeStatEC_down                ,"Jet_JesSF_RelativeStatEC_down");
+  AddBranch(&Jet_JesSF_RelativeStatHF_up                ,"Jet_JesSF_RelativeStatHF_up");
+  AddBranch(&Jet_JesSF_RelativeStatHF_down                ,"Jet_JesSF_RelativeStatHF_down");
+  AddBranch(&Jet_JesSF_PileUpDataMC_up                ,"Jet_JesSF_PileUpDataMC_up");
+  AddBranch(&Jet_JesSF_PileUpDataMC_down                ,"Jet_JesSF_PileUpDataMC_down");
+  AddBranch(&Jet_JesSF_PileUpPtRef_up                ,"Jet_JesSF_PileUpPtRef_up");
+  AddBranch(&Jet_JesSF_PileUpPtRef_down                ,"Jet_JesSF_PileUpPtRef_down");
+  AddBranch(&Jet_JesSF_PileUpPtBB_up                ,"Jet_JesSF_PileUpPtBB_up");
+  AddBranch(&Jet_JesSF_PileUpPtBB_down                ,"Jet_JesSF_PileUpPtBB_down");
+  AddBranch(&Jet_JesSF_PileUpPtEC1_up                ,"Jet_JesSF_PileUpPtEC1_up");
+  AddBranch(&Jet_JesSF_PileUpPtEC1_down                ,"Jet_JesSF_PileUpPtEC1_down");
+  AddBranch(&Jet_JesSF_PileUpPtEC2_up                ,"Jet_JesSF_PileUpPtEC2_up");
+  AddBranch(&Jet_JesSF_PileUpPtEC2_down                ,"Jet_JesSF_PileUpPtEC2_down");
+  AddBranch(&Jet_JesSF_PileUpPtHF_up                ,"Jet_JesSF_PileUpPtHF_up");
+  AddBranch(&Jet_JesSF_PileUpPtHF_down                ,"Jet_JesSF_PileUpPtHF_down");
+  AddBranch(&Jet_JesSF_PileUpMuZero_up                ,"Jet_JesSF_PileUpMuZero_up");
+  AddBranch(&Jet_JesSF_PileUpMuZero_down                ,"Jet_JesSF_PileUpMuZero_down");
+  AddBranch(&Jet_JesSF_PileUpEnvelope_up                ,"Jet_JesSF_PileUpEnvelope_up");
+  AddBranch(&Jet_JesSF_PileUpEnvelope_down                ,"Jet_JesSF_PileUpEnvelope_down");
+  AddBranch(&Jet_JesSF_SubTotalPileUp_up                ,"Jet_JesSF_SubTotalPileUp_up");
+  AddBranch(&Jet_JesSF_SubTotalPileUp_down                ,"Jet_JesSF_SubTotalPileUp_down");
+  AddBranch(&Jet_JesSF_SubTotalRelative_up                ,"Jet_JesSF_SubTotalRelative_up");
+  AddBranch(&Jet_JesSF_SubTotalRelative_down               ,"Jet_JesSF_SubTotalRelative_down");
+  AddBranch(&Jet_JesSF_SubTotalPt_up                ,"Jet_JesSF_SubTotalPt_up");
+  AddBranch(&Jet_JesSF_SubTotalPt_down                ,"Jet_JesSF_SubTotalPt_down");
+  AddBranch(&Jet_JesSF_SubTotalScale_up                ,"Jet_JesSF_SubTotalScale_up");
+  AddBranch(&Jet_JesSF_SubTotalScale_down                ,"Jet_JesSF_SubTotalScale_down");
+  AddBranch(&Jet_JesSF_SubTotalAbsolute_up                ,"Jet_JesSF_SubTotalAbsolute_up");
+  AddBranch(&Jet_JesSF_SubTotalAbsolute_down                ,"Jet_JesSF_SubTotalAbsolute_down");
+  AddBranch(&Jet_JesSF_SubTotalMC_up                ,"Jet_JesSF_SubTotalMC_up");
+  AddBranch(&Jet_JesSF_SubTotalMC_down                ,"Jet_JesSF_SubTotalMC_down");
+  AddBranch(&Jet_JesSF_TotalNoFlavor_up                ,"Jet_JesSF_TotalNoFlavor_up");
+  AddBranch(&Jet_JesSF_TotalNoFlavor_down                ,"Jet_JesSF_TotalNoFlavor_down");
+  AddBranch(&Jet_JesSF_TotalNoFlavorNoTime_up                ,"Jet_JesSF_TotalNoFlavorNoTime_up");
+  AddBranch(&Jet_JesSF_TotalNoFlavorNoTime_down                ,"Jet_JesSF_TotalNoFlavorNoTime_down");
+  AddBranch(&Jet_JesSF_FlavorZJet_up                ,"Jet_JesSF_FlavorZJet_up");
+  AddBranch(&Jet_JesSF_FlavorZJet_down                ,"Jet_JesSF_FlavorZJet_down");
+  AddBranch(&Jet_JesSF_FlavorPhotonJet_up                ,"Jet_JesSF_FlavorPhotonJet_up");
+  AddBranch(&Jet_JesSF_FlavorPhotonJet_down                ,"Jet_JesSF_FlavorPhotonJet_down");
+  AddBranch(&Jet_JesSF_FlavorPureGluon_up                ,"Jet_JesSF_FlavorPureGluon_up");
+  AddBranch(&Jet_JesSF_FlavorPureGluon_down                ,"Jet_JesSF_FlavorPureGluon_down");
+  AddBranch(&Jet_JesSF_FlavorPureQuark_up                ,"Jet_JesSF_FlavorPureQuark_up");
+  AddBranch(&Jet_JesSF_FlavorPureQuark_down                ,"Jet_JesSF_FlavorPureQuark_down");
+  AddBranch(&Jet_JesSF_FlavorPureCharm_up                ,"Jet_JesSF_FlavorPureCharm_up");
+  AddBranch(&Jet_JesSF_FlavorPureCharm_down                ,"Jet_JesSF_FlavorPureCharm_down");
+  AddBranch(&Jet_JesSF_FlavorPureBottom_up                ,"Jet_JesSF_FlavorPureBottom_up");
+  AddBranch(&Jet_JesSF_FlavorPureBottom_down                ,"Jet_JesSF_FlavorPureBottom_down");
+  */
   //MC
   if(!_is_data) {
     AddBranch(&Jet_partonFlavour        ,"Jet_partonFlavour");
@@ -661,6 +1327,94 @@ void JetSelector::Clear(){
   Jet_JesSF.clear();
   Jet_JesSFup.clear();
   Jet_JesSFdown.clear();
+  /*
+  Jet_JesSF_AbsoluteStat_up.clear();
+  Jet_JesSF_AbsoluteStat_down.clear();
+  Jet_JesSF_AbsoluteScale_up.clear();
+  Jet_JesSF_AbsoluteScale_down.clear();
+  Jet_JesSF_AbsoluteFlavMap_up.clear();
+  Jet_JesSF_AbsoluteFlavMap_down.clear();
+  Jet_JesSF_AbsoluteMPFBias_up.clear();
+  Jet_JesSF_AbsoluteMPFBias_down.clear();
+  Jet_JesSF_Fragmentation_up.clear();
+  Jet_JesSF_Fragmentation_down.clear();
+  Jet_JesSF_SinglePionECAL_up.clear();
+  Jet_JesSF_SinglePionECAL_down.clear();
+  Jet_JesSF_SinglePionHCAL_up.clear();
+  Jet_JesSF_SinglePionHCAL_down.clear();
+  Jet_JesSF_FlavorQCD_up.clear();
+  Jet_JesSF_FlavorQCD_down.clear();
+  Jet_JesSF_TimePtEta_up.clear();
+  Jet_JesSF_TimePtEta_down.clear();
+  Jet_JesSF_RelativeJEREC1_up.clear();
+  Jet_JesSF_RelativeJEREC1_down.clear();
+  Jet_JesSF_RelativeJEREC2_up.clear();
+  Jet_JesSF_RelativeJEREC2_down.clear();
+  Jet_JesSF_RelativeJERHF_up.clear();
+  Jet_JesSF_RelativeJERHF_down.clear();
+  Jet_JesSF_RelativePtBB_up.clear();
+  Jet_JesSF_RelativePtBB_down.clear();
+  Jet_JesSF_RelativePtEC1_up.clear();
+  Jet_JesSF_RelativePtEC1_down.clear();
+  Jet_JesSF_RelativePtEC2_up.clear();
+  Jet_JesSF_RelativePtEC2_down.clear();
+  Jet_JesSF_RelativePtHF_up.clear();
+  Jet_JesSF_RelativePtHF_down.clear();
+  Jet_JesSF_RelativeBal_up.clear();
+  Jet_JesSF_RelativeBal_down.clear();
+  Jet_JesSF_RelativeFSR_up.clear();
+  Jet_JesSF_RelativeFSR_down.clear();
+  Jet_JesSF_RelativeStatFSR_up.clear();
+  Jet_JesSF_RelativeStatFSR_down.clear();
+  Jet_JesSF_RelativeStatEC_up.clear();
+  Jet_JesSF_RelativeStatEC_down.clear();
+  Jet_JesSF_RelativeStatHF_up.clear();
+  Jet_JesSF_RelativeStatHF_down.clear();
+  Jet_JesSF_PileUpDataMC_up.clear();
+  Jet_JesSF_PileUpDataMC_down.clear();
+  Jet_JesSF_PileUpPtRef_up.clear();
+  Jet_JesSF_PileUpPtRef_down.clear();
+  Jet_JesSF_PileUpPtBB_up.clear();
+  Jet_JesSF_PileUpPtBB_down.clear();
+  Jet_JesSF_PileUpPtEC1_up.clear();
+  Jet_JesSF_PileUpPtEC1_down.clear();
+  Jet_JesSF_PileUpPtEC2_up.clear();
+  Jet_JesSF_PileUpPtEC2_down.clear();
+  Jet_JesSF_PileUpPtHF_up.clear();
+  Jet_JesSF_PileUpPtHF_down.clear();
+  Jet_JesSF_PileUpMuZero_up.clear();
+  Jet_JesSF_PileUpMuZero_down.clear();
+  Jet_JesSF_PileUpEnvelope_up.clear();
+  Jet_JesSF_PileUpEnvelope_down.clear();
+  Jet_JesSF_SubTotalPileUp_up.clear();
+  Jet_JesSF_SubTotalPileUp_down.clear();
+  Jet_JesSF_SubTotalRelative_up.clear();
+  Jet_JesSF_SubTotalRelative_down.clear();
+  Jet_JesSF_SubTotalPt_up.clear();
+  Jet_JesSF_SubTotalPt_down.clear();
+  Jet_JesSF_SubTotalScale_up.clear();
+  Jet_JesSF_SubTotalScale_down.clear();
+  Jet_JesSF_SubTotalAbsolute_up.clear();
+  Jet_JesSF_SubTotalAbsolute_down.clear();
+  Jet_JesSF_SubTotalMC_up.clear();
+  Jet_JesSF_SubTotalMC_down.clear();
+  Jet_JesSF_TotalNoFlavor_up.clear();
+  Jet_JesSF_TotalNoFlavor_down.clear();
+  Jet_JesSF_TotalNoFlavorNoTime_up.clear();
+  Jet_JesSF_TotalNoFlavorNoTime_down.clear();
+  Jet_JesSF_FlavorZJet_up.clear();
+  Jet_JesSF_FlavorZJet_down.clear();
+  Jet_JesSF_FlavorPhotonJet_up.clear();
+  Jet_JesSF_FlavorPhotonJet_down.clear();
+  Jet_JesSF_FlavorPureGluon_up.clear();
+  Jet_JesSF_FlavorPureGluon_down.clear();
+  Jet_JesSF_FlavorPureQuark_up.clear();
+  Jet_JesSF_FlavorPureQuark_down.clear();
+  Jet_JesSF_FlavorPureCharm_up.clear();
+  Jet_JesSF_FlavorPureCharm_down.clear();
+  Jet_JesSF_FlavorPureBottom_up.clear();
+  Jet_JesSF_FlavorPureBottom_down.clear();
+  */
   Jet_JerSF.clear();
   Jet_JerSFup.clear();
   Jet_JerSFdown.clear(); 
