@@ -137,11 +137,24 @@ void JetSelector::Fill(const edm::Event& iEvent){
         Jet_axis2.push_back((*axis2Handle)[jetRef]);
         Jet_ptD.push_back((*ptDHandle)[jetRef]);
         Jet_mult.push_back((*multHandle)[jetRef]);
+        double axis1 = -1;
+        double axis2 = -1;
+        double ptD = -1;
+        double mult = -1;
+        computeQG(j, ptD, mult, axis1, axis2, false);
+        Jet_axis1_.push_back(axis1);
+        Jet_axis2_.push_back(axis2);
+        Jet_ptD_.push_back(ptD);
+        Jet_mult_.push_back(mult);
     }else{
         Jet_qg.push_back(-999);
         Jet_axis2.push_back(-999);
         Jet_ptD.push_back(-999);
         Jet_mult.push_back(-999);
+        Jet_axis1_.push_back(-999);
+        Jet_axis2_.push_back(-999);
+        Jet_ptD_.push_back(-999);
+        Jet_mult_.push_back(-999);
     }
     //Match Indices
     //match muons
@@ -1088,6 +1101,10 @@ void JetSelector::SetBranches(){
   AddBranch(&Jet_axis2            ,"Jet_axis2");
   AddBranch(&Jet_ptD              ,"Jet_ptD");
   AddBranch(&Jet_mult             ,"Jet_mult");
+  AddBranch(&Jet_axis1_            ,"Jet_axis1_");
+  AddBranch(&Jet_axis2_            ,"Jet_axis2_");
+  AddBranch(&Jet_ptD_              ,"Jet_ptD_");
+  AddBranch(&Jet_mult_             ,"Jet_mult_");
   //Match Indices
   AddBranch(&Jet_ele_indices             ,"Jet_ele_indices");
   AddBranch(&Jet_ele_number             ,"Jet_ele_number");
@@ -1300,6 +1317,10 @@ void JetSelector::Clear(){
   Jet_axis2.clear();
   Jet_ptD.clear();
   Jet_mult.clear();
+  Jet_axis1_.clear();
+  Jet_axis2_.clear();
+  Jet_ptD_.clear();
+  Jet_mult_.clear();
   //Match Indices
   Jet_ele_indices.clear();
   Jet_ele_number.clear();
@@ -1620,3 +1641,57 @@ void JetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK4PFchs,
     JERScaleFactorDOWN = 1.;
   } 
 }
+void JetSelector::computeQG(const pat::Jet& jet, double& ptD_, double& mult_, double& axis1_, double& axis2_, bool useQualityCut){
+  float sum_weight = 0., sum_deta = 0., sum_dphi = 0., sum_deta2 = 0., sum_dphi2 = 0., sum_detadphi = 0., sum_pt = 0.;
+  int mult = 0;
+  //Access jet daughters
+  std::vector<const pat::PackedCandidate*> daughters_;
+  // get all constituents
+  for (unsigned idau=0; idau<jet.numberOfDaughters(); ++idau){
+    daughters_.push_back(dynamic_cast<const pat::PackedCandidate*>(jet.daughter(idau)));
+  }
+  for(const auto *daughter : daughters_){
+    auto part = static_cast<const pat::PackedCandidate*>(daughter);
+    if(part->charge()){
+      if(!(part->fromPV() > 1 && part->trackHighPurity())) continue;
+      if(useQualityCut){
+        if((part->dz()*part->dz())/(part->dzError()*part->dzError()) > 25.) continue;
+        if((part->dxy()*part->dxy())/(part->dxyError()*part->dxyError()) < 25.) ++mult;
+      } else ++mult;
+    } else {
+      if(part->pt() < 1.0) continue;
+      ++mult;
+    }
+
+    float deta = daughter->eta() - jet.eta();
+    float dphi = reco::deltaPhi(daughter->phi(), jet.phi());
+    float partPt = daughter->pt();
+    float weight = partPt*partPt;
+
+    sum_weight += weight;
+    sum_pt += partPt;
+    sum_deta += deta*weight;
+    sum_dphi += dphi*weight;
+    sum_deta2 += deta*deta*weight;
+    sum_detadphi += deta*dphi*weight;
+    sum_dphi2 += dphi*dphi*weight;
+  }
+
+  //Calculate axis2 and ptD
+  float a = 0., b = 0., c = 0.;
+  float ave_deta = 0., ave_dphi = 0., ave_deta2 = 0., ave_dphi2 = 0.;
+  if(sum_weight > 0){
+    ave_deta = sum_deta/sum_weight;
+    ave_dphi = sum_dphi/sum_weight;
+    ave_deta2 = sum_deta2/sum_weight;
+    ave_dphi2 = sum_dphi2/sum_weight;
+    a = ave_deta2 - ave_deta*ave_deta;
+    b = ave_dphi2 - ave_dphi*ave_dphi;
+    c = -(sum_detadphi/sum_weight - ave_deta*ave_dphi);
+  }
+  float delta = sqrt(fabs((a-b)*(a-b)+4*c*c));
+  axis1_ = (a+b+delta > 0 ?  sqrt(0.5*(a+b+delta)) : 0);
+  axis2_ = (a+b-delta > 0 ?  sqrt(0.5*(a+b-delta)) : 0);
+  ptD_   = (sum_weight > 0 ? sqrt(sum_weight)/sum_pt : 0);
+  mult_ = mult;
+};

@@ -64,6 +64,7 @@
 using namespace std;
 using namespace pat;
 using namespace edm;
+using namespace reco;
 /////
 //   Class declaration
 /////
@@ -76,6 +77,7 @@ class JetSelector : public  baseTree{
   void JECInitialization();
   void Clear();
   void GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK4PFchs, float &JERScaleFactor, float &JERScaleFactorUP, float &JERScaleFactorDOWN);
+  void computeQG(const pat::Jet& jet, double& ptD_, double& mult_, double& axis1_, double& axis2_, bool useQualityCut );
  private:
   JetSelector(){};
   /////
@@ -203,7 +205,8 @@ class JetSelector : public  baseTree{
   vector<double> Jet_pfDeepCSVBJetTags;
   vector<double> Jet_pfDeepFlavourProbuds, Jet_pfDeepFlavourProbb, Jet_pfDeepFlavourProbc, Jet_pfDeepFlavourProbbb, Jet_pfDeepFlavourProblepb, Jet_pfDeepFlavourProbg;
   vector<double> Jet_pfDeepFlavourBJetTags;
-  vector<double> Jet_qg, Jet_axis2, Jet_ptD, Jet_mult ;  
+  vector<double> Jet_qg, Jet_axis2, Jet_ptD, Jet_mult ;  // this is read from qg maps
+  vector<double> Jet_axis1_, Jet_axis2_, Jet_ptD_, Jet_mult_ ; // this is calculated value
   //Energy
   vector<double> Jet_neutralHadEnergyFraction, Jet_neutralEmEnergyFraction, Jet_chargedHadronEnergyFraction, Jet_chargedEmEnergyFraction, Jet_muonEnergyFraction, Jet_electronEnergy, Jet_photonEnergy, Jet_emEnergyFraction;
   //Other prop
