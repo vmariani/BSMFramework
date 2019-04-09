@@ -5,8 +5,8 @@ Andres Florez (Los Andes), Alfredo Gurrola (Vanderbilt) and Amandeep Kalsi (Panj
 (See https://github.com/florez/NtupleMaker_740)
 
 It has been extended and further developed by Francesco Romeo (IHEP) and Aniello Spiezia (IHEP).
-
-This version of code is used for 2016 miniAOD v3 && 2017 miniAOD v2 and v1  Ntuple production:
+It has been modified for RunII analysis by Binghuan Li (IHEP)
+This version of code is used for 2016 miniAOD v3 && 2017 miniAOD v2 and v1 & 2018 miniAOD  Ntuple production:
 ####################################################
 
 
@@ -55,12 +55,26 @@ cd ..
 scram b -j 8
 
 ## To Run ##
+# MC for three years are tested
+# RD is depreciated and RD2018 is missing
 cd BSMFramework/BSM3G_TNT_Maker/python/
-cmsRun miniAOD_MC(RD)2017(2016)(All).py 
+cmsRun miniAOD_MC(RD)2017(2016)(2018).py 
 
 ## To Submit Crab jobs ###
+# Depreiciated
 cd BSMFramework/BSM3G_TNT_Maker/crab/
-python multicrab_MC(DATA)(All).py
+python multicrab_MC(DATA)2016(2017)(2018).py
 
 ## To Do ###
-JER and HLT may needs update in the future
+- write miniAOD_RD.py for three years
+- write multicrab_MC(DATA).py for three years
+
+## Notice ###
+- JER 2018 && HLT is preliminary
+- Always check HLT, make sure
+    HLT you want is contained in TriggerSelector
+    ifevtriggers in miniADO_RD(MC).py is set to true (false)
+- Always check the global tag in miniAOD_RD(MC).py 
+- Always check the JSON file in multicrab_DATA.py
+
+
