@@ -134,27 +134,21 @@ void JetSelector::Fill(const edm::Event& iEvent){
     if(_qglVar){
         edm::Ref<pat::JetCollection> jetRef(jets, ij);
         Jet_qg.push_back((*qgHandle)[jetRef]);
-        Jet_axis2.push_back((*axis2Handle)[jetRef]);
-        Jet_ptD.push_back((*ptDHandle)[jetRef]);
-        Jet_mult.push_back((*multHandle)[jetRef]);
         double axis1 = -1;
         double axis2 = -1;
         double ptD = -1;
         double mult = -1;
         computeQG(j, ptD, mult, axis1, axis2, false);
-        Jet_axis1_.push_back(axis1);
-        Jet_axis2_.push_back(axis2);
-        Jet_ptD_.push_back(ptD);
-        Jet_mult_.push_back(mult);
+        Jet_axis1.push_back(axis1);
+        Jet_axis2.push_back(axis2);
+        Jet_ptD.push_back(ptD);
+        Jet_mult.push_back(mult);
     }else{
         Jet_qg.push_back(-999);
+        Jet_axis1.push_back(-999);
         Jet_axis2.push_back(-999);
         Jet_ptD.push_back(-999);
         Jet_mult.push_back(-999);
-        Jet_axis1_.push_back(-999);
-        Jet_axis2_.push_back(-999);
-        Jet_ptD_.push_back(-999);
-        Jet_mult_.push_back(-999);
     }
     //Match Indices
     //match muons
@@ -1087,13 +1081,10 @@ void JetSelector::SetBranches(){
   AddBranch(&Jet_isPFJet                                      ,"Jet_isPFJet");
   AddBranch(&Jet_isCaloJet                                    ,"Jet_isCaloJet");
   AddBranch(&Jet_qg               ,"Jet_qg");
+  AddBranch(&Jet_axis1            ,"Jet_axis1");
   AddBranch(&Jet_axis2            ,"Jet_axis2");
   AddBranch(&Jet_ptD              ,"Jet_ptD");
   AddBranch(&Jet_mult             ,"Jet_mult");
-  AddBranch(&Jet_axis1_            ,"Jet_axis1_");
-  AddBranch(&Jet_axis2_            ,"Jet_axis2_");
-  AddBranch(&Jet_ptD_              ,"Jet_ptD_");
-  AddBranch(&Jet_mult_             ,"Jet_mult_");
   //Match Indices
   AddBranch(&Jet_ele_indices             ,"Jet_ele_indices");
   AddBranch(&Jet_ele_number             ,"Jet_ele_number");
@@ -1304,12 +1295,9 @@ void JetSelector::Clear(){
   Jet_isCaloJet.clear();
   Jet_qg.clear();
   Jet_axis2.clear();
+  Jet_axis1.clear();
   Jet_ptD.clear();
   Jet_mult.clear();
-  Jet_axis1_.clear();
-  Jet_axis2_.clear();
-  Jet_ptD_.clear();
-  Jet_mult_.clear();
   //Match Indices
   Jet_ele_indices.clear();
   Jet_ele_number.clear();
