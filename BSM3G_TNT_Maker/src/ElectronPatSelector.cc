@@ -22,11 +22,11 @@ ElectronPatSelector::ElectronPatSelector(std::string name, TTree* tree, bool deb
   _qglVar              = iConfig.getParameter<bool>("qglVar");
   _is_data             = iConfig.getParameter<bool>("is_data");
   _dataEra             = iConfig.getParameter<int>("dataEra");
-  if(_dataEra==2016){
-      rhopogHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
-  }else{
-      rhopogHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
-  }
+  //if(_dataEra==2016){
+  //    rhopogHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
+  //}else{
+  rhopogHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
+  //}
   SetBranches();
 }
 ElectronPatSelector::~ElectronPatSelector(){

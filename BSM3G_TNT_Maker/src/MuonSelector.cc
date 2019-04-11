@@ -59,11 +59,10 @@ MuonSelector::MuonSelector(std::string name, TTree* tree, bool debug, const pset
   _tthlepVar          = iConfig.getParameter<bool>("tthlepVar");
   _qglVar             = iConfig.getParameter<bool>("qglVar");
   _dataEra             = iConfig.getParameter<int>("dataEra");
-  if(_dataEra==2016){
-      rhoHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
-  }else{
-      rhoHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
-  }
+  //if(_dataEra==2016){
+  //    rhoHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
+  //}else{
+  rhoHandle_        = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
   SetBranches();
 }
 MuonSelector::~MuonSelector(){
