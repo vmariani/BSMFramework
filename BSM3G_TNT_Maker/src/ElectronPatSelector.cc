@@ -198,7 +198,7 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
     double SumNeutralCorrEt = std::max( 0.0, SumNeuHadEt+SumPhotonEt - 0.5*SumPU );
     double relIsoDeltaBeta = (SumChHadPt + SumNeutralCorrEt)/el->pt();
     patElectron_relIsoDeltaBeta.push_back(relIsoDeltaBeta);
-    double EffArea = get_effarea(el->superCluster()->position().eta());
+    double EffArea = get_effarea(el->superCluster()->position().eta(), true);
     double SumChHadPt04       = el->chargedHadronIso();
     double SumNeuHadEt04      = el->neutralHadronIso();
     double SumPhotonEt04      = el->photonIso(); 
@@ -1107,17 +1107,29 @@ double ElectronPatSelector::get_isosumraw(const std::vector<const pat::PackedCan
   }
   return isosum;
 }
-double ElectronPatSelector::get_effarea(double eta){
+double ElectronPatSelector::get_effarea(double eta, bool isPFIso){
   //https://github.com/cms-sw/cmssw/blob/CMSSW_10_4_X/RecoEgamma/ElectronIdentification/data/Fall17/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt
   double effarea = -1;
   if(_dataEra==2016){
-    if(abs(eta) < 1.0)        effarea = 0.1752;
-    else if(abs(eta) < 1.479) effarea = 0.1862;
-    else if(abs(eta) < 2.0)   effarea = 0.1411;
-    else if(abs(eta) < 2.2)   effarea = 0.1534;
-    else if(abs(eta) < 2.3)   effarea = 0.1903;
-    else if(abs(eta) < 2.4)   effarea = 0.2243;
-    else                      effarea = 0.2687;
+      // different effarea for 2016 PFIso and 2016 MiniIso for historical reason
+      // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/electrons_cff.py#L114-L120 
+      if(isPFIso){
+        if(abs(eta) < 1.0)        effarea = 0.1703;
+        else if(abs(eta) < 1.479) effarea = 0.1715;
+        else if(abs(eta) < 2.0)   effarea = 0.1213;
+        else if(abs(eta) < 2.2)   effarea = 0.1230;
+        else if(abs(eta) < 2.3)   effarea = 0.1635;
+        else if(abs(eta) < 2.4)   effarea = 0.1937;
+        else                      effarea = 0.2393;
+      }else{
+        if(abs(eta) < 1.0)        effarea = 0.1752;
+        else if(abs(eta) < 1.479) effarea = 0.1862;
+        else if(abs(eta) < 2.0)   effarea = 0.1411;
+        else if(abs(eta) < 2.2)   effarea = 0.1534;
+        else if(abs(eta) < 2.3)   effarea = 0.1903;
+        else if(abs(eta) < 2.4)   effarea = 0.2243;
+        else                      effarea = 0.2687;
+      }
   }else{
     if(abs(eta) < 1.0)        effarea = 0.1440;
     else if(abs(eta) < 1.479) effarea = 0.1562;

@@ -161,7 +161,7 @@ class ElectronPatSelector : public  baseTree{
   void get_eleminiIso_info(const pat::PackedCandidateCollection& pcc,double rho, const pat::Electron& cand, double& miniIso, double& miniIsoCh, double& miniIsoNeu, double& miniIsoPUsub);
   void get_chneupu_pcc(const pat::PackedCandidateCollection& pcc,vector<const pat::PackedCandidate *>& pfc_all,vector<const pat::PackedCandidate *>& pfc_ch,vector<const pat::PackedCandidate *>& pfc_neu,vector<const pat::PackedCandidate *>&pfc_pu);
   double get_isosumraw(const std::vector<const pat::PackedCandidate *> & pcc, const pat::Electron& cand, double IsoConeSize, double innerR, double ptTh, SelfVetoPolicyEle::SelfVetoPolicyEle selfVeto, int pdgId);
-  double get_effarea(double eta);
+  double get_effarea(double eta, bool isPFIso = false);
   void get_elejet_info(edm::View<pat::Electron>::const_iterator& ele, const edm::Event& iEvent, const edm::EventSetup& iSetup, double& elejet_l1corr, double& elejetislep,
                        double& elejet_mindr, double& elejet_pt, double& eleptOVelejetpt,
                        double& elejet_pfCombinedInclusiveSecondaryVertexV2BJetTags, double& elejet_pfDeepCSVBJetTags, double& elejet_pfDeepFlavourBJetTags, double& elejet_pfJetProbabilityBJetTags, double& elejet_pfCombinedMVABJetTags, double& elejet_qgl,                       
