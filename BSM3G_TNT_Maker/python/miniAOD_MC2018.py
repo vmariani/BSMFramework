@@ -322,21 +322,22 @@ process.printGenParticleList = cms.EDAnalyzer("ParticleListDrawer",
 )
 
 #QG likelihood
-#qgDatabaseVersion = 'v2b' # check https://twiki.cern.ch/twiki/bin/viewauth/CMS/QGDataBaseVersion
-#from CondCore.DBCommon.CondDBSetup_cfi import *
-#from CondCore.CondDB.CondDB_cfi import *
-#QGPoolDBESSource = cms.ESSource("PoolDBESSource",
-#    CondDBSetup,
-    #CondDB,
-#    toGet = cms.VPSet(),
-#    connect = cms.string('frontier://FrontierProd/CMS_COND_PAT_000'),
-#)
+#https://github.com/cms-nanoAOD/cmssw/pull/271#
+#load db explicitly
+from CondCore.DBCommon.CondDBSetup_cfi import *
+process.QGPoolDBESSource = cms.ESSource("PoolDBESSource",
+      CondDBSetup,
+      toGet = cms.VPSet(
+         cms.PSet(
+         record = cms.string('QGLikelihoodRcd'),
+         tag    = cms.string('QGLikelihoodObject_v1_AK4'),
+         label  = cms.untracked.string('QGL_AK4PFchs')
+         ),
+      ),
+      connect = cms.string('sqlite:qg/QGL_AK4chs_94X.db')
+     )
 
-#QGPoolDBESSource.toGet.extend(cms.VPSet(cms.PSet(
-#    record = cms.string('QGLikelihoodRcd'),
-#    tag    = cms.string('QGLikelihoodObject_'+qgDatabaseVersion+'_AK4PFchs'),
-#    label  = cms.untracked.string('QGL_AK4PFchs')
-#    )))
+process.es_prefer_qg = cms.ESPrefer('PoolDBESSource','QGPoolDBESSource')
 
 process.load('RecoJets.JetProducers.QGTagger_cfi')
 #process.QGTagger.srcJets       = cms.InputTag('slimmedJets')
