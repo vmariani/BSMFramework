@@ -19,12 +19,6 @@ git cms-init
 # set merge limit variable
 git config merge.renameLimit 999999
 
-## set up bTagDeepFlavour
-## https://twiki.cern.ch/twiki/bin/view/CMS/DeepJet
-git cms-addpkg RecoBTag/TensorFlow
-git cherry-pick 94ceae257f846998c357fcad408986cc8a039152
-scram b -j 8
-
 ## set up Egamma Tools
 ## https://twiki.cern.ch/twiki/bin/view/CMS/EgammaMiniAODV2#2018_Preliminary_Energy_Correcti 
 git cms-merge-topic cms-egamma:EgammaPostRecoTools #just adds in an extra file to have a setup function to make things easier
