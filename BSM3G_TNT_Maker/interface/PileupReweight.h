@@ -46,6 +46,7 @@ class PileupReweight : public baseTree{
   edm::FileInPath MinBiasUpReweightfile_;
   edm::FileInPath MinBiasDownReweightfile_;
   bool _is_data;
+  int  _dataEra; // which year?
   bool _MiniAODv2;
   double PUWeight;
   //double MyPUWeight;
