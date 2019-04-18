@@ -135,7 +135,8 @@ process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 process.load("Geometry.CaloEventSetup.CaloTowerConstituents_cfi")
 from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag.globaltag = '102X_dataRun2_Prompt_v13'
+#process.GlobalTag.globaltag = '102X_dataRun2_Prompt_v13'
+process.GlobalTag.globaltag = '102X_dataRun2_Sep2018ABC_v2'
 process.load('Configuration.StandardSequences.Services_cff')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 
@@ -158,7 +159,7 @@ updateJetCollection(
   pvSource = cms.InputTag('offlineSlimmedPrimaryVertices'),
   svSource = cms.InputTag('slimmedSecondaryVertices'),
   #labelName = 'UpdatedJEC',
-  jetCorrections = ('AK4PFchs', cms.vstring(['L1FastJet','L2Relative','L3Absolute']), 'None'),
+  jetCorrections = ('AK4PFchs', cms.vstring(['L1FastJet','L2Relative','L3Absolute','L2L3Residual']), 'None'),
   postfix='NewDFTraining'
 )
 
