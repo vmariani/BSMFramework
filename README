@@ -50,7 +50,8 @@ scram b -j 8
 
 ## To Run ##
 # MC for three years are running without any problems
-# RD is depreciated and RD2018 is missing
+# Data for three years are running
+# 2016 data: GT 94X gives correct JEC but 102X not, please watch out for upates
 cd BSMFramework/BSM3G_TNT_Maker/python/
 cmsRun miniAOD_MC(RD)2017(2016)(2018).py 
 
@@ -60,8 +61,8 @@ cd BSMFramework/BSM3G_TNT_Maker/crab/
 python multicrab_MC(DATA)2016(2017)(2018).py
 
 ## To Do ###
-- write miniAOD_RD.py for three years
 - write multicrab_MC(DATA).py for three years
+- check the 102X 2016 data GT
 
 ## Notice ###
 - JER 2018 && HLT is preliminary

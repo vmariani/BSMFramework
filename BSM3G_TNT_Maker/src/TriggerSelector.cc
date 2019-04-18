@@ -138,6 +138,8 @@ void TriggerSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSet
       if(HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ_v<triggerBits->size()) HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ = triggerBits->accept(HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ_v);
       uint HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v(trigNames.triggerIndex(("HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v"+string(buffer)).c_str()));
       if(HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v<triggerBits->size()) HLT_DiMu9_Ele9_CaloIdL_TrackIdL = triggerBits->accept(HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v);
+      uint HLT_Ele27_eta2p1_WPLoose_Gsf_v(trigNames.triggerIndex(("HLT_Ele27_eta2p1_WPLoose_Gsf_v"+string(buffer)).c_str()));
+      if(HLT_Ele27_eta2p1_WPLoose_Gsf_v<triggerBits->size()) HLT_Ele27_eta2p1_WPLoose_Gsf = triggerBits->accept(HLT_Ele27_eta2p1_WPLoose_Gsf_v);
     }
   } else {
     HLT_PFHT650_WideJetMJJ900DEtaJJ1p5 = 1;
@@ -197,6 +199,7 @@ void TriggerSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSet
     HLT_TripleMu_10_5_5_DZ = 1;
     HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ = 1;
     HLT_DiMu9_Ele9_CaloIdL_TrackIdL = 1;
+    HLT_Ele27_eta2p1_WPLoose_Gsf = 1;
   }
 }
 
@@ -259,6 +262,7 @@ void TriggerSelector::SetBranches(){
   AddBranch(&HLT_TripleMu_10_5_5_DZ				      ,"HLT_TripleMu_10_5_5_DZ");
   AddBranch(&HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ				      ,"HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ");
   AddBranch(&HLT_DiMu9_Ele9_CaloIdL_TrackIdL				      ,"HLT_DiMu9_Ele9_CaloIdL_TrackIdL");
+  AddBranch(&HLT_Ele27_eta2p1_WPLoose_Gsf				      ,"HLT_Ele27_eta2p1_WPLoose_Gsf");
   if(debug_)    std::cout<<"set branches"<<std::endl;
 }
 
@@ -319,7 +323,7 @@ void TriggerSelector::Clear(){
   HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL = -9999;
   HLT_TripleMu_10_5_5_DZ = -9999;
   HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ = -9999;
-  HLT_DiMu9_Ele9_CaloIdL_TrackIdL = -9999;
+  HLT_Ele27_eta2p1_WPLoose_Gsf = -9999;
 }
 
 void TriggerSelector::startTrigger(edm::EventSetup const& iSetup, edm::Run const & iRun){

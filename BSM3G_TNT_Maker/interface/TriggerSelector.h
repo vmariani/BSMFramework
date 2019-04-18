@@ -117,5 +117,6 @@ class TriggerSelector : public baseTree{
   int HLT_TripleMu_10_5_5_DZ;
   int HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ;
   int HLT_DiMu9_Ele9_CaloIdL_TrackIdL; 
+  int HLT_Ele27_eta2p1_WPLoose_Gsf;
 };
 #endif
