@@ -119,8 +119,10 @@ class METSelector : public baseTree{
   ////slimmedMETs
   //Kinematic
   double Met_type1PF_pt, Met_type1PF_px, Met_type1PF_py, Met_type1PF_pz, Met_type1PF_phi, Met_type1PF_sumEt;
-  //Corrections/Systematics
+  //JES Corrections/Systematics
   double Met_type1PF_shiftedPtUp, Met_type1PF_shiftedPtDown;
+  //Unclustered Corrections/Systematics
+  double Met_type1PF_UnclusteredEnUp, Met_type1PF_UnclusteredEnDown;
   //MC
   double Gen_type1PF_Met, Gen_type1PF_px, Gen_type1PF_py;
   ////slimmedMETsPUPPI

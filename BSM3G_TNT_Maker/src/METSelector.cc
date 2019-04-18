@@ -38,9 +38,12 @@ void METSelector::Fill(const edm::Event& iEvent){
   Met_type1PF_pz = met.pz();
   Met_type1PF_phi   = met.phi();
   Met_type1PF_sumEt = met.sumEt();  
-  //Corrections/Systematics
+  // JES Corrections/Systematics
   Met_type1PF_shiftedPtUp   = met.shiftedPt(pat::MET::JetEnUp);
   Met_type1PF_shiftedPtDown = met.shiftedPt(pat::MET::JetEnDown);
+  // Unclustered Corrections/Systematics
+  Met_type1PF_UnclusteredEnUp   = met.shiftedPt(pat::MET::UnclusteredEnUp);
+  Met_type1PF_UnclusteredEnDown = met.shiftedPt(pat::MET::UnclusteredEnDown);
   //MC
   if(!_is_data) {
       Gen_type1PF_Met = met.genMET()->pt();
@@ -84,9 +87,12 @@ void METSelector::SetBranches(){
   AddBranch(&Met_type1PF_pz,            "Met_type1PF_pz");
   AddBranch(&Met_type1PF_phi,           "Met_type1PF_phi");
   AddBranch(&Met_type1PF_sumEt,         "Met_type1PF_sumEt");
-  //Corrections/Systematics
+  //JES Corrections/Systematics
   AddBranch(&Met_type1PF_shiftedPtUp,   "Met_type1PF_shiftedPtUp");
   AddBranch(&Met_type1PF_shiftedPtDown, "Met_type1PF_shiftedPtDown");
+  //Unclustered Corrections/Systematics
+  AddBranch(&Met_type1PF_UnclusteredEnUp,   "Met_type1PF_UnclusteredEnUp");
+  AddBranch(&Met_type1PF_UnclusteredEnDown, "Met_type1PF_UnclusteredEnDown");
   //MC
   AddBranch(&Gen_type1PF_Met,           "Gen_type1PF_Met");
   AddBranch(&Gen_type1PF_px,           "Gen_type1PF_px");
@@ -117,9 +123,12 @@ void METSelector::Clear(){
   Met_type1PF_pz            = -9999;
   Met_type1PF_phi           = -9999;
   Met_type1PF_sumEt         = -9999; 
-  //Corrections/Systematics
+  //JES Corrections/Systematics
   Met_type1PF_shiftedPtUp   = -9999;
   Met_type1PF_shiftedPtDown = -9999;
+  //Unclustered Corrections/Systematics
+  Met_type1PF_UnclusteredEnUp   = -9999;
+  Met_type1PF_UnclusteredEnDown = -9999;
   //MC
   Gen_type1PF_Met           = -9999;
   Gen_type1PF_px           = -9999;
