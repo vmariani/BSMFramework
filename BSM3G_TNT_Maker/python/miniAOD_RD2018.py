@@ -159,14 +159,6 @@ updateJetCollection(
   svSource = cms.InputTag('slimmedSecondaryVertices'),
   #labelName = 'UpdatedJEC',
   jetCorrections = ('AK4PFchs', cms.vstring(['L1FastJet','L2Relative','L3Absolute']), 'None'),
-  btagDiscriminators = [
-     'pfDeepFlavourJetTags:probb',
-     'pfDeepFlavourJetTags:probbb',
-     'pfDeepFlavourJetTags:problepb',
-     'pfDeepFlavourJetTags:probc',
-     'pfDeepFlavourJetTags:probuds',
-     'pfDeepFlavourJetTags:probg'
-  ],
   postfix='NewDFTraining'
 )
 
@@ -271,29 +263,56 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   maxtriggerversion = cms.double(20), # please leave it as a double
   evtriggers        = cms.vstring(
   #############################
-     #'HLT_Ele115_CaloIdVT_GsfTrkIdT_v',
-#     'HLT_DoubleEle33_CaloIdL_MW_v',
-     #'HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_MW_v',
-     #'HLT_IsoMu24_v',
-     #'HLT_IsoTkMu24_v',
-#     'HLT_Mu50_v',
-#     'HLT_TkMu50_v',
-#     'HLT_Mu30_TkMu11_v',
-    'HLT_Ele32_WPTight_Gsf_v',
-    'HLT_Ele35_WPTight_Gsf_v',
-    'HLT_IsoMu24_v',
-    'HLT_IsoMu27_v',
-    'HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v',
-    'HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v',
-    'HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v',
-    'HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v',
-    'HLT_Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v',
-    'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v',
-    'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v',
-    'HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v',
-    'HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v',
-    'HLT_DiMu9_Ele9_CaloIdL_TrackIdL_DZ_v',
+    # https://twiki.cern.ch/twiki/bin/view/CMS/MuonHLT2016#Recommended_trigger_paths_for_20
+    # https://indico.cern.ch/event/682891/contributions/2810364/attachments/1570825/2820752/20171206_CMSWeek_MuonHLTReport_KPLee_v3_4.pdf
+    # https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonHLT2018#Recommended_trigger_paths_for_20
+    # https://twiki.cern.ch/twiki/bin/view/CMS/EgHLTRunIISummary 
+    # run II three years #
+    'HLT_IsoMu24_v', 
+    'HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v', 
+    'HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v', 
+    'HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v', # I put it here because it's used for both 2016/2017, recommendation for 2018 is not available yet 
     'HLT_TripleMu_12_10_5_v',
+    ## 2016 ###
+    #'HLT_Ele25_eta2p1_WPTight_Gsf_v',
+    #'HLT_Ele27_WPTight_Gsf_v',
+    #'HLT_IsoTkMu24_v',
+    #'HLT_Ele17_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v',
+    #'HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v',
+    #'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v',
+    #'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v',
+    #'HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v',
+    #'HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v',
+    #'HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_v',
+    #'HLT_TkMu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v',
+    #'HLT_Mu8_TrkIsoVVL_Ele17_CaloIdL_TrackIdL_IsoVL_v',
+    #'HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v', 
+    #'HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v', 
+    #'HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v', 
+    #'HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v',
+    #'HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v',
+    #'HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v',
+    ## 2017 ###
+    #'HLT_Ele35_WPTight_Gsf_v',
+    #'HLT_IsoMu27_v',
+    #'HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v',
+    #'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v',
+    #'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v',
+    #'HLT_Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v', 
+    #'HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v', 
+    #'HLT_TripleMu_10_5_5_DZ_v',
+    #'HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v',
+    #'HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ_v',
+    #'HLT_DiMu9_Ele9_CaloIdL_TrackIdL_DZ_v',
+    ## 2018 ###
+    'HLT_Ele32_WPTight_Gsf_v',
+    'HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v',
+    'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v',
+    'HLT_Mu12_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v', 
+    'HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v',
+    'HLT_TripleMu_10_5_5_DZ_v',
+    'HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ_v',
+    'HLT_DiMu9_Ele9_CaloIdL_TrackIdL_DZ_v',
   ),
   # Choose which information you want to use
   fillgeninfo           = cms.bool(False),
