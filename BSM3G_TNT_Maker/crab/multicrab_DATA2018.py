@@ -25,14 +25,10 @@ if __name__ == '__main__':
 'Legacy18V1_SMuBlockB',
 'Legacy18V1_SMuBlockC',
 'Legacy18V1_SMuBlockD',
-'Legacy18V1_SEleBlockA',
-'Legacy18V1_SEleBlockB',
-'Legacy18V1_SEleBlockC',
-'Legacy18V1_SEleBlockD',
-'Legacy18V1_DblEGBlockA',
-'Legacy18V1_DblEGBlockB',
-'Legacy18V1_DblEGBlockC',
-'Legacy18V1_DblEGBlockD',
+'Legacy18V1_EleGBlockA',
+'Legacy18V1_EleGBlockB',
+'Legacy18V1_EleGBlockC',
+'Legacy18V1_EleGBlockD',
 'Legacy18V1_DblMuBlockA',
 'Legacy18V1_DblMuBlockB',
 'Legacy18V1_DblMuBlockC',
@@ -43,32 +39,31 @@ if __name__ == '__main__':
 'Legacy18V1_MuEGBlockD',
                  ]
  datasetinputs = [
- # FIXME the samples are very preliminary
+ # FIXME which samples to use? 
+ # I choose PPD recommendation, but there exists newer samples
+ # https://twiki.cern.ch/twiki/bin/viewauth/CMS/PdmVAnalysisSummaryTable
  # SingleMuon dataset : AT LEAST 1 high-energy muon in the event.
  '/SingleMuon/Run2018A-17Sep2018-v2/MINIAOD',
  '/SingleMuon/Run2018B-17Sep2018-v1/MINIAOD',
  '/SingleMuon/Run2018C-17Sep2018-v1/MINIAOD',
- '/SingleMuon/Run2018D-22Jan2019-v2/MINIAOD',
+ '/SingleMuon/Run2018D-PromptReco-v2/MINIAOD',
+ #'/SingleMuon/Run2018D-22Jan2019-v2/MINIAOD', # FIXME 
  # SingleElectron dataset : AT LEAST 1 high-energy electron in the event.
- '/SingleElectron/Run2017B-31Mar2018-v1/MINIAOD',
- '/SingleElectron/Run2017C-31Mar2018-v1/MINIAOD',
- '/SingleElectron/Run2017D-31Mar2018-v1/MINIAOD',
- '/SingleElectron/Run2017E-31Mar2018-v1/MINIAOD',
- # DoubleEG dataset : AT LEAST 2 high-energy electron in the event.
- '/DoubleEG/Run2017B-31Mar2018-v1/MINIAOD',
- '/DoubleEG/Run2017C-31Mar2018-v1/MINIAOD',
- '/DoubleEG/Run2017D-31Mar2018-v1/MINIAOD',
- '/DoubleEG/Run2017E-31Mar2018-v1/MINIAOD',
+ '/EGamma/Run2018A-17Sep2018-v2/MINIAOD',
+ '/EGamma/Run2018B-17Sep2018-v1/MINIAOD',
+ '/EGamma/Run2018C-17Sep2018-v1/MINIAOD',
+ '/EGamma/Run2018D-PromptReco-v2/MINIAOD',
+ #'/EGamma/Run2018D-22Jan2019-v2/MINIAOD', # FIXME
  # DoubleMuon dataset : AT LEAST 2 high-energy muon in the event.
- '/DoubleMuon/Run2017B-31Mar2018-v1/MINIAOD',
- '/DoubleMuon/Run2017C-31Mar2018-v1/MINIAOD',
- '/DoubleMuon/Run2017D-31Mar2018-v1/MINIAOD',
- '/DoubleMuon/Run2017E-31Mar2018-v1/MINIAOD',
+ '/DoubleMuon/Run2018A-17Sep2018-v2/MINIAOD',
+ '/DoubleMuon/Run2018B-17Sep2018-v1/MINIAOD',
+ '/DoubleMuon/Run2018C-17Sep2018-v1/MINIAOD',
+ '/DoubleMuon/Run2018D-PromptReco-v2/MINIAOD',
  # MuonEG dataset : AT LEAST 1 high-energy electron and 1 high-energy muon in the event.
- '/MuonEG/Run2017B-31Mar2018-v1/MINIAOD',
- '/MuonEG/Run2017C-31Mar2018-v1/MINIAOD',
- '/MuonEG/Run2017D-31Mar2018-v1/MINIAOD',
- '/MuonEG/Run2017E-31Mar2018-v1/MINIAOD',
+ '/MuonEG/Run2018A-17Sep2018-v1/MINIAOD',
+ '/MuonEG/Run2018B-17Sep2018-v1/MINIAOD',
+ '/MuonEG/Run2018C-17Sep2018-v1/MINIAOD',
+ '/MuonEG/Run2018D-PromptReco-v2/MINIAOD',
                 ]
 
 JECBlockA = [
