@@ -135,8 +135,8 @@ process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 process.load("Geometry.CaloEventSetup.CaloTowerConstituents_cfi")
 from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag.globaltag = '94X_dataRun2_v10'
-#process.GlobalTag.globaltag = '102X_dataRun2_Prompt_v12' # JEC contains is wrong
+#process.GlobalTag.globaltag = '94X_dataRun2_v10'
+process.GlobalTag.globaltag = '102X_dataRun2_nanoAOD_2016_v1' 
 process.load('Configuration.StandardSequences.Services_cff')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 
@@ -500,7 +500,7 @@ process.QGPoolDBESSource = cms.ESSource("PoolDBESSource",
          label  = cms.untracked.string('QGL_AK4PFchs')
          ),
       ),
-      connect = cms.string('sqlite:qg/QGL_AK4chs_94X.db')
+      connect = cms.string('sqlite:QGL_AK4chs_94X.db')
      )
 
 process.es_prefer_qg = cms.ESPrefer('PoolDBESSource','QGPoolDBESSource')

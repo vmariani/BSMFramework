@@ -25,7 +25,7 @@ process.source = cms.Source("PoolSource",
   ),
   skipEvents = cms.untracked.uint32(0)
 )
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
 ##### JEC
 from PhysicsTools.PatAlgos.tools.jetTools import updateJetCollection
@@ -125,6 +125,7 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
 ##   Output file
 #####
 process.TFileService = cms.Service("TFileService",
+  #fileName = cms.string("OutTree_2018.root")
   fileName = cms.string("OutTree.root")
 )
 
@@ -169,7 +170,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   # Choose format 
   MiniAODv2 = cms.bool(True),
   is_data   = cms.bool(False),
-  tthlepfilter   = cms.bool(False),
+  tthlepfilter   = cms.bool(True),
   reHLT     = cms.bool(True),
   debug_    = cms.bool(False),
   super_TNT = cms.bool(False),
@@ -333,7 +334,7 @@ process.QGPoolDBESSource = cms.ESSource("PoolDBESSource",
          label  = cms.untracked.string('QGL_AK4PFchs')
          ),
       ),
-      connect = cms.string('sqlite:qg/QGL_AK4chs_94X.db')
+      connect = cms.string('sqlite:QGL_AK4chs_94X.db')
      )
 
 process.es_prefer_qg = cms.ESPrefer('PoolDBESSource','QGPoolDBESSource')

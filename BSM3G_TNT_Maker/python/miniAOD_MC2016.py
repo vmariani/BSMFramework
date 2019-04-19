@@ -144,7 +144,8 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
 ##   Output file
 #####
 process.TFileService = cms.Service("TFileService",
-  fileName = cms.string("OutTree_2016.root")
+  #fileName = cms.string("OutTree_2016.root")
+  fileName = cms.string("OutTree.root")
 )
 
 #####
@@ -352,7 +353,7 @@ process.QGPoolDBESSource = cms.ESSource("PoolDBESSource",
          label  = cms.untracked.string('QGL_AK4PFchs')
          ),
       ),
-      connect = cms.string('sqlite:qg/QGL_AK4chs_94X.db')
+      connect = cms.string('sqlite:QGL_AK4chs_94X.db')
      )
 
 process.es_prefer_qg = cms.ESPrefer('PoolDBESSource','QGPoolDBESSource')

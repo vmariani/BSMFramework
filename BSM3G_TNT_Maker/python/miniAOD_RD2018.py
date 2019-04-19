@@ -15,6 +15,12 @@ options = VarParsing.VarParsing('analysis')
 #
 
 # ===== Register new variables =====
+options.register('optionGlobalTag',
+'102X_dataRun2_Sep2018ABC_v2',
+VarParsing.VarParsing.multiplicity.singleton,
+VarParsing.VarParsing.varType.string,
+"Name for Global Tag")
+
 options.register('optionJECAK4PFchsDATA1',
 'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L1FastJet_AK4PFchs.txt',
 VarParsing.VarParsing.multiplicity.singleton,
@@ -135,8 +141,8 @@ process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff")
 process.load("Geometry.CaloEventSetup.CaloTowerConstituents_cfi")
 from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag.globaltag = '102X_dataRun2_Prompt_v13'
-#process.GlobalTag.globaltag = '102X_dataRun2_Sep2018ABC_v2'
+#process.GlobalTag.globaltag = '102X_dataRun2_Prompt_v13'
+process.GlobalTag.globaltag = options.optionGlobalTag
 process.load('Configuration.StandardSequences.Services_cff')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 
@@ -339,7 +345,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   # Choose format 
   MiniAODv2 = cms.bool(True),
   is_data   = cms.bool(True),
-  tthlepfilter   = cms.bool(False),
+  tthlepfilter   = cms.bool(True),
   reHLT     = cms.bool(True),
   debug_    = cms.bool(False),
   super_TNT = cms.bool(False),
@@ -482,7 +488,7 @@ process.QGPoolDBESSource = cms.ESSource("PoolDBESSource",
          label  = cms.untracked.string('QGL_AK4PFchs')
          ),
       ),
-      connect = cms.string('sqlite:qg/QGL_AK4chs_94X.db')
+      connect = cms.string('sqlite:QGL_AK4chs_94X.db')
      )
 
 process.es_prefer_qg = cms.ESPrefer('PoolDBESSource','QGPoolDBESSource')
