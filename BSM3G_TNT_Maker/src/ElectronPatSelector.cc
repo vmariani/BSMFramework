@@ -1170,6 +1170,7 @@ void ElectronPatSelector::get_elejet_info(edm::View<pat::Electron>::const_iterat
                 elejet = jet;
                 elejet_mindr = dr;
                 lepjetidx = currjetpos;
+                break;  // take leading jet with shared source candidates
             }
         }
     }

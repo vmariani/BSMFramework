@@ -1069,6 +1069,7 @@ void MuonSelector::get_mujet_info(const pat::Muon& mu, const edm::Event& iEvent,
                 mujet_mindr = dr;
                 lepjetidx = currjetpos;
                 //std::cout<<" mujetidx "<< lepjetidx << " mujetp4 "<< mujet.pt() <<"/"<<mujet.eta() << "/"<< mujet.phi()<< std::endl;
+                break;  // take leading jet with shared source candidates
             }
         }
     }
