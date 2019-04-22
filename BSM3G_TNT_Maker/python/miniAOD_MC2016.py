@@ -25,7 +25,7 @@ process.source = cms.Source("PoolSource",
   ),
   skipEvents = cms.untracked.uint32(0)
 )
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
 
 ##### JEC
 from PhysicsTools.PatAlgos.tools.jetTools import updateJetCollection
@@ -235,7 +235,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   jetsPUPPI           = cms.InputTag("slimmedJetsPuppi"),
   fatjets             = cms.InputTag("slimmedJetsAK8"),
   topsubjets          = cms.InputTag("slimmedJetsCMSTopTagCHSPacked", "SubJets"),
-  mets                = cms.InputTag("slimmedMETs"),
+  mets                = cms.InputTag("slimmedMETsModifiedMET"),
   metsPUPPI           = cms.InputTag("slimmedMETsPuppi"),
   metFilterBits       = cms.InputTag("TriggerResults", "", "PAT"),
   photons             = cms.InputTag("slimmedPhotons"),
