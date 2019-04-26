@@ -94,7 +94,7 @@ class JetSelector : public  baseTree{
   edm::EDGetTokenT<edm::ValueMap<int> > multToken_;
   edm::EDGetTokenT<pat::JetCollection> puppijets_;
   edm::EDGetTokenT<double> rhopogHandle_;
-  edm::EDGetTokenT<double> rhoJERHandle_;
+  //edm::EDGetTokenT<double> rhoJERHandle_;
   edm::FileInPath jecPayloadNamesAK4PFchsMC1_;
   edm::FileInPath jecPayloadNamesAK4PFchsMC2_;
   edm::FileInPath jecPayloadNamesAK4PFchsMC3_;
