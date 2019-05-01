@@ -1162,7 +1162,7 @@ void ElectronPatSelector::get_elejet_info(edm::View<pat::Electron>::const_iterat
       lepjetidx = currjetpos;
     }
     */
-    //std::cout<<iEvent.id().event()  <<" Electron pt "<<ele->p4().pt()<< " Jet pt " << jet.p4().pt() <<std::endl;
+    std::cout<<iEvent.id().event()  <<" Electron pt "<<ele->p4().pt()<< " Jet pt " << jet.p4().pt() <<std::endl;
     for(unsigned int i1 = 0 ; i1 < ele->numberOfSourceCandidatePtrs();i1++){
         const reco::CandidatePtr  &c1s=ele->sourceCandidatePtr(i1);
         for(unsigned int i2 = 0 ; i2 < jet.numberOfSourceCandidatePtrs();i2++) {
@@ -1171,13 +1171,14 @@ void ElectronPatSelector::get_elejet_info(edm::View<pat::Electron>::const_iterat
                 elejet = jet;
                 elejet_mindr = dr;
                 lepjetidx = currjetpos;
-                //std::cout << " closest jet is " << jet.p4()<<std::endl;
+                std::cout << " closest jet is " << jet.p4()<< " lepjetidx is " << lepjetidx <<std::endl;
                 break;  // take leading jet with shared source candidates
             }
         }
         if(lepjetidx >=0)break;// take leading jet with shared source candidates
     }
     currjetpos++;
+    if(lepjetidx >=0)break;// take leading jet with shared source candidates
   }
   //Get info
   if(elejet.jecSetsAvailable()){

@@ -1075,6 +1075,7 @@ void MuonSelector::get_mujet_info(const pat::Muon& mu, const edm::Event& iEvent,
         if(lepjetidx >=0)break;// take leading jet with shared source candidates
     }
     currjetpos++;
+    if(lepjetidx >=0)break;// take leading jet with shared source candidates
   }
    /*
     cout<<"Uncorrected"<<setw(20)<<mujet.correctedJet("Uncorrected").pt()<<setw(20)<<mujet.correctedJet("Uncorrected").p4().pt()<<setw(20)<<mujet.correctedJet("Uncorrected").p4().E()<<endl; 
