@@ -1109,7 +1109,7 @@ double ElectronPatSelector::get_isosumraw(const std::vector<const pat::PackedCan
 }
 double ElectronPatSelector::get_effarea(double eta, bool isPFIso){
   //https://github.com/cms-sw/cmssw/blob/CMSSW_10_4_X/RecoEgamma/ElectronIdentification/data/Fall17/effAreaElectrons_cone03_pfNeuHadronsAndPhotons_94X.txt
-  double effarea = -1;
+  double effarea = 0;
   if(_dataEra==2016){
       // different effarea for 2016 PFIso and 2016 MiniIso for historical reason
       // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/electrons_cff.py#L114-L120 
@@ -1120,7 +1120,7 @@ double ElectronPatSelector::get_effarea(double eta, bool isPFIso){
         else if(abs(eta) < 2.2)   effarea = 0.1230;
         else if(abs(eta) < 2.3)   effarea = 0.1635;
         else if(abs(eta) < 2.4)   effarea = 0.1937;
-        else                      effarea = 0.2393;
+        else if(abs(eta) < 2.5)   effarea = 0.2393;
       }else{
         if(abs(eta) < 1.0)        effarea = 0.1752;
         else if(abs(eta) < 1.479) effarea = 0.1862;
@@ -1128,7 +1128,7 @@ double ElectronPatSelector::get_effarea(double eta, bool isPFIso){
         else if(abs(eta) < 2.2)   effarea = 0.1534;
         else if(abs(eta) < 2.3)   effarea = 0.1903;
         else if(abs(eta) < 2.4)   effarea = 0.2243;
-        else                      effarea = 0.2687;
+        else if(abs(eta) < 2.5)   effarea = 0.2687;
       }
   }else{
     if(abs(eta) < 1.0)        effarea = 0.1440;
@@ -1137,7 +1137,7 @@ double ElectronPatSelector::get_effarea(double eta, bool isPFIso){
     else if(abs(eta) < 2.2)   effarea = 0.0859;
     else if(abs(eta) < 2.3)   effarea = 0.1116;
     else if(abs(eta) < 2.4)   effarea = 0.1321;
-    else                      effarea = 0.1654;
+    else if(abs(eta) < 2.5)   effarea = 0.1654;
   }
   return effarea;
 }
@@ -1162,6 +1162,7 @@ void ElectronPatSelector::get_elejet_info(edm::View<pat::Electron>::const_iterat
       lepjetidx = currjetpos;
     }
     */
+    //std::cout<<iEvent.id().event()  <<" Electron pt "<<ele->p4().pt()<< " Jet pt " << jet.p4().pt() <<std::endl;
     for(unsigned int i1 = 0 ; i1 < ele->numberOfSourceCandidatePtrs();i1++){
         const reco::CandidatePtr  &c1s=ele->sourceCandidatePtr(i1);
         for(unsigned int i2 = 0 ; i2 < jet.numberOfSourceCandidatePtrs();i2++) {
@@ -1170,9 +1171,11 @@ void ElectronPatSelector::get_elejet_info(edm::View<pat::Electron>::const_iterat
                 elejet = jet;
                 elejet_mindr = dr;
                 lepjetidx = currjetpos;
+                //std::cout << " closest jet is " << jet.p4()<<std::endl;
                 break;  // take leading jet with shared source candidates
             }
         }
+        if(lepjetidx >=0)break;// take leading jet with shared source candidates
     }
     currjetpos++;
   }

@@ -267,6 +267,13 @@ void MuonSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       Muon_vty.push_back(-999);
       Muon_vtz.push_back(-999);
     }
+    if(mu->muonBestTrack().isNonnull()){
+	    Muon_dz_bt.push_back(mu->muonBestTrack()->dz(firstGoodVertex.position()));
+	    Muon_dxy_bt.push_back(mu->muonBestTrack()->dxy(firstGoodVertex.position()));
+    }else{
+	    Muon_dz_bt.push_back(-999);
+	    Muon_dxy_bt.push_back(-999);
+    } 
     if(_AJVar){
       if(beamSpotHandle.isValid() && mu->innerTrack().isNonnull()){//AJ vars (both pv and bs are in this if condition, tought for pv is not mandatory)
 	beamSpot = *beamSpotHandle;
@@ -308,13 +315,6 @@ void MuonSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 	Muon_trackFitErrorMatrix_12.push_back(-999);
 	Muon_trackFitErrorMatrix_22.push_back(-999);
       }
-      if(mu->muonBestTrack().isNonnull()){
-	Muon_dz_bt.push_back(mu->muonBestTrack()->dz(firstGoodVertex.position()));
-	Muon_dxy_bt.push_back(mu->muonBestTrack()->dxy(firstGoodVertex.position()));
-      }else{
-	Muon_dz_bt.push_back(-999);
-	Muon_dxy_bt.push_back(-999);
-      } 
     }
     //////
     ///   TTH variables
@@ -650,6 +650,8 @@ void MuonSelector::SetBranches(){
   AddBranch(&Muon_vtx                    ,"Muon_vtx");
   AddBranch(&Muon_vty                    ,"Muon_vty");
   AddBranch(&Muon_vtz                    ,"Muon_vtz");
+  AddBranch(&Muon_dz_bt                  ,"Muon_dz_bt");
+  AddBranch(&Muon_dxy_bt                 ,"Muon_dxy_bt");
   if(_AJVar){
     AddBranch(&Muon_track_PCAx_bs          ,"Muon_track_PCAx_bs");
     AddBranch(&Muon_track_PCAy_bs          ,"Muon_track_PCAy_bs");
@@ -663,8 +665,6 @@ void MuonSelector::SetBranches(){
     AddBranch(&Muon_trackFitErrorMatrix_11 ,"Muon_trackFitErrorMatrix_11");
     AddBranch(&Muon_trackFitErrorMatrix_12 ,"Muon_trackFitErrorMatrix_12");
     AddBranch(&Muon_trackFitErrorMatrix_22 ,"Muon_trackFitErrorMatrix_22");
-    AddBranch(&Muon_dz_bt                  ,"Muon_dz_bt");
-    AddBranch(&Muon_dxy_bt                 ,"Muon_dxy_bt");
   }
   //TTH
   if(_tthlepVar){
@@ -1021,19 +1021,19 @@ double MuonSelector::get_isosumraw(const std::vector<const pat::PackedCandidate 
 }
 double MuonSelector::get_effarea(double eta){
   // https://github.com/cms-data/PhysicsTools-NanoAOD/blob/master/effAreaMuons_cone03_pfNeuHadronsAndPhotons_94X.txt
-  double effarea = -1;
+  double effarea = 0;
   if(_dataEra==2016){
     if(abs(eta) < 0.8)      effarea = 0.0735;
     else if(abs(eta) < 1.3) effarea = 0.0619;
     else if(abs(eta) < 2.0) effarea = 0.0465;
     else if(abs(eta) < 2.2) effarea = 0.0433;
-    else                    effarea = 0.0577;
+    else if(abs(eta) < 2.4) effarea = 0.0577;
   }else{
     if(abs(eta) < 0.8)      effarea = 0.0566;
     else if(abs(eta) < 1.3) effarea = 0.0562;
     else if(abs(eta) < 2.0) effarea = 0.0363;
     else if(abs(eta) < 2.2) effarea = 0.0119;
-    else                    effarea = 0.0064;
+    else if(abs(eta) < 2.4) effarea = 0.0064;
   }
   return effarea;
 }
@@ -1072,6 +1072,7 @@ void MuonSelector::get_mujet_info(const pat::Muon& mu, const edm::Event& iEvent,
                 break;  // take leading jet with shared source candidates
             }
         }
+        if(lepjetidx >=0)break;// take leading jet with shared source candidates
     }
     currjetpos++;
   }
