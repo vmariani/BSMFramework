@@ -325,7 +325,8 @@ void MuonSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       double miniIsoCh    = 999;
       double miniIsoNeu   = 999;
       double miniIsoPUsub = 999;
-      get_muminiIso_info(*pcc,rho,*mu,miniIso,miniIsoCh,miniIsoNeu,miniIsoPUsub);
+      //get_muminiIso_info(*pcc,rho,*mu,miniIso,miniIsoCh,miniIsoNeu,miniIsoPUsub);
+      get_muminiIso(rho,*mu,miniIso,miniIsoCh,miniIsoNeu,miniIsoPUsub);
       Muon_miniIsoRel.push_back(miniIso/mu->pt());
       Muon_miniIsoCh.push_back(miniIsoCh);
       Muon_miniIsoNeu.push_back(miniIsoNeu);
@@ -840,6 +841,8 @@ void MuonSelector::Clear(){
   Muon_vtx.clear();
   Muon_vty.clear();
   Muon_vtz.clear();
+  Muon_dz_bt.clear();
+  Muon_dxy_bt.clear();
   if(_AJVar){
     Muon_track_PCAx_bs.clear();
     Muon_track_PCAy_bs.clear();
@@ -853,8 +856,6 @@ void MuonSelector::Clear(){
     Muon_trackFitErrorMatrix_11.clear();
     Muon_trackFitErrorMatrix_12.clear();
     Muon_trackFitErrorMatrix_22.clear();
-    Muon_dz_bt.clear();
-    Muon_dxy_bt.clear();
   }
   //TTH
   if(_tthlepVar){
@@ -954,6 +955,22 @@ bool MuonSelector::isGoodVertex(const reco::Vertex& vtx){
   if(fabs(vtx.position().Z()) > _vtx_position_z_max) return false;
   return true;
 }
+
+void MuonSelector::get_muminiIso(double rho, const pat::Muon& cand, double& miniIso, double& miniIsoCh, double& miniIsoNeu, double& miniIsoPUsub){
+  // new miniIso calculation
+  auto iso = cand.miniPFIsolation();
+  auto chg = iso.chargedHadronIso();
+  auto neu = iso.neutralHadronIso();
+  auto pho = iso.photonIso();
+  double ea    = get_effarea(cand.eta());
+  float R = 10.0/std::min(std::max(cand.pt(), 50.0),200.0);
+  ea *= std::pow(R/0.3,2);
+  miniIsoCh = chg;
+  miniIsoNeu = neu;
+  miniIsoPUsub = std::max(0.0,neu+pho-(rho)*ea);
+  miniIso = miniIsoCh + miniIsoPUsub;
+}
+
 void MuonSelector::get_muminiIso_info(const pat::PackedCandidateCollection& pcc, double rho, const pat::Muon& cand, double& miniIso, double& miniIsoCh, double& miniIsoNeu, double& miniIsoPUsub){
   double miniIsoConeSize = 10.0/min(max(cand.pt(), 50.),200.);
   vector<const pat::PackedCandidate *> pfc_all; pfc_all.clear();

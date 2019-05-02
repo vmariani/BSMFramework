@@ -329,7 +329,8 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
       double miniIsoCh    = 999;
       double miniIsoNeu   = 999;
       double miniIsoPUsub = 999;
-      get_eleminiIso_info(*pcc,rhopog,*el,miniIso,miniIsoCh,miniIsoNeu,miniIsoPUsub);
+      //get_eleminiIso_info(*pcc,rhopog,*el,miniIso,miniIsoCh,miniIsoNeu,miniIsoPUsub);
+      get_eleminiIso(rhopog,*el,miniIso,miniIsoCh,miniIsoNeu,miniIsoPUsub);
       patElectron_miniIsoRel.push_back(miniIso/el->pt());
       patElectron_miniIsoCh.push_back(miniIsoCh);
       patElectron_miniIsoNeu.push_back(miniIsoNeu);
@@ -1031,6 +1032,22 @@ bool ElectronPatSelector::isGoodVertex(const reco::Vertex& vtx){
   if(fabs(vtx.position().Z()) > _vtx_position_z_max) return false;
   return true;
 }
+
+void ElectronPatSelector::get_eleminiIso(double rho, const pat::Electron& cand, double& miniIso, double& miniIsoCh, double& miniIsoNeu, double& miniIsoPUsub){
+  // new miniIso calculation
+  auto iso = cand.miniPFIsolation();
+  auto chg = iso.chargedHadronIso();
+  auto neu = iso.neutralHadronIso();
+  auto pho = iso.photonIso();
+  double ea    = get_effarea(cand.superCluster()->position().eta());
+  float R = 10.0/std::min(std::max(cand.pt(), 50.0),200.0);
+  ea *= std::pow(R/0.3,2);
+  miniIsoCh = chg;
+  miniIsoNeu = neu;
+  miniIsoPUsub = std::max(0.0,neu+pho-(rho)*ea);
+  miniIso = miniIsoCh + miniIsoPUsub;
+}
+
 void ElectronPatSelector::get_eleminiIso_info(const pat::PackedCandidateCollection& pcc,double rhotth, const pat::Electron& cand, double& miniIso, double& miniIsoCh, double& miniIsoNeu, double& miniIsoPUsub){
   double miniIsoConeSize = 10.0/min(max(cand.pt(), 50.),200.);
   vector<const pat::PackedCandidate *> pfc_all; pfc_all.clear();
@@ -1162,7 +1179,7 @@ void ElectronPatSelector::get_elejet_info(edm::View<pat::Electron>::const_iterat
       lepjetidx = currjetpos;
     }
     */
-    std::cout<<iEvent.id().event()  <<" Electron pt "<<ele->p4().pt()<< " Jet pt " << jet.p4().pt() <<std::endl;
+    //std::cout<<iEvent.id().event()  <<" Electron pt "<<ele->p4().pt()<< " Jet pt " << jet.p4().pt() <<std::endl;
     for(unsigned int i1 = 0 ; i1 < ele->numberOfSourceCandidatePtrs();i1++){
         const reco::CandidatePtr  &c1s=ele->sourceCandidatePtr(i1);
         for(unsigned int i2 = 0 ; i2 < jet.numberOfSourceCandidatePtrs();i2++) {
@@ -1171,7 +1188,7 @@ void ElectronPatSelector::get_elejet_info(edm::View<pat::Electron>::const_iterat
                 elejet = jet;
                 elejet_mindr = dr;
                 lepjetidx = currjetpos;
-                std::cout << " closest jet is " << jet.p4()<< " lepjetidx is " << lepjetidx <<std::endl;
+                //std::cout << " closest jet is " << jet.p4()<< " lepjetidx is " << lepjetidx <<std::endl;
                 break;  // take leading jet with shared source candidates
             }
         }

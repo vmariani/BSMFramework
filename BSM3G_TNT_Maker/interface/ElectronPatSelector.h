@@ -158,6 +158,7 @@ class ElectronPatSelector : public  baseTree{
   /////
   //Methods
   int MatchingToTrigger(const edm::Event& iEvent, edm::Handle<pat::TriggerObjectStandAloneCollection> triggerObjects, edm::Handle<edm::TriggerResults> triggerBits, float eta, float phi);
+  void get_eleminiIso(double rho, const pat::Electron& cand, double& miniIso, double& miniIsoCh, double& miniIsoNeu, double& miniIsoPUsub);
   void get_eleminiIso_info(const pat::PackedCandidateCollection& pcc,double rho, const pat::Electron& cand, double& miniIso, double& miniIsoCh, double& miniIsoNeu, double& miniIsoPUsub);
   void get_chneupu_pcc(const pat::PackedCandidateCollection& pcc,vector<const pat::PackedCandidate *>& pfc_all,vector<const pat::PackedCandidate *>& pfc_ch,vector<const pat::PackedCandidate *>& pfc_neu,vector<const pat::PackedCandidate *>&pfc_pu);
   double get_isosumraw(const std::vector<const pat::PackedCandidate *> & pcc, const pat::Electron& cand, double IsoConeSize, double innerR, double ptTh, SelfVetoPolicyEle::SelfVetoPolicyEle selfVeto, int pdgId);
