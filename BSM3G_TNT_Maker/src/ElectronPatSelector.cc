@@ -148,6 +148,7 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
     patElectron_mvaCategory_nonIso_.push_back(el->userInt("ElectronMVAEstimatorRun2Fall17NoIsoV2Categories"));
     patElectron_mvaValue_Iso_.push_back(el->userFloat("ElectronMVAEstimatorRun2Fall17IsoV2Values"));
     patElectron_mvaCategory_Iso_.push_back(el->userInt("ElectronMVAEstimatorRun2Fall17IsoV2Categories"));
+    /*
     if(_dataEra==2016){
         passVetoOldId_.push_back  ( el->electronID("cutBasedElectronID-Summer16-80X-V1-veto"));
         passLooseOldId_.push_back ( el->electronID("cutBasedElectronID-Summer16-80X-V1-loose"));
@@ -178,6 +179,7 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
         patElectron_OldmvaValue_Iso_.push_back(el->userFloat("ElectronMVAEstimatorRun2Fall17IsoV1Values"));
         patElectron_OldmvaCategory_Iso_.push_back(el->userInt("ElectronMVAEstimatorRun2Fall17IsoV1Categories"));
     }
+    */
     passMvaHZZwpLooseId_.push_back( el->electronID("mvaEleID-Spring16-HZZ-V1-wpLoose") );
     patElectron_mvaValue_HZZ_.push_back(el->userFloat("ElectronMVAEstimatorRun2Spring16HZZV1Values"));
     patElectron_mvaCategory_HZZ_.push_back(el->userInt("ElectronMVAEstimatorRun2Spring16HZZV1Categories"));
@@ -639,6 +641,7 @@ void ElectronPatSelector::SetBranches(){
   AddBranch(&patElectron_mvaCategory_nonIso_ ,"patElectron_mvaCategory_nonIso");
   AddBranch(&patElectron_mvaValue_Iso_    ,"patElectron_mvaValue_Iso");
   AddBranch(&patElectron_mvaCategory_Iso_ ,"patElectron_mvaCategory_Iso");
+  /*
   AddBranch(&passVetoOldId_              ,"patElectron_isPassOldVeto");          
   AddBranch(&passLooseOldId_             ,"patElectron_isPassOldLoose");
   AddBranch(&passMediumOldId_            ,"patElectron_isPassOldMedium");
@@ -653,6 +656,7 @@ void ElectronPatSelector::SetBranches(){
   AddBranch(&patElectron_OldmvaCategory_nonIso_ ,"patElectron_OldmvaCategory_nonIso");
   AddBranch(&patElectron_OldmvaValue_Iso_    ,"patElectron_OldmvaValue_Iso");
   AddBranch(&patElectron_OldmvaCategory_Iso_ ,"patElectron_OldmvaCategory_Iso");
+  */
   AddBranch(&passHEEPId_              ,"patElectron_isPassHEEPId");
   AddBranch(&patElectron_pdgId        ,"patElectron_pdgId");
   AddBranch(&patElectron_isEcalDriven ,"patElectron_isEcalDriven");
@@ -862,6 +866,7 @@ void ElectronPatSelector::Clear(){
   patElectron_mvaCategory_nonIso_.clear();
   patElectron_mvaValue_Iso_.clear();
   patElectron_mvaCategory_Iso_.clear();
+  /*
   passVetoOldId_.clear();
   passLooseOldId_.clear();
   passMediumOldId_.clear();
@@ -876,6 +881,7 @@ void ElectronPatSelector::Clear(){
   patElectron_OldmvaCategory_nonIso_.clear();
   patElectron_OldmvaValue_Iso_.clear();
   patElectron_OldmvaCategory_Iso_.clear();
+  */
   passHEEPId_.clear();
   patElectron_pdgId.clear();
   patElectron_isEcalDriven.clear();

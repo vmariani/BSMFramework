@@ -89,7 +89,7 @@ class BSM3G_TNT_Maker : public edm::EDAnalyzer {
   bool _fillMETinfo;
   bool _fillphotoninfo;
   // Config relates to nlep filter
-  bool _tthlepfilter;
+  int _lepfilter; // at leaset number of leptons
   double _Muon_pt_min;
   double _Muon_eta_max;
   double _patElectron_pt_min;

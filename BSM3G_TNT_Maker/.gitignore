@@ -1,3 +1,4 @@
 python/*.pyc
 python/*.root 
 python/Ntuple
+python/TNT

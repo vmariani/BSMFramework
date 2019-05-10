@@ -25,7 +25,7 @@ BSM3G_TNT_Maker::BSM3G_TNT_Maker(const edm::ParameterSet& iConfig):
   debug_                 = iConfig.getParameter<bool>("debug_");
   bjetnessselfilter      = iConfig.getParameter<bool>("bjetnessselfilter");
   _is_data               = iConfig.getParameter<bool>("is_data");
-  _tthlepfilter          = iConfig.getParameter<bool>("tthlepfilter");
+  _lepfilter          = iConfig.getParameter<int>("lepfilter");
   _ifevtriggers          = iConfig.getParameter<bool>("ifevtriggers"); 
   _evtriggers            = iConfig.getParameter<vector<string> >("evtriggers");
   _fillgeninfo           = iConfig.getParameter<bool>("fillgeninfo"); 
@@ -133,7 +133,7 @@ void BSM3G_TNT_Maker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
   }
   //Require at least two leptons on the event
   Bool_t pass_nlep = false;
-  if(_tthlepfilter){
+  if(_lepfilter > 0){
     Int_t n_lep = 0;
     for(edm::View<pat::Muon>::const_iterator mu = muon_h->begin(); mu != muon_h->end(); mu++){
         if(mu->pt() < _Muon_pt_min)         continue;
@@ -141,24 +141,25 @@ void BSM3G_TNT_Maker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
         if(mu->passed(reco::Muon::CutBasedIdLoose) <0.5) continue;
         n_lep++;
         //std::cout<< " EventNumber " << eventnum << " n_lep in mu " << n_lep << std::endl;
-        if(n_lep >=2){
+        if(n_lep >= _lepfilter ){
             pass_nlep = true;
             break;
         }
     }
     for(edm::View<pat::Electron>::const_iterator el = electron_pat->begin(); el != electron_pat->end(); el++){
+        if(pass_nlep) break;
         if(el->pt() < _patElectron_pt_min)         continue;
         if(fabs(el->eta()) > _patElectron_eta_max) continue;  
         n_lep++;
         //std::cout<< " EventNumber " << eventnum << " n_lep in ele " << n_lep << std::endl;
-        if(n_lep >=2){
+        if(n_lep >= _lepfilter ){
             pass_nlep = true;
             break;
         }
     }
   }
   //Call classes
-  if(((_ifevtriggers && evtriggered) || !_ifevtriggers) && ((_tthlepfilter && pass_nlep) || !_tthlepfilter)){
+  if(((_ifevtriggers && evtriggered) || !_ifevtriggers) && (pass_nlep || _lepfilter <= 0)){
     bjetnesssel_filter = 0;
     if(_fillBJetnessinfo)      BJetnessselector->Fill(iEvent, iSetup, bjetnesssel_filter);
     if((bjetnessselfilter && bjetnesssel_filter==1) || !bjetnessselfilter){

@@ -114,9 +114,15 @@ class TriggerSelector : public baseTree{
   int HLT_Mu8_TrkIsoVVL_Ele17_CaloIdL_TrackIdL_IsoVL;
   int HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL;
   int HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL;
+  int HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ;
   int HLT_TripleMu_10_5_5_DZ;
   int HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ;
   int HLT_DiMu9_Ele9_CaloIdL_TrackIdL; 
   int HLT_Ele27_eta2p1_WPLoose_Gsf;
+  // bstar
+  int HLT_Ele32_WPTight_Gsf_L1DoubleEG;
+  int HLT_Photon200;
+  int HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165;
+  int HLT_Ele27_WP85_Gsf;
 };
 #endif

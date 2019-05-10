@@ -137,8 +137,8 @@ class ElectronPatSelector : public  baseTree{
   //ID
   vector<int>  passVetoId_, passLooseId_, passMediumId_, passTightId_, passMvaIsowp80Id_, passMvanonIsowp80Id_, passMvaIsowp90Id_, passMvanonIsowp90Id_, passMvaIsowpLooseId_, passMvanonIsowpLooseId_;
   vector<float> patElectron_mvaValue_nonIso_, patElectron_mvaCategory_nonIso_, patElectron_mvaValue_Iso_, patElectron_mvaCategory_Iso_; 
-  vector<int>  passVetoOldId_, passLooseOldId_, passMediumOldId_, passTightOldId_, passMvaIsowp80OldId_, passMvanonIsowp80OldId_, passMvaIsowp90OldId_, passMvanonIsowp90OldId_, passMvaIsowpLooseOldId_, passMvanonIsowpLooseOldId_;
-  vector<float> patElectron_OldmvaValue_nonIso_, patElectron_OldmvaCategory_nonIso_, patElectron_OldmvaValue_Iso_, patElectron_OldmvaCategory_Iso_; 
+  //vector<int>  passVetoOldId_, passLooseOldId_, passMediumOldId_, passTightOldId_, passMvaIsowp80OldId_, passMvanonIsowp80OldId_, passMvaIsowp90OldId_, passMvanonIsowp90OldId_, passMvaIsowpLooseOldId_, passMvanonIsowpLooseOldId_;
+  //vector<float> patElectron_OldmvaValue_nonIso_, patElectron_OldmvaCategory_nonIso_, patElectron_OldmvaValue_Iso_, patElectron_OldmvaCategory_Iso_; 
   vector<int > passHEEPId_, patElectron_pdgId, patElectron_isEcalDriven, passMvaHZZwpLooseId_;
   vector<float> patElectron_mvaValue_HZZ_, patElectron_mvaCategory_HZZ_;
   //Isolation

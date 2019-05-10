@@ -143,8 +143,8 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
 ##   Output file
 #####
 process.TFileService = cms.Service("TFileService",
-  #fileName = cms.string("OutTree_2017.root")
-  fileName = cms.string("OutTree.root")
+  fileName = cms.string("OutTree_2017.root")
+  #fileName = cms.string("OutTree.root")
 )
 
 #####
@@ -188,11 +188,11 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   # Choose format 
   MiniAODv2 = cms.bool(True),
   is_data   = cms.bool(False),
-  tthlepfilter   = cms.bool(False),
+  lepfilter   = cms.int32(2), # at least #lepfilter lepton : muon: CutBaseLoose , Electron : pt/eta
   reHLT     = cms.bool(True),
   debug_    = cms.bool(False),
   super_TNT = cms.bool(False),
-  AJVar     = cms.bool(True),
+  AJVar     = cms.bool(False),
   tthlepVar = cms.bool(True),#FF
   bjetnessselfilter = cms.bool(False),
   PuppiVar  = cms.bool(False),
@@ -306,7 +306,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   Tau_pt_min          = cms.double(15.),
   Tau_eta_max         = cms.double(50.),
   # Jet cuts
-  Jet_pt_min = cms.double(10.),
+  Jet_pt_min = cms.double(15.),
   # Photon cuts 
   Photon_pt_min   = cms.double(5.0),
   Photon_eta_max  = cms.double(5.0),
