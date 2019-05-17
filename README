@@ -49,6 +49,12 @@ git checkout CMSSW_10_2_10
 cd ..
 scram b -j 8
 
+## add most updated 2018 electron scale&smear #####
+## the official maintained RecoEgammaTool.py is not updated, so I do it manually for the moment
+## v2 files are taken from https://github.com/cms-data/EgammaAnalysis-ElectronTools/tree/master/ScalesSmearings
+cp BSMFramework/BSM3G_TNT_Maker/data/Egamma/*.dat EgammaAnalysis/ElectronTools/data/ScalesSmearings/
+cp BSMFramework/BSM3G_TNT_Maker/data/Egamma/EgammaPostRecoTools.py RecoEgamma/EgammaTools/python/
+
 ## To Run ##
 # MC for three years are running without any problems
 # Data for three years are running
