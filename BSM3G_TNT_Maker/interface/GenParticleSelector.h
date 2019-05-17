@@ -129,6 +129,7 @@ class GenParticleSelector : public baseTree{
   //Origin
   vector<double> Gen_status, Gen_pdg_id, Gen_motherpdg_id, Gen_numDaught, Gen_numMother;
   vector<int>    Gen_BmotherIndex, Gen_BmotherIndices, Gen_BdaughtIndices;
+  vector<int>   Gen_isPromptFinalState, Gen_isDirectPromptTauDecayProductFinalState;
   /////
   //   TTHLep
   /////

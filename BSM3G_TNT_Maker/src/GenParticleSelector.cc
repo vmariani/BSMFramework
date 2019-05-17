@@ -23,7 +23,7 @@ void GenParticleSelector::Fill(const edm::Event& iEvent){
   //   Get gen information
   /////
   for(size_t i=0; i<pruned->size(); i++){
-    const Candidate * genparticles = &(*pruned)[i];
+    const reco::GenParticle * genparticles = &(*pruned)[i];
     //Kinematics
     Gen_pt.push_back(genparticles->pt());
     Gen_eta.push_back(genparticles->eta()); 
@@ -42,6 +42,8 @@ void GenParticleSelector::Fill(const edm::Event& iEvent){
     Gen_motherpdg_id.push_back(genparticles->numberOfMothers() > 0 ? genparticles->mother(0)->pdgId() : -999999);
     Gen_numDaught.push_back(genparticles->numberOfDaughters());
     Gen_numMother.push_back(genparticles->numberOfMothers());
+    Gen_isPromptFinalState.push_back(genparticles->isPromptFinalState());
+    Gen_isDirectPromptTauDecayProductFinalState.push_back(genparticles->isDirectPromptTauDecayProductFinalState());
     int idx = -1;
     for(size_t k = 0; k < pruned->size(); k++){
       const Candidate * mit = &(*pruned)[k];
@@ -159,6 +161,8 @@ void GenParticleSelector::SetBranches(){
   AddBranch(&Gen_BmotherIndex     ,"Gen_BmotherIndex");
   AddBranch(&Gen_BmotherIndices   ,"Gen_BmotherIndices");
   AddBranch(&Gen_BdaughtIndices   ,"Gen_BdaughtIndices");
+  AddBranch(&Gen_isPromptFinalState           ,"Gen_isPromptFinalState");
+  AddBranch(&Gen_isDirectPromptTauDecayProductFinalState           ,"Gen_isDirectPromptTauDecayProductFinalState");
   //TTHLep
   if(_tthlepVar){
     AddBranch(&HiggsDecay           ,"HiggsDecay");
@@ -187,6 +191,8 @@ void GenParticleSelector::Clear(){
   Gen_BmotherIndex.clear();
   Gen_BmotherIndices.clear();
   Gen_BdaughtIndices.clear();
+  Gen_isPromptFinalState.clear();
+  Gen_isDirectPromptTauDecayProductFinalState.clear();
   //TTHLep
   if(_tthlepVar){
     HiggsDecay = -9999;
