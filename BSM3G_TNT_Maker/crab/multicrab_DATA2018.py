@@ -144,9 +144,9 @@ goodRunsLists = [
 '/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/JSON/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt',
 ]
 
-#for d in range(0,len(datasetnames)):
+for d in range(0,len(datasetnames)):
 #for d in range(10,len(datasetnames)):
-for d in range(0,4):
+#for d in range(0,4):
 #for d in [4,9,14,19,24]:
     print 'multicrab.py: Running datasetname: ', datasetnames[d]
     JECFiles = []
