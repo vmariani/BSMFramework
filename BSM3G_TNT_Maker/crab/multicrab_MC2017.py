@@ -245,7 +245,7 @@ for d in range(0,1):
     lepFilt = 2
     if datasetnames[d] in tWLists:
         lepFilt = 1
-        print 'multicrab_MC2018.py: Run ', datasetnames[d], ' lepFilt 1 '
+        print 'multicrab_MC2017.py: Run ', datasetnames[d], ' lepFilt 1 '
     
     nameLepFilt = 'optionlepfilt={}'.format(lepFilt) 
     

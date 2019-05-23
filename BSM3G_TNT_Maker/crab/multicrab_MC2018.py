@@ -194,8 +194,17 @@ if __name__ == '__main__':
 
 # samples also used in tW or bstar
 # minimum lepton are set to 1 instead of 2 
-tWLists = ['Legacy18V1_ST_sCh_lepDecay', 'Legacy18V1_ST_tCh_top', 'Legacy18V1_ST_tCh_antitop', 'Legacy18V1_ST_tW_top', 'Legacy18V1_ST_tW_antitop', 'Legacy18V1_TTTo2L', 'Legacy18V1_TTToSemiLep', 'Legacy18V1_TTToHad', 'Legacy18V1_W1JetsToLNu', 'Legacy18V1_W2JetsToLNu', 'Legacy18V1_W3JetsToLNu', 'Legacy18V1_W4JetsToLNu', 'Legacy18V1_DYJets_M10to50', 'Legacy18V1_DYJets_M50_v1', 'Legacy18V1_DYJets_M50_ext', 'Legacy18V1_ST_tW_top_noFullDecay', 'Legacy18V1_ST_tW_antitop_noFullDecay', 'Legacy18V1_WZ', 'Legacy18V1_WW', 'Legacy18V1_ZZ', 'Legacy18V1_QCD_HT50to100', 'Legacy18V1_QCD_HT100to200', 'Legacy18V1_QCD_HT200to300', 'Legacy18V1_QCD_HT300to500', 'Legacy18V1_QCD_HT500to700', 'Legacy18V1_QCD_HT700to1000', 'Legacy18V1_QCD_HT1000to1500', 'Legacy18V1_QCD_HT1500to2000',
-'Legacy18V1_QCD_HT2000toInf']
+tWLists = [
+# shared samples
+# ST
+'Legacy18V1_ST_sCh_lepDecay', 'Legacy18V1_ST_tCh_top', 'Legacy18V1_ST_tCh_antitop', 'Legacy18V1_ST_tW_top', 'Legacy18V1_ST_tW_antitop', 
+# TT
+'Legacy18V1_TTTo2L', 'Legacy18V1_TTToSemiLep', 'Legacy18V1_TTToHad', 'Legacy18V1_TTJets_mad', 'Legacy18V1_TTJets_amc', 'Legacy18V1_TTJets_TbarToSingleLep', 'Legacy18V1_TTJets_TToSingleLep', 'Legacy18V1_TTJets_DiLep',
+# WJets + DY
+'Legacy18V1_WJets','Legacy18V1_W1JetsToLNu', 'Legacy18V1_W2JetsToLNu', 'Legacy18V1_W3JetsToLNu', 'Legacy18V1_W4JetsToLNu', 'Legacy18V1_DYJets_M10to50', 'Legacy18V1_DYJets_M50_v1', 'Legacy18V1_DYJets_M50_ext', 
+# non ttH samples
+'Legacy18V1_ST_tW_top_noFullDecay', 'Legacy18V1_ST_tW_antitop_noFullDecay', 'Legacy18V1_WZ', 'Legacy18V1_WW', 'Legacy18V1_ZZ', 'Legacy18V1_QCD_HT50to100', 'Legacy18V1_QCD_HT100to200', 'Legacy18V1_QCD_HT200to300', 'Legacy18V1_QCD_HT300to500', 'Legacy18V1_QCD_HT500to700', 'Legacy18V1_QCD_HT700to1000', 'Legacy18V1_QCD_HT1000to1500', 'Legacy18V1_QCD_HT1500to2000','Legacy18V1_QCD_HT2000toInf'
+]
 
 #for d in range(36,len(datasetnames)):
 for d in range(58,61):
