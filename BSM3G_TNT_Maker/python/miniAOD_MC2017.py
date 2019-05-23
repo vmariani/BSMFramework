@@ -1,4 +1,24 @@
 import FWCore.ParameterSet.Config as cms
+import FWCore.ParameterSet.VarParsing as VarParsing
+import copy
+from PhysicsTools.PatAlgos.patEventContent_cff import patEventContent
+options = VarParsing.VarParsing('analysis')
+# ===== Register new variables =====
+options.register('optionlepfilt',
+2,
+VarParsing.VarParsing.multiplicity.singleton,
+VarParsing.VarParsing.varType.int,
+"Minimum number of leptons")
+
+options.register('ofName',
+'sentinel_output_name',
+VarParsing.VarParsing.multiplicity.singleton,
+VarParsing.VarParsing.varType.string,
+"Name for output file."
+)
+# ===== Get & parse any command line arguments =====
+options.parseArguments()
+
 #####
 ##   Initial standard configs
 #####
@@ -188,7 +208,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   # Choose format 
   MiniAODv2 = cms.bool(True),
   is_data   = cms.bool(False),
-  lepfilter   = cms.int32(2), # at least #lepfilter lepton : muon: CutBaseLoose , Electron : pt/eta
+  lepfilter   = cms.int32(options.optionlepfilt), # at least #lepfilter lepton : muon: CutBaseLoose , Electron : pt/eta
   reHLT     = cms.bool(True),
   debug_    = cms.bool(False),
   super_TNT = cms.bool(False),

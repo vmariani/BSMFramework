@@ -192,10 +192,23 @@ if __name__ == '__main__':
 '/QCD_HT2000toInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
                 ]
 
+# samples also used in tW or bstar
+# minimum lepton are set to 1 instead of 2 
+tWLists = ['Legacy18V1_ST_sCh_lepDecay', 'Legacy18V1_ST_tCh_top', 'Legacy18V1_ST_tCh_antitop', 'Legacy18V1_ST_tW_top', 'Legacy18V1_ST_tW_antitop', 'Legacy18V1_TTTo2L', 'Legacy18V1_TTToSemiLep', 'Legacy18V1_TTToHad', 'Legacy18V1_W1JetsToLNu', 'Legacy18V1_W2JetsToLNu', 'Legacy18V1_W3JetsToLNu', 'Legacy18V1_W4JetsToLNu', 'Legacy18V1_DYJets_M10to50', 'Legacy18V1_DYJets_M50_v1', 'Legacy18V1_DYJets_M50_ext', 'Legacy18V1_ST_tW_top_noFullDecay', 'Legacy18V1_ST_tW_antitop_noFullDecay', 'Legacy18V1_WZ', 'Legacy18V1_WW', 'Legacy18V1_ZZ', 'Legacy18V1_QCD_HT50to100', 'Legacy18V1_QCD_HT100to200', 'Legacy18V1_QCD_HT200to300', 'Legacy18V1_QCD_HT300to500', 'Legacy18V1_QCD_HT500to700', 'Legacy18V1_QCD_HT700to1000', 'Legacy18V1_QCD_HT1000to1500', 'Legacy18V1_QCD_HT1500to2000',
+'Legacy18V1_QCD_HT2000toInf']
+
 #for d in range(36,len(datasetnames)):
-for d in range(0,1):
+for d in range(58,61):
     print 'multicrab.py: Running datasetname: ', datasetnames[d]
 
+    
+    lepFilt = 2
+    if datasetnames[d] in tWLists:
+        lepFilt = 1
+        print 'multicrab_MC2018.py: Run ', datasetnames[d], ' lepFilt 1 '
+    
+    nameLepFilt = 'optionlepfilt={}'.format(lepFilt) 
+    
     config.section_('General')
     config.General.requestName = datasetnames[d]
     config.General.workArea    = datasetnames[d]
@@ -210,7 +223,8 @@ for d in range(0,1):
     config.JobType.maxMemoryMB = 2000 # Default == 2Gb : maximum guaranteed to run on all sites
     #config.JobType.allowUndistributedCMSSW = True
     ofParam = 'ofName=' + datasetnames[d]
-    config.JobType.pyCfgParams = [ofParam]
+    config.JobType.pyCfgParams = [nameLepFilt,
+                                    ofParam]
     config.section_('Data')
     config.Data.allowNonValidInputDataset = True
     config.Data.inputDataset   = datasetinputs[d]
