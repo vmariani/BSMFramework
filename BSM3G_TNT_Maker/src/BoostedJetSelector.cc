@@ -5,7 +5,7 @@ BoostedJetSelector::BoostedJetSelector(std::string name, TTree* tree, bool debug
   vtx_h_        = ic.consumes<reco::VertexCollection>(iConfig.getParameter<edm::InputTag>("vertices"));
   fatjets_      = ic.consumes<pat::JetCollection >(iConfig.getParameter<edm::InputTag>("fatjets"));
   rhopogHandle_ = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetAll"));
-  rhoJERHandle_ = ic.consumes<double>(edm::InputTag("fixedGridRhoAll"));
+  //rhoJERHandle_ = ic.consumes<double>(edm::InputTag("fixedGridRhoAll"));
   jecPayloadNamesAK8PFchsMC1_   = iConfig.getParameter<edm::FileInPath>("jecPayloadNamesAK8PFchsMC1");
   jecPayloadNamesAK8PFchsMC2_   = iConfig.getParameter<edm::FileInPath>("jecPayloadNamesAK8PFchsMC2");
   jecPayloadNamesAK8PFchsMC3_   = iConfig.getParameter<edm::FileInPath>("jecPayloadNamesAK8PFchsMC3");
@@ -44,9 +44,11 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
   edm::Handle<double> rhoHandle;
   iEvent.getByToken(rhopogHandle_,rhoHandle);
   double rho = *rhoHandle;
-  edm::Handle<double> rhoJERHandle;
-  iEvent.getByToken(rhoJERHandle_,rhoJERHandle);
-  double rhoJER = *rhoJERHandle;
+  
+  //edm::Handle<double> rhoJERHandle;
+  //iEvent.getByToken(rhoJERHandle_,rhoJERHandle);
+  //double rhoJER = *rhoJERHandle;
+  
   /////
   //   Get fatjet information
   /////  
@@ -134,7 +136,7 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
     float JERScaleFactor     = 1; 
     float JERScaleFactorUP   = 1;
     float JERScaleFactorDOWN = 1;
-    if(!_is_data) GetJER(j, corrAK8PFchs, rhoJER, true, JERScaleFactor, JERScaleFactorUP, JERScaleFactorDOWN);
+    if(!_is_data) GetJER(j, corrAK8PFchs, rho, true, JERScaleFactor, JERScaleFactorUP, JERScaleFactorDOWN);
     BoostedJet_JerSF.push_back(JERScaleFactor);
     BoostedJet_JerSFup.push_back(JERScaleFactorUP);
     BoostedJet_JerSFdown.push_back(JERScaleFactorDOWN);
