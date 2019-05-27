@@ -104,6 +104,38 @@ if __name__ == '__main__':
 'Legacy18V1_QCD_HT1000to1500',
 'Legacy18V1_QCD_HT1500to2000',
 'Legacy18V1_QCD_HT2000toInf',
+# bstar
+'Legacy18V1_Bstar_M-700_RH', #70
+'Legacy18V1_Bstar_M-700_LH',
+'Legacy18V1_Bstar_M-800_RH',
+'Legacy18V1_Bstar_M-800_LH',
+'Legacy18V1_Bstar_M-900_RH',
+'Legacy18V1_Bstar_M-900_LH',
+'Legacy18V1_Bstar_M-1000_RH',
+'Legacy18V1_Bstar_M-1000_LH',
+'Legacy18V1_Bstar_M-1100_RH',
+'Legacy18V1_Bstar_M-1100_LH',
+'Legacy18V1_Bstar_M-1200_RH', #80
+'Legacy18V1_Bstar_M-1200_LH',
+'Legacy18V1_Bstar_M-1400_RH',
+'Legacy18V1_Bstar_M-1400_LH',
+'Legacy18V1_Bstar_M-1600_RH',
+'Legacy18V1_Bstar_M-1600_LH',
+'Legacy18V1_Bstar_M-1800_RH',
+'Legacy18V1_Bstar_M-1800_LH',
+'Legacy18V1_Bstar_M-2000_RH',
+'Legacy18V1_Bstar_M-2000_LH',
+'Legacy18V1_Bstar_M-2200_RH',#90
+'Legacy18V1_Bstar_M-2200_LH',
+'Legacy18V1_Bstar_M-2400_RH',
+'Legacy18V1_Bstar_M-2400_LH',
+'Legacy18V1_Bstar_M-2600_RH',
+'Legacy18V1_Bstar_M-2600_LH',
+'Legacy18V1_Bstar_M-2800_RH',
+'Legacy18V1_Bstar_M-2800_LH',
+'Legacy18V1_Bstar_M-3000_RH',
+'Legacy18V1_Bstar_M-3000_LH',
+
                  ]
  datasetinputs = [
 # signal
@@ -190,6 +222,37 @@ if __name__ == '__main__':
 '/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
 '/QCD_HT1500to2000_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
 '/QCD_HT2000toInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+# bstar
+'/BstarToTW_M-700_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', #70
+'/BstarToTW_M-700_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-800_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-800_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-900_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-900_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1000_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1000_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1100_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1100_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1200_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', #80
+'/BstarToTW_M-1200_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1400_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1600_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1600_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1800_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-1800_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-2000_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-2000_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-2200_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',#90
+'/BstarToTW_M-2200_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-2400_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-2400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-2600_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-2600_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-2800_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-2800_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-3000_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/BstarToTW_M-3000_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
                 ]
 
 # samples also used in tW or bstar
@@ -203,7 +266,12 @@ tWLists = [
 # WJets + DY
 'Legacy18V1_WJets','Legacy18V1_W1JetsToLNu', 'Legacy18V1_W2JetsToLNu', 'Legacy18V1_W3JetsToLNu', 'Legacy18V1_W4JetsToLNu', 'Legacy18V1_DYJets_M10to50', 'Legacy18V1_DYJets_M50_v1', 'Legacy18V1_DYJets_M50_ext', 
 # non ttH samples
-'Legacy18V1_ST_tW_top_noFullDecay', 'Legacy18V1_ST_tW_antitop_noFullDecay', 'Legacy18V1_WZ', 'Legacy18V1_WW', 'Legacy18V1_ZZ', 'Legacy18V1_QCD_HT50to100', 'Legacy18V1_QCD_HT100to200', 'Legacy18V1_QCD_HT200to300', 'Legacy18V1_QCD_HT300to500', 'Legacy18V1_QCD_HT500to700', 'Legacy18V1_QCD_HT700to1000', 'Legacy18V1_QCD_HT1000to1500', 'Legacy18V1_QCD_HT1500to2000','Legacy18V1_QCD_HT2000toInf'
+'Legacy18V1_ST_tW_top_noFullDecay', 'Legacy18V1_ST_tW_antitop_noFullDecay', 'Legacy18V1_WZ', 'Legacy18V1_WW', 'Legacy18V1_ZZ', 'Legacy18V1_QCD_HT50to100', 'Legacy18V1_QCD_HT100to200', 'Legacy18V1_QCD_HT200to300', 'Legacy18V1_QCD_HT300to500', 'Legacy18V1_QCD_HT500to700', 'Legacy18V1_QCD_HT700to1000', 'Legacy18V1_QCD_HT1000to1500', 'Legacy18V1_QCD_HT1500to2000','Legacy18V1_QCD_HT2000toInf',
+# bstar
+'Legacy18V1_Bstar_M-700_RH', 'Legacy18V1_Bstar_M-700_LH', 'Legacy18V1_Bstar_M-800_RH', 'Legacy18V1_Bstar_M-800_LH', 'Legacy18V1_Bstar_M-900_RH', 'Legacy18V1_Bstar_M-900_LH', 'Legacy18V1_Bstar_M-1000_RH', 'Legacy18V1_Bstar_M-1000_LH', 'Legacy18V1_Bstar_M-1100_RH', 'Legacy18V1_Bstar_M-1100_LH',
+'Legacy18V1_Bstar_M-1200_RH', 'Legacy18V1_Bstar_M-1200_LH', 'Legacy18V1_Bstar_M-1400_RH', 'Legacy18V1_Bstar_M-1400_LH', 'Legacy18V1_Bstar_M-1600_RH', 'Legacy18V1_Bstar_M-1600_LH', 'Legacy18V1_Bstar_M-1800_RH', 'Legacy18V1_Bstar_M-1800_LH', 'Legacy18V1_Bstar_M-2000_RH', 'Legacy18V1_Bstar_M-2000_LH',
+'Legacy18V1_Bstar_M-2200_RH', 'Legacy18V1_Bstar_M-2200_LH', 'Legacy18V1_Bstar_M-2400_RH', 'Legacy18V1_Bstar_M-2400_LH', 'Legacy18V1_Bstar_M-2600_RH', 'Legacy18V1_Bstar_M-2600_LH', 'Legacy18V1_Bstar_M-2800_RH', 'Legacy18V1_Bstar_M-2800_LH', 'Legacy18V1_Bstar_M-3000_RH', 'Legacy18V1_Bstar_M-3000_LH',
+
 ]
 
 #for d in range(36,len(datasetnames)):

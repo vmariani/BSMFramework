@@ -94,21 +94,34 @@ if __name__ == '__main__':
 'Legacy16V1_TTJets_TToSingleLep_ext',
 'Legacy16V1_TTJets_TbarToSingleLep_v1', 
 'Legacy16V1_TTJets_TbarToSingleLep_ext', #60
-####### bstar and tW ###### FIXME
-'Legacy16V1_ST_tW_top_noFullDecay',
-'Legacy16V1_ST_tW_antitop_noFullDecay',
-'Legacy16V1_WZ',
-'Legacy16V1_WW',
-'Legacy16V1_ZZ', 
+####### bstar and tW ###### 
+'Legacy16V1_ST_tW_top_noFullDecay_v1',
+'Legacy16V1_ST_tW_top_noFullDecay_ext',
+'Legacy16V1_ST_tW_antitop_noFullDecay_v1',
+'Legacy16V1_ST_tW_antitop_noFullDecay_ext',
+'Legacy16V1_WZ_v1',
+'Legacy16V1_WZ_ext',
+'Legacy16V1_WW_v1',
+'Legacy16V1_WW_ext',
+'Legacy16V1_ZZ_v1',
+'Legacy16V1_ZZ_ext', #70 
 'Legacy16V1_QCD_HT50to100',
 'Legacy16V1_QCD_HT100to200',
-'Legacy16V1_QCD_HT200to300',
-'Legacy16V1_QCD_HT300to500', 
-'Legacy16V1_QCD_HT500to700', #70 
-'Legacy16V1_QCD_HT700to1000', 
-'Legacy16V1_QCD_HT1000to1500',
-'Legacy16V1_QCD_HT1500to2000',
-'Legacy16V1_QCD_HT2000toInf',
+'Legacy16V1_QCD_HT200to300_v1',
+'Legacy16V1_QCD_HT200to300_ext',
+'Legacy16V1_QCD_HT300to500_v1', 
+'Legacy16V1_QCD_HT300to500_ext', 
+'Legacy16V1_QCD_HT500to700_v1', 
+'Legacy16V1_QCD_HT500to700_ext', 
+'Legacy16V1_QCD_HT700to1000_v1', 
+'Legacy16V1_QCD_HT700to1000_ext', #80
+'Legacy16V1_QCD_HT1000to1500_v1',
+'Legacy16V1_QCD_HT1000to1500_ext',
+'Legacy16V1_QCD_HT1500to2000_v1',
+'Legacy16V1_QCD_HT1500to2000_ext',
+'Legacy16V1_QCD_HT2000toInf_v1',
+'Legacy16V1_QCD_HT2000toInf_ext',
+'Legacy16V1_WJetsToQQ_HT600toInf',
                  ]
  datasetinputs = [
 # signal
@@ -184,21 +197,34 @@ if __name__ == '__main__':
 '/TTJets_SingleLeptFromT_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
 '/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
 '/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM', #60
-####### bstar and tW ###### FIXME
-'/ST_tW_top_5f_NoFullyHadronicDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/ST_tW_antitop_5f_NoFullyHadronicDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v3/MINIAODSIM',
-'/WZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v3/MINIAODSIM',
-'/WW_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-'/ZZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM', 
-'/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT100to200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', 
-'/QCD_HT300to500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', 
-'/QCD_HT500to700_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', #70
-'/QCD_HT700to1000_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT1500to2000_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT2000toInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+####### bstar and tW ###### 
+'/ST_tW_top_5f_NoFullyHadronicDecays_13TeV-powheg_TuneCUETP8M1/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+'/ST_tW_top_5f_NoFullyHadronicDecays_13TeV-powheg_TuneCUETP8M1/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/ST_tW_antitop_5f_NoFullyHadronicDecays_13TeV-powheg_TuneCUETP8M1/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+'/ST_tW_antitop_5f_NoFullyHadronicDecays_13TeV-powheg_TuneCUETP8M1/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/WZ_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/WZ_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/WW_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/WW_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/ZZ_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/ZZ_TuneCUETP8M1_13TeV-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM', #70
+'/QCD_HT50to100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/QCD_HT100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+'/QCD_HT200to300_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/QCD_HT200to300_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/QCD_HT300to500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/QCD_HT300to500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/QCD_HT500to700_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/QCD_HT500to700_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/QCD_HT700to1000_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/QCD_HT700to1000_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM', #80
+'/QCD_HT1000to1500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/QCD_HT1000to1500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/QCD_HT1500to2000_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/QCD_HT1500to2000_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/QCD_HT2000toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+'/QCD_HT2000toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+'/WJetsToQQ_HT-600ToInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
                 ]
 
 # samples also used in tW or bstar
@@ -212,7 +238,10 @@ tWLists = [
 # WJets + DY
 'Legacy16V1_DYJets_M10to50', 'Legacy16V1_DYJets_M50', 'Legacy16V1_WJets_v1', 'Legacy16V1_WJets_ext',
 # non ttH samples
-'Legacy16V1_ST_tW_top_noFullDecay', 'Legacy16V1_ST_tW_antitop_noFullDecay', 'Legacy16V1_WZ', 'Legacy16V1_WW', 'Legacy16V1_ZZ', 'Legacy16V1_QCD_HT50to100', 'Legacy16V1_QCD_HT100to200', 'Legacy16V1_QCD_HT200to300', 'Legacy16V1_QCD_HT300to500', 'Legacy16V1_QCD_HT500to700', 'Legacy16V1_QCD_HT700to1000', 'Legacy16V1_QCD_HT1000to1500', 'Legacy16V1_QCD_HT1500to2000', 'Legacy16V1_QCD_HT2000toInf',
+'Legacy16V1_ST_tW_top_noFullDecay_v1', 'Legacy16V1_ST_tW_top_noFullDecay_ext', 'Legacy16V1_ST_tW_antitop_noFullDecay_v1', 'Legacy16V1_ST_tW_antitop_noFullDecay_ext', 'Legacy16V1_WZ_v1', 'Legacy16V1_WZ_ext', 'Legacy16V1_WW_v1', 'Legacy16V1_WW_ext', 'Legacy16V1_ZZ_v1', 'Legacy16V1_ZZ_ext', 
+'Legacy16V1_QCD_HT50to100', 'Legacy16V1_QCD_HT100to200', 'Legacy16V1_QCD_HT200to300_v1', 'Legacy16V1_QCD_HT200to300_ext', 'Legacy16V1_QCD_HT300to500_v1', 'Legacy16V1_QCD_HT300to500_ext', 'Legacy16V1_QCD_HT500to700_v1', 'Legacy16V1_QCD_HT500to700_ext', 'Legacy16V1_QCD_HT700to1000_v1', 'Legacy16V1_QCD_HT700to1000_ext', 
+'Legacy16V1_QCD_HT1000to1500_v1', 'Legacy16V1_QCD_HT1000to1500_ext', 'Legacy16V1_QCD_HT1500to2000_v1', 'Legacy16V1_QCD_HT1500to2000_ext', 'Legacy16V1_QCD_HT2000toInf_v1','Legacy16V1_QCD_HT2000toInf_ext',
+'Legacy16V1_WJetsToQQ_HT600toInf',
 ]
 
 #for d in range(36,len(datasetnames)):

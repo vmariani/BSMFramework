@@ -95,32 +95,64 @@ if __name__ == '__main__':
 'Legacy17V1_VBFHToTauTau', 
 # VH
 'Legacy17V1_VHToNonbb', 
-'Legacy17V1_ZHTobb_v2',
-'Legacy17V1_ZHTobb_ext',
+'Legacy17V1_ZHTobb',
 'Legacy17V1_ZHToTauTau',
 #####   MVA samples #######
 'Legacy17V1_ttZ_v1', 
 'Legacy17V1_ttZ_ext', 
 'Legacy17V1_ttW_v1',
 'Legacy17V1_ttW_ext',
-'Legacy17V1_TTJets_DiLep', #70
-'Legacy17V1_TTJets_TToSingleLep',
+'Legacy17V1_TTJets_DiLep', 
+'Legacy17V1_TTJets_TToSingleLep', #70
 'Legacy17V1_TTJets_TbarToSingleLep',
-####### bstar and tW ###### FIXME
+####### bstar and tW ###### 
 'Legacy17V1_ST_tW_top_noFullDecay',
 'Legacy17V1_ST_tW_antitop_noFullDecay',
 'Legacy17V1_WZ',
 'Legacy17V1_WW',
 'Legacy17V1_ZZ', 
 'Legacy17V1_QCD_HT50to100',
-'Legacy17V1_QCD_HT100to200',
-'Legacy17V1_QCD_HT200to300',
-'Legacy17V1_QCD_HT300to500', #80
+'Legacy17V1_QCD_HT100to200_v1',
+'Legacy17V1_QCD_HT100to200_ext', 
+'Legacy17V1_QCD_HT200to300', #80
+'Legacy17V1_QCD_HT300to500', 
 'Legacy17V1_QCD_HT500to700', 
 'Legacy17V1_QCD_HT700to1000', 
 'Legacy17V1_QCD_HT1000to1500',
 'Legacy17V1_QCD_HT1500to2000',
 'Legacy17V1_QCD_HT2000toInf',
+# bstar
+'Legacy17V1_Bstar_M-700_RH', 
+'Legacy17V1_Bstar_M-700_LH',
+'Legacy17V1_Bstar_M-800_RH', 
+'Legacy17V1_Bstar_M-800_LH',#90
+'Legacy17V1_Bstar_M-900_RH',
+'Legacy17V1_Bstar_M-900_LH',
+'Legacy17V1_Bstar_M-1000_RH',
+'Legacy17V1_Bstar_M-1000_LH',
+'Legacy17V1_Bstar_M-1100_RH',
+'Legacy17V1_Bstar_M-1100_LH',
+'Legacy17V1_Bstar_M-1200_RH', 
+'Legacy17V1_Bstar_M-1200_LH',
+'Legacy17V1_Bstar_M-1400_RH', 
+'Legacy17V1_Bstar_M-1400_LH',#100
+'Legacy17V1_Bstar_M-1600_RH',
+'Legacy17V1_Bstar_M-1600_LH',
+'Legacy17V1_Bstar_M-1800_RH',
+'Legacy17V1_Bstar_M-1800_LH',
+'Legacy17V1_Bstar_M-2000_RH',
+'Legacy17V1_Bstar_M-2000_LH',
+'Legacy17V1_Bstar_M-2200_RH',
+'Legacy17V1_Bstar_M-2200_LH',
+'Legacy17V1_Bstar_M-2400_RH', 
+'Legacy17V1_Bstar_M-2400_LH',#110
+'Legacy17V1_Bstar_M-2600_RH',
+'Legacy17V1_Bstar_M-2600_LH',
+'Legacy17V1_Bstar_M-2800_RH',
+'Legacy17V1_Bstar_M-2800_LH',
+'Legacy17V1_Bstar_M-3000_RH',
+'Legacy17V1_Bstar_M-3000_LH',
+'Legacy17V1_WJetsToQQ_HT600to800',
                  ]
  datasetinputs = [
 # signal
@@ -207,21 +239,54 @@ if __name__ == '__main__':
 '/TTJets_DiLept_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM', 
 '/TTJets_SingleLeptFromT_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM', #70
 '/TTJets_SingleLeptFromTbar_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
-####### bstar and tW ###### FIXME
-'/ST_tW_top_5f_NoFullyHadronicDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/ST_tW_antitop_5f_NoFullyHadronicDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v3/MINIAODSIM',
-'/WZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v3/MINIAODSIM',
-'/WW_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-'/ZZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM', 
-'/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT100to200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', 
-'/QCD_HT300to500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM', #80
-'/QCD_HT500to700_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT700to1000_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT1500to2000_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/QCD_HT2000toInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+####### bstar and tW ###### 
+'/ST_tW_top_5f_NoFullyHadronicDecays_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/ST_tW_antitop_5f_NoFullyHadronicDecays_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/WZ_TuneCP5_13TeV-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/WW_TuneCP5_13TeV-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM',
+'/ZZ_TuneCP5_13TeV-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM',
+'/QCD_HT50to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/QCD_HT100to200_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM',
+'/QCD_HT100to200_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/MINIAODSIM',
+'/QCD_HT200to300_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM', #80
+'/QCD_HT300to500_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/QCD_HT500to700_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM',
+'/QCD_HT700to1000_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/MINIAODSIM',
+'/QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/QCD_HT1500to2000_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM',
+'/QCD_HT2000toInf_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM',
+# bstar
+'/BstarToTW_M-700_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-700_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-800_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-800_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM', #90
+'/BstarToTW_M-900_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-900_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1000_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1000_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1100_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1100_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1200_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1200_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1400_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM', #100
+'/BstarToTW_M-1600_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1600_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1800_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-1800_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-2000_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-2000_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-2200_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-2200_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-2400_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-2400_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM', #110
+'/BstarToTW_M-2600_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-2600_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-2800_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-2800_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-3000_RH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/BstarToTW_M-3000_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/WJetsToQQ_HT600to800_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
                 ]
 
 # samples also used in tW or bstar
@@ -236,6 +301,11 @@ tWLists = [
 'Legacy17V1_W1JetsToLNu', 'Legacy17V1_W2JetsToLNu', 'Legacy17V1_W3JetsToLNu', 'Legacy17V1_W4JetsToLNu', 'Legacy17V1_DYJets_M10to50_v1', 'Legacy17V1_DYJets_M10to50_ext', 'Legacy17V1_DYJets_M50_v1', 'Legacy17V1_DYJets_M50_ext', 'Legacy17V1_WJets_v1', 'Legacy17V1_WJets_ext',
 # non ttH samples
 'Legacy17V1_ST_tW_top_noFullDecay', 'Legacy17V1_ST_tW_antitop_noFullDecay', 'Legacy17V1_WZ', 'Legacy17V1_WW', 'Legacy17V1_ZZ', 'Legacy17V1_QCD_HT50to100', 'Legacy17V1_QCD_HT100to200', 'Legacy17V1_QCD_HT200to300', 'Legacy17V1_QCD_HT300to500', 'Legacy17V1_QCD_HT500to700', 'Legacy17V1_QCD_HT700to1000', 'Legacy17V1_QCD_HT1000to1500', 'Legacy17V1_QCD_HT1500to2000', 'Legacy17V1_QCD_HT2000toInf',
+# bstar
+'Legacy17V1_Bstar_M-700_RH', 'Legacy17V1_Bstar_M-700_LH', 'Legacy17V1_Bstar_M-800_RH', 'Legacy17V1_Bstar_M-800_LH', 'Legacy17V1_Bstar_M-900_RH', 'Legacy17V1_Bstar_M-900_LH', 'Legacy17V1_Bstar_M-1000_RH', 'Legacy17V1_Bstar_M-1000_LH', 'Legacy17V1_Bstar_M-1100_RH', 'Legacy17V1_Bstar_M-1100_LH',
+'Legacy17V1_Bstar_M-1200_RH', 'Legacy17V1_Bstar_M-1200_LH', 'Legacy17V1_Bstar_M-1400_RH', 'Legacy17V1_Bstar_M-1400_LH', 'Legacy17V1_Bstar_M-1600_RH', 'Legacy17V1_Bstar_M-1600_LH', 'Legacy17V1_Bstar_M-1800_RH', 'Legacy17V1_Bstar_M-1800_LH', 'Legacy17V1_Bstar_M-2000_RH', 'Legacy17V1_Bstar_M-2000_LH',
+'Legacy17V1_Bstar_M-2200_RH', 'Legacy17V1_Bstar_M-2200_LH', 'Legacy17V1_Bstar_M-2400_RH', 'Legacy17V1_Bstar_M-2400_LH', 'Legacy17V1_Bstar_M-2600_RH', 'Legacy17V1_Bstar_M-2600_LH', 'Legacy17V1_Bstar_M-2800_RH', 'Legacy17V1_Bstar_M-2800_LH', 'Legacy17V1_Bstar_M-3000_RH', 'Legacy17V1_Bstar_M-3000_LH',
+'Legacy17V1_WJetsToQQ_HT600to800',
 ]
 
 #for d in range(36,len(datasetnames)):
