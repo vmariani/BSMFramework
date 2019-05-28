@@ -20,6 +20,7 @@ BoostedJetSelector::BoostedJetSelector(std::string name, TTree* tree, bool debug
   jerAK8PFPuppi_   = iConfig.getParameter<edm::FileInPath>("jerAK8PFPuppi").fullPath();
   jerAK8PFPuppiSF_ = iConfig.getParameter<edm::FileInPath>("jerAK8PFPuppiSF").fullPath();
   _is_data = iConfig.getParameter<bool>("is_data");
+  _dataEra             = iConfig.getParameter<int>("dataEra");
   PuppiWeightFilePath_ = iConfig.getParameter<edm::FileInPath>("PuppiWeightFilePath");
   const char *filePath = PuppiWeightFilePath_.fullPath().c_str();
   PuppiWeightFile = new TFile (filePath,"READ");
@@ -318,58 +319,176 @@ void BoostedJetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK
   double cFactorJERdown = 1.0;
   double cFactorJERup = 1.0;
   //https://twiki.cern.ch/twiki/bin/view/CMS/JetResolution#JER_Scaling_factors_and_Unce_AN1
-  if( jetEta<0.5 ){ 
-    cFactorJER = 1.109; 
-    cFactorJERdown = 1.109-0.008;
-    cFactorJERup   = 1.109+0.008; 
-  } else if( jetEta<0.8 ){ 
-    cFactorJER = 1.138; 
-    cFactorJERdown = 1.138-0.013;
-    cFactorJERup   = 1.138+0.013; 
-  } else if( jetEta<1.1 ){ 
-    cFactorJER = 1.114; 
-    cFactorJERdown = 1.114-0.013;
-    cFactorJERup   = 1.114+0.013; 
-  } else if( jetEta<1.3 ){ 
-    cFactorJER = 1.123; 
-    cFactorJERdown = 1.123-0.024;
-    cFactorJERup   = 1.123+0.024; 
-  } else if( jetEta<1.7 ){ 
-    cFactorJER = 1.084; 
-    cFactorJERdown = 1.084-0.011;
-    cFactorJERup   = 1.084+0.011; 
-  } else if( jetEta<1.9 ){ 
-    cFactorJER = 1.082; 
-    cFactorJERdown = 1.082-0.035;
-    cFactorJERup   = 1.082+0.035; 
-  } else if( jetEta<2.1 ){ 
-    cFactorJER = 1.140; 
-    cFactorJERdown = 1.140-0.047;
-    cFactorJERup   = 1.140+0.047; 
-  } else if( jetEta<2.3 ){ 
-    cFactorJER = 1.067; 
-    cFactorJERdown = 1.067-0.053;
-    cFactorJERup   = 1.067+0.053; 
-  } else if( jetEta<2.5 ){ 
-    cFactorJER = 1.177; 
-    cFactorJERdown = 1.177-0.041;
-    cFactorJERup   = 1.177+0.041; 
-  } else if( jetEta<2.8 ){ 
-    cFactorJER = 1.364; 
-    cFactorJERdown = 1.364-0.039;
-    cFactorJERup   = 1.364+0.039; 
-  } else if( jetEta<3.0 ){ 
-    cFactorJER = 1.857; 
-    cFactorJERdown = 1.857-0.071;
-    cFactorJERup   = 1.857+0.071; 
-  } else if( jetEta<3.2 ){ 
-    cFactorJER = 1.328; 
-    cFactorJERdown = 1.328-0.022;
-    cFactorJERup   = 1.328+0.022; 
-  } else if( jetEta<5.0 ){ 
-    cFactorJER = 1.160; 
-    cFactorJERdown = 1.160-0.029;
-    cFactorJERup   = 1.160+0.029;
+  
+  if(_dataEra==2016){
+      // Summer16_25nsV1
+      if( jetEta<0.522 ){ 
+        cFactorJER = 1.1595; 
+        cFactorJERdown = 1.1595-0.0645;
+        cFactorJERup   = 1.1595+0.0645; 
+      } else if( jetEta<0.783 ){ 
+        cFactorJER = 1.1948; 
+        cFactorJERdown = 1.1948-0.0652;
+        cFactorJERup   = 1.1948+0.0652; 
+      } else if( jetEta<1.131 ){ 
+        cFactorJER = 1.1464; 
+        cFactorJERdown = 1.1464-0.0632;
+        cFactorJERup   = 1.1464+0.0632; 
+      } else if( jetEta<1.305 ){ 
+        cFactorJER = 1.1609; 
+        cFactorJERdown = 1.1609-0.1025;
+        cFactorJERup   = 1.1609+0.1025; 
+      } else if( jetEta<1.740 ){ 
+        cFactorJER = 1.1278; 
+        cFactorJERdown = 1.1278-0.0986;
+        cFactorJERup   = 1.1278+0.0986; 
+      } else if( jetEta<1.930 ){ 
+        cFactorJER = 1.1000; 
+        cFactorJERdown = 1.1000-0.1079;
+        cFactorJERup   = 1.1000+0.1079; 
+      } else if( jetEta<2.043 ){ 
+        cFactorJER = 1.1426; 
+        cFactorJERdown = 1.1426-0.1214;
+        cFactorJERup   = 1.1426+0.1214; 
+      } else if( jetEta<2.322 ){ 
+        cFactorJER = 1.1512; 
+        cFactorJERdown = 1.1512-0.1140;
+        cFactorJERup   = 1.1512+0.1140; 
+      } else if( jetEta<2.5 ){ 
+        cFactorJER = 1.2963; 
+        cFactorJERdown = 1.2963-0.2371;
+        cFactorJERup   = 1.2963+0.2371; 
+      } else if( jetEta<2.853 ){ 
+        cFactorJER = 1.3418; 
+        cFactorJERdown = 1.3418-0.2091;
+        cFactorJERup   = 1.3418+0.2091; 
+      } else if( jetEta<2.964 ){ 
+        cFactorJER = 1.7788; 
+        cFactorJERdown = 1.7788-0.2008;
+        cFactorJERup   = 1.7788+0.2008; 
+      } else if( jetEta<3.139 ){ 
+        cFactorJER = 1.1869; 
+        cFactorJERdown = 1.1869-0.1243;
+        cFactorJERup   = 1.1869+0.1243; 
+      } else if( jetEta<5.191 ){ 
+        cFactorJER = 1.1922; 
+        cFactorJERdown = 1.1922-0.1488;
+        cFactorJERup   = 1.1922+0.1488;
+      }
+  }else if(_dataEra==2017){
+      // Fall17_V3
+      if( jetEta<0.522 ){ 
+        cFactorJER = 1.1432; 
+        cFactorJERdown = 1.1432-0.0222;
+        cFactorJERup   = 1.1432+0.0222; 
+      } else if( jetEta<0.783 ){ 
+        cFactorJER = 1.1815; 
+        cFactorJERdown = 1.1815-0.0484;
+        cFactorJERup   = 1.1815+0.0484; 
+      } else if( jetEta<1.131 ){ 
+        cFactorJER = 1.0989; 
+        cFactorJERdown = 1.0989-0.0456;
+        cFactorJERup   = 1.0989+0.0456; 
+      } else if( jetEta<1.305 ){ 
+        cFactorJER = 1.1137; 
+        cFactorJERdown = 1.1137-0.1397;
+        cFactorJERup   = 1.1137+0.1397; 
+      } else if( jetEta<1.740 ){ 
+        cFactorJER = 1.1307; 
+        cFactorJERdown = 1.1307-0.1470;
+        cFactorJERup   = 1.1307+0.1470; 
+      } else if( jetEta<1.930 ){ 
+        cFactorJER = 1.1600; 
+        cFactorJERdown = 1.1600-0.0976;
+        cFactorJERup   = 1.1600+0.0976; 
+      } else if( jetEta<2.043 ){ 
+        cFactorJER = 1.2393; 
+        cFactorJERdown = 1.2393-0.1909;
+        cFactorJERup   = 1.2393+0.1909; 
+      } else if( jetEta<2.322 ){ 
+        cFactorJER = 1.2604; 
+        cFactorJERdown = 1.2604-0.1501;
+        cFactorJERup   = 1.2604+0.1501; 
+      } else if( jetEta<2.5 ){ 
+        cFactorJER = 1.4085; 
+        cFactorJERdown = 1.4085-0.2020;
+        cFactorJERup   = 1.4085+0.2020; 
+      } else if( jetEta<2.853 ){ 
+        cFactorJER = 1.9909; 
+        cFactorJERdown = 1.9909-0.5684;
+        cFactorJERup   = 1.9909+0.5684; 
+      } else if( jetEta<2.964 ){ 
+        cFactorJER = 2.2923; 
+        cFactorJERdown = 2.2923-0.3743;
+        cFactorJERup   = 2.2923+0.3743; 
+      } else if( jetEta<3.139 ){ 
+        cFactorJER = 1.2696; 
+        cFactorJERdown = 1.2696-0.1089;
+        cFactorJERup   = 1.2696+0.1089; 
+      } else if( jetEta<5.191 ){ 
+        cFactorJER = 1.1542; 
+        cFactorJERdown = 1.1542-0.1524;
+        cFactorJERup   = 1.1542+0.1524;
+      }
+  }else if(_dataEra==2018){
+      // Autumn18_v1
+      // Temporary version to be used  for Moriond 2019 analyses
+      // Averaged over all runs
+      if( jetEta<0.522 ){ 
+        cFactorJER = 1.15; 
+        cFactorJERdown = 1.15-0.043;
+        cFactorJERup   = 1.15+0.043; 
+      } else if( jetEta<0.783 ){ 
+        cFactorJER = 1.134; 
+        cFactorJERdown = 1.134-0.08;
+        cFactorJERup   = 1.134+0.08; 
+      } else if( jetEta<1.131 ){ 
+        cFactorJER = 1.102; 
+        cFactorJERdown = 1.102-0.052;
+        cFactorJERup   = 1.102+0.052; 
+      } else if( jetEta<1.305 ){ 
+        cFactorJER = 1.134; 
+        cFactorJERdown = 1.134-0.112;
+        cFactorJERup   = 1.134+0.112; 
+      } else if( jetEta<1.740 ){ 
+        cFactorJER = 1.104; 
+        cFactorJERdown = 1.104-0.211;
+        cFactorJERup   = 1.104+0.211; 
+      } else if( jetEta<1.930 ){ 
+        cFactorJER = 1.149; 
+        cFactorJERdown = 1.149-0.159;
+        cFactorJERup   = 1.149+0.159; 
+      } else if( jetEta<2.043 ){ 
+        cFactorJER = 1.148; 
+        cFactorJERdown = 1.148-0.209;
+        cFactorJERup   = 1.148+0.209; 
+      } else if( jetEta<2.322 ){ 
+        cFactorJER = 1.114; 
+        cFactorJERdown = 1.114-0.191;
+        cFactorJERup   = 1.114+0.191; 
+      } else if( jetEta<2.5 ){ 
+        cFactorJER = 1.347; 
+        cFactorJERdown = 1.347-0.274;
+        cFactorJERup   = 1.347+0.274; 
+      } else if( jetEta<2.853 ){ 
+        cFactorJER = 2.137; 
+        cFactorJERdown = 2.137-0.524;
+        cFactorJERup   = 2.137+0.524; 
+      } else if( jetEta<2.964 ){ 
+        cFactorJER = 1.65; 
+        cFactorJERdown = 1.65-0.941;
+        cFactorJERup   = 1.65+0.941; 
+      } else if( jetEta<3.139 ){ 
+        cFactorJER = 1.225; 
+        cFactorJERdown = 1.225-0.194;
+        cFactorJERup   = 1.225+0.194; 
+      } else if( jetEta<5.191 ){ 
+        cFactorJER = 1.082; 
+        cFactorJERdown = 1.082-0.198;
+        cFactorJERup   = 1.082+0.198;
+      }
+  }else{
+    std::cout<<" ERROR dataEra must be 2016/2017/2018 " <<std::endl;
   }
   double recoJetPt = (jet.correctedJet("Uncorrected").pt())*JesSF;
   double genJetPt  = jet.genJet()->pt();

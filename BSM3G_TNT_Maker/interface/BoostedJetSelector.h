@@ -101,6 +101,7 @@ class BoostedJetSelector : public  baseTree{
   std::string jerAK8PFPuppiSF_;
   edm::FileInPath PuppiWeightFilePath_;
   bool _is_data;
+  int  _dataEra; // which year?
   /////
   //   JEC
   /////
