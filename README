@@ -10,8 +10,8 @@ This version of code is used for 2016 miniAOD v3 && 2017 miniAOD v2 and v1 & 201
 ####################################################
 
 
-cmsrel CMSSW_10_2_10
-cd CMSSW_10_2_10/src
+cmsrel CMSSW_10_2_14
+cd CMSSW_10_2_14/src
 cmsenv
 
 git cms-init
@@ -42,10 +42,16 @@ scram b -j 8
 git cms-addpkg RecoMET/METFilters
 scram b
 
+## set up DeepTau v2
+# https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePFTauID#Running_of_the_DNN_based_tau_ID
+git cms-merge-topic -u cms-tau-pog:CMSSW_10_2_X_tau-pog_DeepTau2017v2
+git clone -b DeepTau2017v2_alone https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles.git RecoTauTag/TrainingFiles/data
+scram b -j 8
+
 ## set BSM Framework
 git clone https://github.com/BinghuanLi/BSMFramework.git
 cd BSMFramework/
-git checkout CMSSW_10_2_10
+git checkout CMSSW_10_2_14
 cd ..
 scram b -j 8
 
@@ -58,7 +64,6 @@ cp BSMFramework/BSM3G_TNT_Maker/data/Egamma/EgammaPostRecoTools.py RecoEgamma/Eg
 ## To Run ##
 # MC for three years are running without any problems
 # Data for three years are running
-# 2016 data: GT 94X gives correct JEC but 102X not, please watch out for upates
 cd BSMFramework/BSM3G_TNT_Maker/python/
 cmsRun miniAOD_MC(RD)2017(2016)(2018).py 
 

@@ -209,13 +209,12 @@ process.matchGenCHadron = matchGenCHadron.clone(genParticles = genParticleCollec
 
 #####Tau#####
 
-from BSMFramework.BSM3G_TNT_Maker.runTauIdMVA import *
-na = TauIDEmbedder(process, cms,
-        debug=True,
-        toKeep = ["dR0p32017v2"] # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1"]
-        )
-na.runTauID()
-
+updatedTauName = "slimmedTausNewID" #name of pat::Tau collection with new tau-Ids
+import RecoTauTag.RecoTau.tools.runTauIdMVA as tauIdConfig
+tauIdEmbedder = tauIdConfig.TauIDEmbedder(process, cms, debug = False,
+                updatedTauName = updatedTauName,
+                toKeep = ["deepTau2017v2","dR0p32017v2"]) # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1","deepTau2017v2"]
+tauIdEmbedder.runTauID()
 
 ############### MET Re-correct ##################
 from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
@@ -363,8 +362,8 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   muons               = cms.InputTag("slimmedMuons"),
   patElectrons        = cms.InputTag("slimmedElectrons"),
   ebRecHits = cms.InputTag("reducedEgamma","reducedEBRecHits"),
-  #taus                = cms.InputTag("slimmedTaus"),
-  taus                = cms.InputTag("NewTauIDsEmbedded"),
+  taus                = cms.InputTag("slimmedTausNewID"),
+  #taus                = cms.InputTag("NewTauIDsEmbedded"),
   jets                = cms.InputTag(jetsNameAK4),
   lepjets                = cms.InputTag(jetsNameAK4),
   jetsPUPPI           = cms.InputTag("slimmedJetsPuppi"),
@@ -517,7 +516,7 @@ process.egammaPostRecoSeq *
 process.fullPatMetSequenceModifiedMET *
 process.QGTagger *
 process.rerunMvaIsolationSequence *
-process.NewTauIDsEmbedded* # *getattr(process, "NewTauIDsEmbedded")
+process.slimmedTausNewID*
 #process.selectedHadronsAndPartons*process.genJetFlavourInfos*process.matchGenCHadron*process.matchGenBHadron*
 #process.primaryVertexFilter* 
 #process.CSCTightHaloFilter*process.eeBadScFilter*process.HBHENoiseFilterResultProducer*process.ApplyBaselineHBHENoiseFilter*

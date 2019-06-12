@@ -176,16 +176,16 @@ void TauSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSetup){
       //Tau_neutralIsoPtSumWeight.push_back(tau->tauID("neutralIsoPtSumWeight"));
       //Tau_photonPtSumOutsideSignalCone.push_back(tau->tauID("photonPtSumOutsideSignalCone"));
     }
-    Tau_byVLooseIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byVLooseIsolationMVArun2v1DBoldDMwLT"));
-    Tau_byLooseIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byLooseIsolationMVArun2v1DBoldDMwLT"));
-    Tau_byMediumIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byMediumIsolationMVArun2v1DBoldDMwLT"));
-    Tau_byTightIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byTightIsolationMVArun2v1DBoldDMwLT"));
-    Tau_byVTightIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byVTightIsolationMVArun2v1DBoldDMwLT"));
-    Tau_byVLooseIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byVLooseIsolationMVArun2v1DBnewDMwLT"));
-    Tau_byLooseIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byLooseIsolationMVArun2v1DBnewDMwLT"));
-    Tau_byMediumIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byMediumIsolationMVArun2v1DBnewDMwLT"));
-    Tau_byTightIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byTightIsolationMVArun2v1DBnewDMwLT"));
-    Tau_byVTightIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byVTightIsolationMVArun2v1DBnewDMwLT"));
+    //Tau_byVLooseIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byVLooseIsolationMVArun2v1DBoldDMwLT"));
+    //Tau_byLooseIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byLooseIsolationMVArun2v1DBoldDMwLT"));
+    //Tau_byMediumIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byMediumIsolationMVArun2v1DBoldDMwLT"));
+    //Tau_byTightIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byTightIsolationMVArun2v1DBoldDMwLT"));
+    //Tau_byVTightIsolationMVArun2v1DBoldDMwLT.push_back(tau->tauID("byVTightIsolationMVArun2v1DBoldDMwLT"));
+    //Tau_byVLooseIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byVLooseIsolationMVArun2v1DBnewDMwLT"));
+    //Tau_byLooseIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byLooseIsolationMVArun2v1DBnewDMwLT"));
+    //Tau_byMediumIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byMediumIsolationMVArun2v1DBnewDMwLT"));
+   // Tau_byTightIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byTightIsolationMVArun2v1DBnewDMwLT"));
+   // Tau_byVTightIsolationMVArun2v1DBnewDMwLT.push_back(tau->tauID("byVTightIsolationMVArun2v1DBnewDMwLT"));
     //Tau_byLooseCombinedIsolationDeltaBetaCorr3HitsdR03.push_back(tau->tauID("byLooseCombinedIsolationDeltaBetaCorr3HitsdR03"));
     //Tau_byMediumCombinedIsolationDeltaBetaCorr3HitsdR03.push_back(tau->tauID("byMediumCombinedIsolationDeltaBetaCorr3HitsdR03"));
     //Tau_byTightCombinedIsolationDeltaBetaCorr3HitsdR03.push_back(tau->tauID("byTightCombinedIsolationDeltaBetaCorr3HitsdR03"));
@@ -201,6 +201,15 @@ void TauSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSetup){
     Tau_byTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017.push_back(tau->tauID("byTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017"));
     Tau_byVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017.push_back(tau->tauID("byVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017"));
     Tau_byVVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017.push_back(tau->tauID("byVVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017"));
+    Tau_byDeepTau2017v2VSjetraw.push_back(tau->tauID("byDeepTau2017v2VSjetraw"));
+    Tau_byVVVLooseDeepTau2017v2VSjet.push_back(tau->tauID("byVVVLooseDeepTau2017v2VSjet"));
+    Tau_byVVLooseDeepTau2017v2VSjet.push_back(tau->tauID("byVVLooseDeepTau2017v2VSjet"));
+    Tau_byVLooseDeepTau2017v2VSjet.push_back(tau->tauID("byVLooseDeepTau2017v2VSjet"));
+    Tau_byLooseDeepTau2017v2VSjet.push_back(tau->tauID("byLooseDeepTau2017v2VSjet"));
+    Tau_byMediumDeepTau2017v2VSjet.push_back(tau->tauID("byMediumDeepTau2017v2VSjet"));
+    Tau_byTightDeepTau2017v2VSjet.push_back(tau->tauID("byTightDeepTau2017v2VSjet"));
+    Tau_byVTightDeepTau2017v2VSjet.push_back(tau->tauID("byVTightDeepTau2017v2VSjet"));
+    Tau_byVVTightDeepTau2017v2VSjet.push_back(tau->tauID("byVVTightDeepTau2017v2VSjet"));
     //Other prop and Track related variables
     Tau_nProngs.push_back(tau->signalChargedHadrCands().size());
     if(isBestTrackNonNull && leadPackedCandidateExists){
@@ -395,16 +404,16 @@ void TauSelector::SetBranches(){
     //AddBranch(&Tau_neutralIsoPtSumWeight                ,"Tau_neutralIsoPtSumWeight");
     //AddBranch(&Tau_photonPtSumOutsideSignalCone         ,"Tau_photonPtSumOutsideSignalCone");
   }
-  AddBranch(&Tau_byVLooseIsolationMVArun2v1DBoldDMwLT              ,"Tau_byVLooseIsolationMVArun2v1DBoldDMwLT");
-  AddBranch(&Tau_byLooseIsolationMVArun2v1DBoldDMwLT               ,"Tau_byLooseIsolationMVArun2v1DBoldDMwLT");
-  AddBranch(&Tau_byMediumIsolationMVArun2v1DBoldDMwLT              ,"Tau_byMediumIsolationMVArun2v1DBoldDMwLT");
-  AddBranch(&Tau_byTightIsolationMVArun2v1DBoldDMwLT               ,"Tau_byTightIsolationMVArun2v1DBoldDMwLT");
-  AddBranch(&Tau_byVTightIsolationMVArun2v1DBoldDMwLT              ,"Tau_byVTightIsolationMVArun2v1DBoldDMwLT");
-  AddBranch(&Tau_byVLooseIsolationMVArun2v1DBnewDMwLT              ,"Tau_byVLooseIsolationMVArun2v1DBnewDMwLT");
-  AddBranch(&Tau_byLooseIsolationMVArun2v1DBnewDMwLT               ,"Tau_byLooseIsolationMVArun2v1DBnewDMwLT");
-  AddBranch(&Tau_byMediumIsolationMVArun2v1DBnewDMwLT              ,"Tau_byMediumIsolationMVArun2v1DBnewDMwLT");
-  AddBranch(&Tau_byTightIsolationMVArun2v1DBnewDMwLT               ,"Tau_byTightIsolationMVArun2v1DBnewDMwLT");
-  AddBranch(&Tau_byVTightIsolationMVArun2v1DBnewDMwLT              ,"Tau_byVTightIsolationMVArun2v1DBnewDMwLT");
+  //AddBranch(&Tau_byVLooseIsolationMVArun2v1DBoldDMwLT              ,"Tau_byVLooseIsolationMVArun2v1DBoldDMwLT");
+  //AddBranch(&Tau_byLooseIsolationMVArun2v1DBoldDMwLT               ,"Tau_byLooseIsolationMVArun2v1DBoldDMwLT");
+  //AddBranch(&Tau_byMediumIsolationMVArun2v1DBoldDMwLT              ,"Tau_byMediumIsolationMVArun2v1DBoldDMwLT");
+  //AddBranch(&Tau_byTightIsolationMVArun2v1DBoldDMwLT               ,"Tau_byTightIsolationMVArun2v1DBoldDMwLT");
+  //AddBranch(&Tau_byVTightIsolationMVArun2v1DBoldDMwLT              ,"Tau_byVTightIsolationMVArun2v1DBoldDMwLT");
+  //AddBranch(&Tau_byVLooseIsolationMVArun2v1DBnewDMwLT              ,"Tau_byVLooseIsolationMVArun2v1DBnewDMwLT");
+  //AddBranch(&Tau_byLooseIsolationMVArun2v1DBnewDMwLT               ,"Tau_byLooseIsolationMVArun2v1DBnewDMwLT");
+  //AddBranch(&Tau_byMediumIsolationMVArun2v1DBnewDMwLT              ,"Tau_byMediumIsolationMVArun2v1DBnewDMwLT");
+  //AddBranch(&Tau_byTightIsolationMVArun2v1DBnewDMwLT               ,"Tau_byTightIsolationMVArun2v1DBnewDMwLT");
+  //AddBranch(&Tau_byVTightIsolationMVArun2v1DBnewDMwLT              ,"Tau_byVTightIsolationMVArun2v1DBnewDMwLT");
   //AddBranch(&Tau_byLooseCombinedIsolationDeltaBetaCorr3HitsdR03    ,"Tau_byLooseCombinedIsolationDeltaBetaCorr3HitsdR03");
   //AddBranch(&Tau_byMediumCombinedIsolationDeltaBetaCorr3HitsdR03   ,"Tau_byMediumCombinedIsolationDeltaBetaCorr3HitsdR03");
   //AddBranch(&Tau_byTightCombinedIsolationDeltaBetaCorr3HitsdR03    ,"Tau_byTightCombinedIsolationDeltaBetaCorr3HitsdR03");
@@ -420,6 +429,15 @@ void TauSelector::SetBranches(){
   AddBranch(&Tau_byTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017           ,"Tau_byTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017");
   AddBranch(&Tau_byVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017          ,"Tau_byVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017");
   AddBranch(&Tau_byVVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017          ,"Tau_byVVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017");
+  AddBranch(&Tau_byDeepTau2017v2VSjetraw           ,"Tau_byDeepTau2017v2VSjetraw");
+  AddBranch(&Tau_byVVVLooseDeepTau2017v2VSjet           ,"Tau_byVVVLooseDeepTau2017v2VSjet");
+  AddBranch(&Tau_byVVLooseDeepTau2017v2VSjet           ,"Tau_byVVLooseDeepTau2017v2VSjet");
+  AddBranch(&Tau_byVLooseDeepTau2017v2VSjet           ,"Tau_byVLooseDeepTau2017v2VSjet");
+  AddBranch(&Tau_byLooseDeepTau2017v2VSjet           ,"Tau_byLooseDeepTau2017v2VSjet");
+  AddBranch(&Tau_byMediumDeepTau2017v2VSjet          ,"Tau_byMediumDeepTau2017v2VSjet");
+  AddBranch(&Tau_byTightDeepTau2017v2VSjet           ,"Tau_byTightDeepTau2017v2VSjet");
+  AddBranch(&Tau_byVTightDeepTau2017v2VSjet          ,"Tau_byVTightDeepTau2017v2VSjet");
+  AddBranch(&Tau_byVVTightDeepTau2017v2VSjet          ,"Tau_byVVTightDeepTau2017v2VSjet");
   //Other prop and Track related variables
   AddBranch(&Tau_nProngs                  ,"Tau_nProngs");
   AddBranch(&Tau_leadChargedCandNdof      ,"Tau_leadChargedCandNdof");
@@ -553,16 +571,16 @@ void TauSelector::Clear(){
     //Tau_neutralIsoPtSumWeight.clear();
     //Tau_photonPtSumOutsideSignalCone.clear();
   }
-  Tau_byVLooseIsolationMVArun2v1DBoldDMwLT.clear();
-  Tau_byLooseIsolationMVArun2v1DBoldDMwLT.clear();
-  Tau_byMediumIsolationMVArun2v1DBoldDMwLT.clear();
-  Tau_byTightIsolationMVArun2v1DBoldDMwLT.clear();
-  Tau_byVTightIsolationMVArun2v1DBoldDMwLT.clear();
-  Tau_byVLooseIsolationMVArun2v1DBnewDMwLT.clear();
-  Tau_byLooseIsolationMVArun2v1DBnewDMwLT.clear();
-  Tau_byMediumIsolationMVArun2v1DBnewDMwLT.clear();
-  Tau_byTightIsolationMVArun2v1DBnewDMwLT.clear();
-  Tau_byVTightIsolationMVArun2v1DBnewDMwLT.clear();
+  //Tau_byVLooseIsolationMVArun2v1DBoldDMwLT.clear();
+  //Tau_byLooseIsolationMVArun2v1DBoldDMwLT.clear();
+  //Tau_byMediumIsolationMVArun2v1DBoldDMwLT.clear();
+  //Tau_byTightIsolationMVArun2v1DBoldDMwLT.clear();
+  //Tau_byVTightIsolationMVArun2v1DBoldDMwLT.clear();
+  //Tau_byVLooseIsolationMVArun2v1DBnewDMwLT.clear();
+  //Tau_byLooseIsolationMVArun2v1DBnewDMwLT.clear();
+  //Tau_byMediumIsolationMVArun2v1DBnewDMwLT.clear();
+  //Tau_byTightIsolationMVArun2v1DBnewDMwLT.clear();
+  //Tau_byVTightIsolationMVArun2v1DBnewDMwLT.clear();
   //Tau_byLooseCombinedIsolationDeltaBetaCorr3HitsdR03.clear();
   //Tau_byMediumCombinedIsolationDeltaBetaCorr3HitsdR03.clear();
   //Tau_byTightCombinedIsolationDeltaBetaCorr3HitsdR03.clear();
@@ -578,6 +596,15 @@ void TauSelector::Clear(){
   Tau_byTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017.clear();
   Tau_byVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017.clear();
   Tau_byVVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017.clear();
+  Tau_byDeepTau2017v2VSjetraw.clear();
+  Tau_byVVVLooseDeepTau2017v2VSjet.clear();
+  Tau_byVVLooseDeepTau2017v2VSjet.clear();
+  Tau_byVLooseDeepTau2017v2VSjet.clear();
+  Tau_byLooseDeepTau2017v2VSjet.clear();
+  Tau_byMediumDeepTau2017v2VSjet.clear();
+  Tau_byTightDeepTau2017v2VSjet.clear();
+  Tau_byVTightDeepTau2017v2VSjet.clear();
+  Tau_byVVTightDeepTau2017v2VSjet.clear();
   //Other prop and Track related variables
   Tau_nProngs.clear();
   Tau_leadChargedCandNdof.clear();
