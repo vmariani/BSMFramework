@@ -134,6 +134,7 @@ class EventInfoSelector : public baseTree{
   int  _dataEra; // which year?
   double EVENT_rhopog_, EVENT_rhotth_; 
   double EVENT_originalXWGTUP_, EVENT_scalePDF_;
+  double EVENT_rWeightSUM_;
   double EVENT_PDFtthbbWeightUp_, EVENT_PDFtthbbWeightDown_, EVENT_Q2tthbbWeightUp_, EVENT_Q2tthbbWeightDown_;
   vector<double> EVENT_genWeights_;
   vector<double> EVENT_psWeights_;

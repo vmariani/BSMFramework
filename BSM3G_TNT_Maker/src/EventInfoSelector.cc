@@ -44,6 +44,7 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
     const GenEventInfoProduct& genEventInfoW = *(genEvtInfo.product());
     const gen::PdfInfo* pdf = genEventInfoW.pdf();
     EVENT_scalePDF_ = pdf->scalePDF;
+    double rWeightSum = 0;
     if(lheEventProduct.isValid()){
       EVENT_originalXWGTUP_ = lheEventProduct->originalXWGTUP();
       for (unsigned int i=0; i<lheEventProduct->weights().size(); i++){
@@ -51,11 +52,15 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
         // https://twiki.cern.ch/twiki/bin/view/Main/TheoreticalUncertainty#Weight
         if(i<10) EVENT_genWeights_.push_back(lheEventProduct->weights()[i].wgt);
         //std::cout << "lhe weight id " <<  lheEventProduct->weights()[i].id << std::endl;
-        if(lheEventProduct->weights()[i].id.find("rwgt")!=std::string::npos)EVENT_rWeights_.push_back(lheEventProduct->weights()[i].wgt);
+        if(lheEventProduct->weights()[i].id.find("rwgt")!=std::string::npos){
+            EVENT_rWeights_.push_back(lheEventProduct->weights()[i].wgt);
+            rWeightSum += lheEventProduct->weights()[i].wgt;
+        }
         //Q2 for ttHbb synchronization
 	    if (lheEventProduct->weights()[i].id == "1005") EVENT_Q2tthbbWeightUp_   = lheEventProduct->weights()[i].wgt/lheEventProduct->originalXWGTUP(); 
 	    if (lheEventProduct->weights()[i].id == "1009") EVENT_Q2tthbbWeightDown_ = lheEventProduct->weights()[i].wgt/lheEventProduct->originalXWGTUP(); 
       }
+      EVENT_rWeightSUM_    = rWeightSum;
       for (unsigned int j=0; j<genEvtInfo->weights().size(); j++){
         // save ps weights
         EVENT_psWeights_.push_back(genEvtInfo->weights()[j]);
@@ -64,6 +69,7 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
       EVENT_genWeights_.push_back(-99);
       EVENT_psWeights_.push_back(-99);
       EVENT_rWeights_.push_back(-99);
+      EVENT_rWeightSUM_    = -99;
       EVENT_originalXWGTUP_ = -99;
       EVENT_scalePDF_ = -99;
       EVENT_Q2tthbbWeightUp_   = -99;
@@ -148,6 +154,7 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
     EVENT_genPt = lheV_pt;
   } else {
     EVENT_originalXWGTUP_ = 1;
+    EVENT_rWeightSUM_ = 1;
     EVENT_scalePDF_ = 1;
     EVENT_genWeights_.push_back(1);
     EVENT_psWeights_.push_back(1);
@@ -249,6 +256,7 @@ void EventInfoSelector::SetBranches(){
   AddBranch(&EVENT_rhopog_    ,"EVENT_rhopog");
   AddBranch(&EVENT_rhotth_    ,"EVENT_rhotth");
   AddBranch(&EVENT_originalXWGTUP_    ,"EVENT_originalXWGTUP");
+  AddBranch(&EVENT_rWeightSUM_                    ,"EVENT_rWeightSUM");
   AddBranch(&EVENT_scalePDF_    ,"EVENT_scalePDF");
   AddBranch(&EVENT_Q2tthbbWeightUp_    ,"EVENT_Q2tthbbWeightUp");
   AddBranch(&EVENT_Q2tthbbWeightDown_  ,"EVENT_Q2tthbbWeightDown");
@@ -301,6 +309,7 @@ void EventInfoSelector::Initialise(){
   EVENT_rhotth_     = -9999; 
   EVENT_scalePDF_ = -9999;
   EVENT_originalXWGTUP_    = -9999;
+  EVENT_rWeightSUM_                    = -9999;
   EVENT_Q2tthbbWeightUp_    = -9999; 
   EVENT_Q2tthbbWeightDown_  = -9999; 
   EVENT_PDFtthbbWeightUp_   = -9999; 
