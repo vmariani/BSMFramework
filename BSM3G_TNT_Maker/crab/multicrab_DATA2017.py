@@ -173,7 +173,7 @@ JECBlockF = [
 
 
 goodRunsLists = [
-'/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/JSON/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt',
+'/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_14/src/BSMFramework/BSM3G_TNT_Maker/data/JSON/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON_v1.txt',
 ]
 
 for d in range(0,len(datasetnames)):
@@ -241,8 +241,8 @@ for d in range(0,len(datasetnames)):
     config.section_('JobType')
     config.JobType.pluginName  = 'Analysis'
     # List of parameters to pass to CMSSW parameter-set configuration file:
-    config.JobType.psetName    = '/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_RD2017.py'
-    config.JobType.inputFiles = ['/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db']
+    config.JobType.psetName    = '/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_14/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_RD2017.py'
+    config.JobType.inputFiles = ['/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_14/src/BSMFramework/BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db']
     config.JobType.allowUndistributedCMSSW = True
     config.JobType.sendExternalFolder = True
     ofParam = 'ofName=' + datasetnames[d]

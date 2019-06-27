@@ -308,14 +308,19 @@ tWLists = [
 'Legacy17V1_WJetsToQQ_HT600to800',
 ]
 
-#for d in range(36,len(datasetnames)):
-for d in range(0,1):
+for d in range(0,len(datasetnames)):
+#for d in range(0,1):
     print 'multicrab.py: Running datasetname: ', datasetnames[d]
 
     lepFilt = 2
     if datasetnames[d] in tWLists:
         lepFilt = 1
         print 'multicrab_MC2017.py: Run ', datasetnames[d], ' lepFilt 1 '
+    
+    if "ctcvcp" in datasetnames[d]:
+        lepFilt = 0
+        print 'multicrab_MC2017.py: Run ', datasetnames[d], ' lepFilt 0 for ctcvcp samples '
+    
     
     nameLepFilt = 'optionlepfilt={}'.format(lepFilt) 
     
@@ -327,8 +332,8 @@ for d in range(0,1):
     config.section_('JobType')
     config.JobType.pluginName  = 'Analysis'
     # List of parameters to pass to CMSSW parameter-set configuration file:
-    config.JobType.psetName    = '/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_MC2017.py'
-    config.JobType.inputFiles = ['/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db']
+    config.JobType.psetName    = '/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_14/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_MC2017.py'
+    config.JobType.inputFiles = ['/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_14/src/BSMFramework/BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db']
     config.JobType.sendExternalFolder = True
     config.JobType.maxMemoryMB = 2000 # Default == 2Gb : maximum guaranteed to run on all sites
     #config.JobType.allowUndistributedCMSSW = True
