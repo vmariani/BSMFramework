@@ -135,7 +135,7 @@ class EventInfoSelector : public baseTree{
   double EVENT_rhopog_, EVENT_rhotth_; 
   double EVENT_originalXWGTUP_, EVENT_scalePDF_;
   double EVENT_rWeightSUM_;
-  double EVENT_PDFtthbbWeightUp_, EVENT_PDFtthbbWeightDown_, EVENT_Q2tthbbWeightUp_, EVENT_Q2tthbbWeightDown_;
+  double EVENT_Q2tthbbWeightUp_, EVENT_Q2tthbbWeightDown_;
   vector<double> EVENT_genWeights_;
   vector<double> EVENT_psWeights_;
   vector<double> EVENT_rWeights_;
@@ -166,7 +166,36 @@ class EventInfoSelector : public baseTree{
   int Flag_BadPFMuonFilter;
   int Flag_BadChargedCandidateFilter;
   int Flag_ecalBadCalibFilter;
-  LHAPDF::PDFSet *read_PDFSet;
-  std::vector<LHAPDF::PDF*> _systPDFs;
+  // six pdfSet are used in nanoAOD
+  // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/nano_cff.py#L98-L104
+  // https://lhapdf.hepforge.org/pdfsets.html
+  LHAPDF::PDFSet * read_PDFv1Set;
+  LHAPDF::PDFSet *read_PDFv2Set;
+  LHAPDF::PDFSet *read_PDFv3Set;
+  LHAPDF::PDFSet *read_PDFv4Set;
+  LHAPDF::PDFSet *read_PDFv5Set;
+  LHAPDF::PDFSet *read_PDFv6Set;
+  std::vector<LHAPDF::PDF*> _systv1PDFs, _systv2PDFs, _systv3PDFs,_systv4PDFs, _systv5PDFs, _systv6PDFs ;
+  // PDF4LHC15_nnlo_30_pdfas
+  double EVENT_PDFv1WeightUp_, EVENT_PDFv1WeightDown_, EVENT_PDFv1WeightCentral_, EVENT_PDFv1WeightMean_, EVENT_PDFv1WeightStdDev_;
+  int EVENT_PDFv1_lhaid_;
+  // NNPDF31_nnlo_hessian_pdfas 
+  double EVENT_PDFv2WeightUp_, EVENT_PDFv2WeightDown_, EVENT_PDFv2WeightCentral_, EVENT_PDFv2WeightMean_, EVENT_PDFv2WeightStdDev_; 
+  int EVENT_PDFv2_lhaid_;
+  // NNPDF30_nlo_as_0118 
+  double EVENT_PDFv3WeightUp_, EVENT_PDFv3WeightDown_, EVENT_PDFv3WeightCentral_, EVENT_PDFv3WeightMean_, EVENT_PDFv3WeightStdDev_;
+  int EVENT_PDFv3_lhaid_;
+  // NNPDF30_lo_as_0130 
+  double EVENT_PDFv4WeightUp_, EVENT_PDFv4WeightDown_, EVENT_PDFv4WeightCentral_, EVENT_PDFv4WeightMean_, EVENT_PDFv4WeightStdDev_;
+  int EVENT_PDFv4_lhaid_;
+  // NNPDF30_nlo_nf_4_pdfas 
+  double EVENT_PDFv5WeightUp_, EVENT_PDFv5WeightDown_, EVENT_PDFv5WeightCentral_, EVENT_PDFv5WeightMean_, EVENT_PDFv5WeightStdDev_;
+  int EVENT_PDFv5_lhaid_;
+  // NNPDF30_nlo_nf_5_pdfas 
+  double EVENT_PDFv6WeightUp_, EVENT_PDFv6WeightDown_, EVENT_PDFv6WeightCentral_, EVENT_PDFv6WeightMean_, EVENT_PDFv6WeightStdDev_;
+  int EVENT_PDFv6_lhaid_;
+  // calculate central and stdDev
+  void get_PDFUnc(LHAPDF::PDFSet *Read_PDFSet, std::vector<LHAPDF::PDF*> _SystPDFs, double scalePDF, int firstid, double x1, int secondid, double x2, double& central, double& WeightUp, double& WeightDown, int& lhaID, double &mean, double & stdDev);
+  void get_stDev(const vector<double>& pdfs, double & mean, double & stdDev ); 
 };
 #endif

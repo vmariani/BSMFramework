@@ -20,8 +20,19 @@ EventInfoSelector::EventInfoSelector(std::string name, TTree* tree, bool debug, 
   }
   if(debug) std::cout<<"in EventInfoSelector constructor"<<std::endl;
   SetBranches();
-  read_PDFSet = new (LHAPDF::PDFSet)("NNPDF30_nlo_as_0118");
-  _systPDFs = read_PDFSet->mkPDFs();
+  // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/nano_cff.py#L98-L104
+  read_PDFv1Set = new (LHAPDF::PDFSet)("PDF4LHC15_nnlo_30_pdfas");
+  _systv1PDFs = read_PDFv1Set->mkPDFs();
+  read_PDFv2Set = new (LHAPDF::PDFSet)("NNPDF31_nnlo_hessian_pdfas");
+  _systv2PDFs = read_PDFv2Set->mkPDFs();
+  read_PDFv3Set = new (LHAPDF::PDFSet)("NNPDF30_nlo_as_0118");
+  _systv3PDFs = read_PDFv3Set->mkPDFs();
+  read_PDFv4Set = new (LHAPDF::PDFSet)("NNPDF30_lo_as_0130");
+  _systv4PDFs = read_PDFv4Set->mkPDFs();
+  read_PDFv5Set = new (LHAPDF::PDFSet)("NNPDF30_nlo_nf_4_pdfas");
+  _systv5PDFs = read_PDFv5Set->mkPDFs();
+  read_PDFv6Set = new (LHAPDF::PDFSet)("NNPDF30_nlo_nf_5_pdfas");
+  _systv6PDFs = read_PDFv6Set->mkPDFs();
 }
 EventInfoSelector::~EventInfoSelector(){
   delete tree_;
@@ -75,24 +86,13 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
       EVENT_Q2tthbbWeightUp_   = -99;
       EVENT_Q2tthbbWeightDown_ = -99;
     }
-    //PDF for ttHbb synchronization
     auto pdfInfos = genEvtInfo->pdf();
-    double pdfNominal = pdfInfos->xPDF.first * pdfInfos->xPDF.second;
-    std::vector<double> pdfs;
-    for (size_t j = 0; j < _systPDFs.size(); ++j) {
-      double xpdf1 = _systPDFs[j]->xfxQ(pdfInfos->id.first, pdfInfos->x.first, pdfInfos->scalePDF);
-      double xpdf2 = _systPDFs[j]->xfxQ(pdfInfos->id.second, pdfInfos->x.second, pdfInfos->scalePDF);
-      pdfs.push_back(xpdf1 * xpdf2);
-    }
-    const LHAPDF::PDFUncertainty pdfUnc = read_PDFSet->uncertainty(pdfs, 68.);
-    double weight_up = 1.0;
-    double weight_down = 1.0;
-    if (std::isfinite(1./pdfNominal)) {
-      weight_up = (pdfUnc.central + pdfUnc.errplus) / pdfNominal;
-      weight_down = (pdfUnc.central - pdfUnc.errminus) / pdfNominal;
-    }
-    EVENT_PDFtthbbWeightUp_   = weight_up;
-    EVENT_PDFtthbbWeightDown_ = weight_down;
+    get_PDFUnc(read_PDFv1Set,  _systv1PDFs, pdfInfos->scalePDF, pdfInfos->id.first, pdfInfos->x.first, pdfInfos->id.second, pdfInfos->x.second, EVENT_PDFv1WeightCentral_,  EVENT_PDFv1WeightUp_, EVENT_PDFv1WeightDown_, EVENT_PDFv1_lhaid_, EVENT_PDFv1WeightMean_, EVENT_PDFv1WeightStdDev_);
+    get_PDFUnc(read_PDFv2Set,  _systv2PDFs, pdfInfos->scalePDF, pdfInfos->id.first, pdfInfos->x.first, pdfInfos->id.second, pdfInfos->x.second, EVENT_PDFv2WeightCentral_,  EVENT_PDFv2WeightUp_, EVENT_PDFv2WeightDown_, EVENT_PDFv2_lhaid_, EVENT_PDFv2WeightMean_, EVENT_PDFv2WeightStdDev_);
+    get_PDFUnc(read_PDFv3Set,  _systv3PDFs, pdfInfos->scalePDF, pdfInfos->id.first, pdfInfos->x.first, pdfInfos->id.second, pdfInfos->x.second, EVENT_PDFv3WeightCentral_,  EVENT_PDFv3WeightUp_, EVENT_PDFv3WeightDown_, EVENT_PDFv3_lhaid_, EVENT_PDFv3WeightMean_, EVENT_PDFv3WeightStdDev_);
+    get_PDFUnc(read_PDFv4Set,  _systv4PDFs, pdfInfos->scalePDF, pdfInfos->id.first, pdfInfos->x.first, pdfInfos->id.second, pdfInfos->x.second, EVENT_PDFv4WeightCentral_,  EVENT_PDFv4WeightUp_, EVENT_PDFv4WeightDown_, EVENT_PDFv4_lhaid_, EVENT_PDFv4WeightMean_, EVENT_PDFv4WeightStdDev_);
+    get_PDFUnc(read_PDFv5Set,  _systv5PDFs, pdfInfos->scalePDF, pdfInfos->id.first, pdfInfos->x.first, pdfInfos->id.second, pdfInfos->x.second, EVENT_PDFv5WeightCentral_,  EVENT_PDFv5WeightUp_, EVENT_PDFv5WeightDown_, EVENT_PDFv5_lhaid_, EVENT_PDFv5WeightMean_, EVENT_PDFv5WeightStdDev_);
+    get_PDFUnc(read_PDFv6Set,  _systv6PDFs, pdfInfos->scalePDF, pdfInfos->id.first, pdfInfos->x.first, pdfInfos->id.second, pdfInfos->x.second, EVENT_PDFv6WeightCentral_,  EVENT_PDFv6WeightUp_, EVENT_PDFv6WeightDown_, EVENT_PDFv6_lhaid_, EVENT_PDFv6WeightMean_, EVENT_PDFv6WeightStdDev_);
     //gen Parton HT
     //Definition taken from https://github.com/cmkuo/ggAnalysis/blob/a24edc65be23b402d761c75545192ce79cddf316/ggNtuplizer/plugins/ggNtuplizer_genParticles.cc#L201 
     //Zaixing has a somehow different, but likely equivalent implementation
@@ -161,8 +161,42 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
     EVENT_rWeights_.push_back(1);
     EVENT_Q2tthbbWeightUp_    = 1;
     EVENT_Q2tthbbWeightDown_  = 1;
-    EVENT_PDFtthbbWeightUp_   = 1;
-    EVENT_PDFtthbbWeightDown_ = 1;
+    EVENT_PDFv1WeightUp_   = 1;
+    EVENT_PDFv1WeightDown_ = 1;
+    EVENT_PDFv1WeightCentral_   = 1;
+    EVENT_PDFv1WeightMean_   = 1;
+    EVENT_PDFv1WeightStdDev_   = 0;
+    EVENT_PDFv1_lhaid_   = -1;
+    EVENT_PDFv2WeightUp_   = 1;
+    EVENT_PDFv2WeightDown_ = 1;
+    EVENT_PDFv2WeightCentral_   = 1;
+    EVENT_PDFv2WeightMean_   = 1;
+    EVENT_PDFv2WeightStdDev_   = 0;
+    EVENT_PDFv2_lhaid_   = -1;
+    EVENT_PDFv3WeightUp_   = 1;
+    EVENT_PDFv3WeightDown_ = 1;
+    EVENT_PDFv3WeightCentral_   = 1;
+    EVENT_PDFv3WeightMean_   = 1;
+    EVENT_PDFv3WeightStdDev_   = 0;
+    EVENT_PDFv3_lhaid_   = -1;
+    EVENT_PDFv4WeightUp_   = 1;
+    EVENT_PDFv4WeightDown_ = 1;
+    EVENT_PDFv4WeightCentral_   = 1;
+    EVENT_PDFv4WeightMean_   = 1;
+    EVENT_PDFv4WeightStdDev_   = 0;
+    EVENT_PDFv4_lhaid_   = -1;
+    EVENT_PDFv5WeightUp_   = 1;
+    EVENT_PDFv5WeightDown_ = 1;
+    EVENT_PDFv5WeightCentral_   = 1;
+    EVENT_PDFv5WeightMean_   = 1;
+    EVENT_PDFv5WeightStdDev_   = 0;
+    EVENT_PDFv5_lhaid_   = -1;
+    EVENT_PDFv6WeightUp_   = 1;
+    EVENT_PDFv6WeightDown_ = 1;
+    EVENT_PDFv6WeightCentral_   = 1;
+    EVENT_PDFv6WeightMean_   = 1;
+    EVENT_PDFv6WeightStdDev_   = 0;
+    EVENT_PDFv6_lhaid_   = -1;
   }
   edm::Handle<double> rhopogHandle;
   iEvent.getByToken(rhopogHandle_,rhopogHandle);
@@ -260,8 +294,42 @@ void EventInfoSelector::SetBranches(){
   AddBranch(&EVENT_scalePDF_    ,"EVENT_scalePDF");
   AddBranch(&EVENT_Q2tthbbWeightUp_    ,"EVENT_Q2tthbbWeightUp");
   AddBranch(&EVENT_Q2tthbbWeightDown_  ,"EVENT_Q2tthbbWeightDown");
-  AddBranch(&EVENT_PDFtthbbWeightUp_   ,"EVENT_PDFtthbbWeightUp");
-  AddBranch(&EVENT_PDFtthbbWeightDown_ ,"EVENT_PDFtthbbWeightDown");
+  AddBranch(&EVENT_PDFv1WeightUp_   ,"EVENT_PDFv1WeightUp");
+  AddBranch(&EVENT_PDFv1WeightDown_ ,"EVENT_PDFv1WeightDown");
+  AddBranch(&EVENT_PDFv1WeightCentral_   ,"EVENT_PDFv1WeightCentral");
+  AddBranch(&EVENT_PDFv1WeightMean_   ,"EVENT_PDFv1WeightMean");
+  AddBranch(&EVENT_PDFv1WeightStdDev_   ,"EVENT_PDFv1WeightStdDev");
+  AddBranch(&EVENT_PDFv1_lhaid_   ,"EVENT_PDFv1_lhaid");
+  AddBranch(&EVENT_PDFv2WeightUp_   ,"EVENT_PDFv2WeightUp");
+  AddBranch(&EVENT_PDFv2WeightDown_ ,"EVENT_PDFv2WeightDown");
+  AddBranch(&EVENT_PDFv2WeightCentral_   ,"EVENT_PDFv2WeightCentral");
+  AddBranch(&EVENT_PDFv2WeightMean_   ,"EVENT_PDFv2WeightMean");
+  AddBranch(&EVENT_PDFv2WeightStdDev_   ,"EVENT_PDFv2WeightStdDev");
+  AddBranch(&EVENT_PDFv2_lhaid_   ,"EVENT_PDFv2_lhaid");
+  AddBranch(&EVENT_PDFv3WeightUp_   ,"EVENT_PDFv3WeightUp");
+  AddBranch(&EVENT_PDFv3WeightDown_ ,"EVENT_PDFv3WeightDown");
+  AddBranch(&EVENT_PDFv3WeightCentral_   ,"EVENT_PDFv3WeightCentral");
+  AddBranch(&EVENT_PDFv3WeightMean_   ,"EVENT_PDFv3WeightMean");
+  AddBranch(&EVENT_PDFv3WeightStdDev_   ,"EVENT_PDFv3WeightStdDev");
+  AddBranch(&EVENT_PDFv3_lhaid_   ,"EVENT_PDFv3_lhaid");
+  AddBranch(&EVENT_PDFv4WeightUp_   ,"EVENT_PDFv4WeightUp");
+  AddBranch(&EVENT_PDFv4WeightDown_ ,"EVENT_PDFv4WeightDown");
+  AddBranch(&EVENT_PDFv4WeightCentral_   ,"EVENT_PDFv4WeightCentral");
+  AddBranch(&EVENT_PDFv4WeightMean_   ,"EVENT_PDFv4WeightMean");
+  AddBranch(&EVENT_PDFv4WeightStdDev_   ,"EVENT_PDFv4WeightStdDev");
+  AddBranch(&EVENT_PDFv4_lhaid_   ,"EVENT_PDFv4_lhaid");
+  AddBranch(&EVENT_PDFv5WeightUp_   ,"EVENT_PDFv5WeightUp");
+  AddBranch(&EVENT_PDFv5WeightDown_ ,"EVENT_PDFv5WeightDown");
+  AddBranch(&EVENT_PDFv5WeightCentral_   ,"EVENT_PDFv5WeightCentral");
+  AddBranch(&EVENT_PDFv5WeightMean_   ,"EVENT_PDFv5WeightMean");
+  AddBranch(&EVENT_PDFv5WeightStdDev_   ,"EVENT_PDFv5WeightStdDev");
+  AddBranch(&EVENT_PDFv5_lhaid_   ,"EVENT_PDFv5_lhaid");
+  AddBranch(&EVENT_PDFv6WeightUp_   ,"EVENT_PDFv6WeightUp");
+  AddBranch(&EVENT_PDFv6WeightDown_ ,"EVENT_PDFv6WeightDown");
+  AddBranch(&EVENT_PDFv6WeightCentral_   ,"EVENT_PDFv6WeightCentral");
+  AddBranch(&EVENT_PDFv6WeightMean_   ,"EVENT_PDFv6WeightMean");
+  AddBranch(&EVENT_PDFv6WeightStdDev_   ,"EVENT_PDFv6WeightStdDev");
+  AddBranch(&EVENT_PDFv6_lhaid_   ,"EVENT_PDFv6_lhaid");
   AddBranch(&EVENT_fixedGridRhoFastjetCentral               ,"EVENT_fixedGridRhoFastjetCentral");
   AddBranch(&EVENT_fixedGridRhoFastjetCentralChargedPileUp  ,"EVENT_fixedGridRhoFastjetCentralChargedPileUp");
   AddBranch(&EVENT_fixedGridRhoFastjetCentralNeutral        ,"EVENT_fixedGridRhoFastjetCentralNeutral");
@@ -312,8 +380,42 @@ void EventInfoSelector::Initialise(){
   EVENT_rWeightSUM_                    = -9999;
   EVENT_Q2tthbbWeightUp_    = -9999; 
   EVENT_Q2tthbbWeightDown_  = -9999; 
-  EVENT_PDFtthbbWeightUp_   = -9999; 
-  EVENT_PDFtthbbWeightDown_ = -9999; 
+  EVENT_PDFv1WeightUp_   = -9999; 
+  EVENT_PDFv1WeightDown_ = -9999; 
+  EVENT_PDFv1WeightCentral_   = -9999;
+  EVENT_PDFv1WeightMean_   = -9999;
+  EVENT_PDFv1WeightStdDev_   = -9999;
+  EVENT_PDFv1_lhaid_   = -9999;
+  EVENT_PDFv2WeightUp_   = -9999;
+  EVENT_PDFv2WeightDown_ = -9999;
+  EVENT_PDFv2WeightCentral_   = -9999;
+  EVENT_PDFv2WeightMean_   = -9999;
+  EVENT_PDFv2WeightStdDev_   = -9999;
+  EVENT_PDFv2_lhaid_   = -9999;
+  EVENT_PDFv3WeightUp_   = -9999;
+  EVENT_PDFv3WeightDown_ = -9999;
+  EVENT_PDFv3WeightCentral_   = -9999;
+  EVENT_PDFv3WeightMean_   = -9999;
+  EVENT_PDFv3WeightStdDev_   = -9999;
+  EVENT_PDFv3_lhaid_   = -9999;
+  EVENT_PDFv4WeightUp_   = -9999;
+  EVENT_PDFv4WeightDown_ = -9999;
+  EVENT_PDFv4WeightCentral_   = -9999;
+  EVENT_PDFv4WeightMean_   = -9999;
+  EVENT_PDFv4WeightStdDev_   = -9999;
+  EVENT_PDFv4_lhaid_   = -9999;
+  EVENT_PDFv5WeightUp_   = -9999;
+  EVENT_PDFv5WeightDown_ = -9999;
+  EVENT_PDFv5WeightCentral_   = -9999;
+  EVENT_PDFv5WeightMean_   = -9999;
+  EVENT_PDFv5WeightStdDev_   = -9999;
+  EVENT_PDFv5_lhaid_   = -9999;
+  EVENT_PDFv6WeightUp_   = -9999;
+  EVENT_PDFv6WeightDown_ = -9999;
+  EVENT_PDFv6WeightCentral_   = -9999;
+  EVENT_PDFv6WeightMean_   = -9999;
+  EVENT_PDFv6WeightStdDev_   = -9999;
+  EVENT_PDFv6_lhaid_   = -9999;
   EVENT_fixedGridRhoFastjetCentral              = -9999;
   EVENT_fixedGridRhoFastjetCentralChargedPileUp = -9999; 
   EVENT_fixedGridRhoFastjetCentralNeutral       = -9999;
@@ -346,3 +448,45 @@ void EventInfoSelector::Initialise(){
   Flag_BadChargedCandidateFilter                    = -9999;
   Flag_ecalBadCalibFilter                    = -9999;
 }
+
+void EventInfoSelector::get_stDev(const vector<double>& pdfs, double & mean, double & stdDev ){
+    if( pdfs.size() > 0){
+        mean = std::accumulate(pdfs.begin(), pdfs.end(), 0.0) / pdfs.size();
+        /*
+        // https://en.wikipedia.org/wiki/Variance#Definition
+        // Var(X) = E[X^2]-E[X]^2 is not computational safe
+        double sqSum = std::inner_product(pdfs.begin(), pdfs.end(), pdfs.begin(), 0.0);
+        stdDev = std::sqrt(sqSum / pdfs.size() - mean * mean);
+        */
+        double sumVar = 0.;
+        for (auto pdf : pdfs){
+            sumVar += (pdf-mean)*(pdf-mean);
+        }
+        stdDev = std::sqrt(sumVar/pdfs.size());
+    }
+    std::cout<< " pdfsize " <<  pdfs.size() <<std::endl;
+    std::cout<< " pdfmean " <<  mean <<std::endl;
+    std::cout<< " pdfstdDev " <<  stdDev <<std::endl;
+}
+
+void EventInfoSelector::get_PDFUnc(LHAPDF::PDFSet *Read_PDFSet, std::vector<LHAPDF::PDF*> _SystPDFs, double scalePDF, int firstid, double x1, int secondid, double x2,double& central, double& WeightUp, double& WeightDown, int& lhaID, double &mean, double &stdDev){
+    std::vector<double> pdfs;
+    for (size_t j = 0; j <  _SystPDFs.size(); ++j) {
+      double xpdf1 = _SystPDFs[j]->xfxQ(firstid, x1, scalePDF);
+      double xpdf2 = _SystPDFs[j]->xfxQ(secondid, x2, scalePDF);
+      pdfs.push_back(xpdf1 * xpdf2);
+      // https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/nano_cff.py#L109
+      if(j>150) break;
+    }
+    // https://lhapdf.hepforge.org/classLHAPDF_1_1PDFSet.html#a90e654a2763f31897f476ae9055dd1bf
+    const LHAPDF::PDFUncertainty pdfUnc = Read_PDFSet->uncertainty(pdfs, 68.);
+    //std::cout<< " pdflhaid " <<  Read_PDFSet->lhapdfID() <<std::endl;
+    //std::cout<< " pdfcentral " <<  pdfUnc.central <<std::endl;
+    //std::cout<< " pdferrplus " <<  pdfUnc.errplus <<std::endl;
+    //std::cout<< " pdferrminus " <<  pdfUnc.errminus <<std::endl;
+    get_stDev(pdfs, mean, stdDev );
+    lhaID = Read_PDFSet->lhapdfID();
+    central = pdfUnc.central;
+    WeightUp = ( pdfUnc.central + pdfUnc.errplus )/pdfUnc.central;
+    WeightDown = ( pdfUnc.central - pdfUnc.errplus )/pdfUnc.central;
+};
