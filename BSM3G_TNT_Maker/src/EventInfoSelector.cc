@@ -464,9 +464,9 @@ void EventInfoSelector::get_stDev(const vector<double>& pdfs, double & mean, dou
         }
         stdDev = std::sqrt(sumVar/pdfs.size());
     }
-    std::cout<< " pdfsize " <<  pdfs.size() <<std::endl;
-    std::cout<< " pdfmean " <<  mean <<std::endl;
-    std::cout<< " pdfstdDev " <<  stdDev <<std::endl;
+    //std::cout<< " pdfsize " <<  pdfs.size() <<std::endl;
+    //std::cout<< " pdfmean " <<  mean <<std::endl;
+    //std::cout<< " pdfstdDev " <<  stdDev <<std::endl;
 }
 
 void EventInfoSelector::get_PDFUnc(LHAPDF::PDFSet *Read_PDFSet, std::vector<LHAPDF::PDF*> _SystPDFs, double scalePDF, int firstid, double x1, int secondid, double x2,double& central, double& WeightUp, double& WeightDown, int& lhaID, double &mean, double &stdDev){
