@@ -32,6 +32,7 @@ BoostedJetSelector::BoostedJetSelector(std::string name, TTree* tree, bool debug
 }
 BoostedJetSelector::~BoostedJetSelector(){
   delete tree_;
+  delete PuppiWeightFile;
 }
 void BoostedJetSelector::Fill(const edm::Event& iEvent){
   Clear();

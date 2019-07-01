@@ -36,6 +36,12 @@ EventInfoSelector::EventInfoSelector(std::string name, TTree* tree, bool debug, 
 }
 EventInfoSelector::~EventInfoSelector(){
   delete tree_;
+  delete read_PDFv1Set;
+  delete read_PDFv2Set;
+  delete read_PDFv3Set;
+  delete read_PDFv4Set;
+  delete read_PDFv5Set;
+  delete read_PDFv6Set;
 }
 void EventInfoSelector::Fill(const edm::Event& iEvent){
   Initialise();
