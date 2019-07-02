@@ -22,6 +22,7 @@ BSM3G_TNT_Maker::BSM3G_TNT_Maker(const edm::ParameterSet& iConfig):
   _patElectron_pt_min  = iConfig.getParameter<double>("patElectron_pt_min");
   _patElectron_eta_max = iConfig.getParameter<double>("patElectron_eta_max");
   PUInfo_          = consumesCollector().consumes<std::vector< PileupSummaryInfo> >(edm::InputTag("slimmedAddPileupInfo"));
+  genEvtInfo_    = consumesCollector().consumes<GenEventInfoProduct>(edm::InputTag("generator"));
   debug_                 = iConfig.getParameter<bool>("debug_");
   bjetnessselfilter      = iConfig.getParameter<bool>("bjetnessselfilter");
   _is_data               = iConfig.getParameter<bool>("is_data");
@@ -103,7 +104,8 @@ void BSM3G_TNT_Maker::analyze(const edm::Event& iEvent, const edm::EventSetup& i
   std::vector<PileupSummaryInfo>::const_iterator PVI;
   if(!_is_data){
     edm::Handle<GenEventInfoProduct> genEvtInfo;
-    iEvent.getByLabel("generator",genEvtInfo);
+    iEvent.getByToken(genEvtInfo_,genEvtInfo);
+    //iEvent.getByLabel("generator",genEvtInfo);
     eventnumnegative = (genEvtInfo->weight())/abs(genEvtInfo->weight());
     Handle<std::vector< PileupSummaryInfo > >  PUInfo;
     iEvent.getByToken(PUInfo_, PUInfo); 

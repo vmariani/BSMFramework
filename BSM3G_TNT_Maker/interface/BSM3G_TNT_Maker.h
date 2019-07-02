@@ -66,6 +66,7 @@ class BSM3G_TNT_Maker : public edm::EDAnalyzer {
   edm::EDGetTokenT<edm::TriggerResults> triggerBits_;
   edm::EDGetTokenT<pat::TriggerObjectStandAloneCollection> triggerObjects_;
   edm::EDGetTokenT<pat::PackedTriggerPrescales> triggerPrescales_;
+  edm::EDGetTokenT<GenEventInfoProduct> genEvtInfo_;
   bool _is_data;
   bool _ifevtriggers;
   vector<string> _evtriggers;
