@@ -68,6 +68,13 @@ cmsRun miniAOD_MC(RD)2017(2016)(2018).py
 ## To Submit Crab jobs ###
 cd BSMFramework/BSM3G_TNT_Maker/crab/
 python multicrab_MC(DATA)2016(2017)(2018).py
+- You would probably see following error message:
+"Error message: Error: input tarball size 251 MB exceeds maximum allowed limit of 100 MB"
+"sandbox content sorted by size[Bytes]:"
+"78700759    src/RecoTauTag/TrainingFiles/data/.git/"
+"..."
+please remove this directory:
+src/RecoTauTag/TrainingFiles/data/.git/
 
 ## Notice ###
 - Always check HLT, make sure
