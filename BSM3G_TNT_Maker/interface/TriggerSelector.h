@@ -122,6 +122,7 @@ class TriggerSelector : public baseTree{
   // bstar
   int HLT_Ele32_WPTight_Gsf_L1DoubleEG;
   int HLT_Photon200;
+  int HLT_Photon175;
   int HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165;
   int HLT_Ele27_WP85_Gsf;
 };
