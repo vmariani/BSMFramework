@@ -311,9 +311,10 @@ for d in range(0,len(datasetnames)):
     config.Data.allowNonValidInputDataset = True
     config.Data.inputDataset   = datasetinputs[d]
     config.Data.inputDBS       = 'global'
-    config.Data.splitting      = 'FileBased'
-    config.Data.totalUnits     = 40000 #With 'FileBased' splitting tells how many files to analyse
-    config.Data.unitsPerJob    = 1
+    #config.Data.splitting      = 'FileBased'
+    #config.Data.totalUnits     = 40000 #With 'FileBased' splitting tells how many files to analyse
+    config.Data.splitting      = 'Automatic'
+    config.Data.unitsPerJob    = 180
     config.Data.outLFNDirBase = '/store/user/binghuan/'# First part of LFN for output files (must be /store/user/<username>/ or /store/group/<username>/  )
     config.Data.outputDatasetTag = datasetnames[d]
 

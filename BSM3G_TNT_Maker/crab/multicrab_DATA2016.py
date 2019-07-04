@@ -258,8 +258,10 @@ for d in range(0,len(datasetnames)):
     config.section_('Data')
     config.Data.inputDataset   = datasetinputs[d]
     config.Data.inputDBS       = 'global'
-    config.Data.splitting      = 'LumiBased'
-    config.Data.unitsPerJob    = 30
+    #config.Data.splitting      = 'LumiBased'
+    #config.Data.unitsPerJob    = 30
+    config.Data.splitting      = 'Automatic'
+    config.Data.unitsPerJob    = 180
     # Golden
     config.Data.lumiMask       = tempJSON
     config.Data.outLFNDirBase = '/store/user/binghuan/'
