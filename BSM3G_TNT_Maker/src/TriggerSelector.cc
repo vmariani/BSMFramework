@@ -150,6 +150,8 @@ void TriggerSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSet
       if(HLT_Photon175_v<triggerBits->size()) HLT_Photon175 = triggerBits->accept(HLT_Photon175_v);
       uint HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v(trigNames.triggerIndex(("HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v"+string(buffer)).c_str()));
       if(HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v<triggerBits->size()) HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165 = triggerBits->accept(HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v);
+      uint HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v(trigNames.triggerIndex(("HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v"+string(buffer)).c_str()));
+      if(HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v<triggerBits->size()) HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50 = triggerBits->accept(HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v);
       uint HLT_Ele27_WP85_Gsf_v(trigNames.triggerIndex(("HLT_Ele27_WP85_Gsf_v"+string(buffer)).c_str()));
       if(HLT_Ele27_WP85_Gsf_v<triggerBits->size()) HLT_Ele27_WP85_Gsf = triggerBits->accept(HLT_Ele27_WP85_Gsf_v);
     }
@@ -217,6 +219,7 @@ void TriggerSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& iSet
     HLT_Photon200 = 1;
     HLT_Photon175 = 1;
     HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165 = 1;
+    HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50 = 1;
     HLT_Ele27_WP85_Gsf = 1;
   }
 }
@@ -286,6 +289,7 @@ void TriggerSelector::SetBranches(){
   AddBranch(&HLT_Photon200				      ,"HLT_Photon200");
   AddBranch(&HLT_Photon175				      ,"HLT_Photon175");
   AddBranch(&HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165				      ,"HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165");
+  AddBranch(&HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50				      ,"HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50");
   AddBranch(&HLT_Ele27_WP85_Gsf				      ,"HLT_Ele27_WP85_Gsf");
   if(debug_)    std::cout<<"set branches"<<std::endl;
 }
@@ -351,6 +355,7 @@ void TriggerSelector::Clear(){
   HLT_Ele27_eta2p1_WPLoose_Gsf = -9999;
   HLT_Ele32_WPTight_Gsf_L1DoubleEG = -9999;
   HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165 = -9999;
+  HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50 = -9999;
   HLT_Photon200 = -9999;
   HLT_Photon175 = -9999;
   HLT_Ele27_WP85_Gsf = -9999;
