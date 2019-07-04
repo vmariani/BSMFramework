@@ -71,6 +71,12 @@ cd BSMFramework/BSM3G_TNT_Maker/crab/
 python multicrab_MC(DATA)2016(2017)(2018).py
 
 ## Notice ###
+- Use < crab status -d > instead of TaskMonitors to check job information 
+  < crab status -d > may show information contradicting TaskMonitors
+  This is due to automatic splitting:
+  https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3FAQ#What_is_the_Automatic_splitting
+  
+
 - Always check HLT, make sure
     HLT you want is contained in TriggerSelector
     ifevtriggers in miniADO_RD(MC).py is set to true (false)
