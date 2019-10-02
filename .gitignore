@@ -1,0 +1,11 @@
+BSM3G_TNT_Maker/cmssw-slc6
+BSM3G_TNT_Maker/crab/Legacy18V1_EleGBlockA/
+BSM3G_TNT_Maker/crab/crab.log
+BSM3G_TNT_Maker/crab/eejj_18_L13_M8000/
+BSM3G_TNT_Maker/python/.__afs383D
+BSM3G_TNT_Maker/python/cmssw-slc6
+BSM3G_TNT_Maker/python/framework/
+BSM3G_TNT_Maker/python/jobs/jobs_test
+BSM3G_TNT_Maker/python/jobs/resubmit_jobs_test
+*.err
+*.log
