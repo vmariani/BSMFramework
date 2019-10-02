@@ -144,8 +144,7 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 #####
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
-    #'/store/data/Run2017B/SingleMuon/MINIAOD/31Mar2018-v1/100000/005EF8EB-6338-E811-B31C-0025905A6066.root',
-    '/store/data/Run2016B/SingleMuon/MINIAOD/17Jul2018_ver2-v1/90000/FEADEB19-1D92-E811-BAFA-0025905C54D8.root',
+  '/store/data/Run2016H/SingleElectron/MINIAOD/17Jul2018-v1/40000/F216921F-B68B-E811-AF0F-0025905B8574.root'
   ),
   skipEvents = cms.untracked.uint32(0)
 )
@@ -180,7 +179,7 @@ process.prefiringweight = cms.EDProducer("L1ECALPrefiringWeightProducer",
         TheJets = cms.InputTag(jetsNameAK4),
         #L1Maps = cms.string("/afs/cern.ch/work/b/binghuan/private/BSMFWTest/CMSSW_9_4_10/src/L1Prefiring/EventWeightProducer/files/L1PrefiringMaps_new.root"), # update this line with the location of this file
         L1Maps = cms.string("L1PrefiringMaps_new.root"), 
-        DataEra = cms.string("2017BtoF"), #Use 2016BtoH for 2016
+        DataEra = cms.string("2016BtoH"), #Use 2016BtoH for 2016
         UseJetEMPt = cms.bool(False), #can be set to true to use jet prefiring maps parametrized vs pt(em) instead of pt
         PrefiringRateSystematicUncty = cms.double(0.2) #Minimum relative prefiring uncty per object
                                                                                                                                                                                                                               )
@@ -269,10 +268,10 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
 #####
 ##   Output file
 #####
-options.ofName += ".root"
+options.ofName += ".root"
 process.TFileService = cms.Service("TFileService",
-  #fileName = cms.string("OutTree.root")
-  fileName = cms.string("OutTree.root")
+ # fileName = cms.string("WJetsHT800To1200.root")
+ fileName = cms.string(options.ofName)
 )
 
 #####

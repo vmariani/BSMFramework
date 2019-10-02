@@ -21,7 +21,8 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
     # ttH run II 2016 sync file
-    '/store/mc/RunIISummer16MiniAODv3/ttHToNonbb_M125_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/F24F2D5E-DDEC-E811-AF50-90B11C08AD7D.root'
+    '/store/mc/RunIISummer16MiniAODv3/HeavyCompositeMajoranaNeutrino_L9000_M9000_mumujj_CalcHep/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/50000/021A86C7-BB7B-E911-89AE-001E677928C6.root'
+#    '/store/mc/RunIISummer16MiniAODv3/ttHToNonbb_M125_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/F24F2D5E-DDEC-E811-AF50-90B11C08AD7D.root'
   ),
   skipEvents = cms.untracked.uint32(0)
 )
@@ -142,14 +143,34 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
     taggingMode = cms.bool(True),
     debug = cms.bool(False)
     )
+import FWCore.ParameterSet.VarParsing as VarParsing
 
+
+options = VarParsing.VarParsing ('standard')
+
+options.register ('ofName',
+                  "", # default value
+                  VarParsing.VarParsing.multiplicity.singleton, # singleton or list
+                  VarParsing.VarParsing.varType.string,          # string, int, or float
+                  "Number of events to process (-1 for all)")
+
+options.parseArguments()
 
 #####
 ##   Output file
 #####
+
+options.ofName += ".root"
 process.TFileService = cms.Service("TFileService",
-  fileName = cms.string("OutTree.root")
+ # fileName = cms.string("WJetsHT800To1200.root")
+ fileName = cms.string(options.ofName)
 )
+
+#process.TFileService = cms.Service("TFileService",
+#  fileName = cms.string("OutTree.root")
+#)
+
+
 
 #####
 ##   Analysis parameters
