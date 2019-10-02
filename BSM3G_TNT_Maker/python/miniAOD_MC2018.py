@@ -4,7 +4,7 @@ import FWCore.ParameterSet.Config as cms
 #####
 process = cms.Process("Demo")
 process.load("FWCore.MessageService.MessageLogger_cfi")
-process.MessageLogger.cerr.FwkReport.reportEvery = 10000
+process.MessageLogger.cerr.FwkReport.reportEvery = 100 #10000
 process.load('Configuration.Geometry.GeometryRecoDB_cff')
 process.load("TrackingTools/TransientTrack/TransientTrackBuilder_cfi")
 process.load("Configuration.StandardSequences.MagneticField_cff")
@@ -121,13 +121,28 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
     debug = cms.bool(False)
     )
 
+import FWCore.ParameterSet.VarParsing as VarParsing
+
+
+options = VarParsing.VarParsing ('standard')
+
+options.register ('ofName',
+                  "", # default value
+                  VarParsing.VarParsing.multiplicity.singleton, # singleton or list
+                  VarParsing.VarParsing.varType.string,          # string, int, or float
+                  "Number of events to process (-1 for all)")
+
+options.parseArguments()
+
 
 #####
 ##   Output file
 #####
+options.ofName += ".root"
 process.TFileService = cms.Service("TFileService",
-  fileName = cms.string("OutTree_2018.root")
+  #fileName = cms.string("OutTree_2018.root")
   #fileName = cms.string("OutTree.root")
+  fileName = cms.string(options.ofName)
 )
 
 #####

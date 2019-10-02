@@ -21,144 +21,256 @@ if __name__ == '__main__':
  ##   Crab configuration
  #####
  datasetnames  = [
-# signal
-'Legacy18V1_TTHnobb',
-'Legacy18V1_TTH_ctcvcp',
-# TH
-'Legacy18V1_THQ_Hincl',
-'Legacy18V1_THW_Hincl',
-'Legacy18V1_THQ_ctcvcp',
-'Legacy18V1_THW_ctcvcp',
-# prompt background
-# TTW
-'Legacy18V1_TTWJets',
-'Legacy18V1_TTWW_v1',
-'Legacy18V1_TTWW_ext1',
-# TTZ
-'Legacy18V1_TTZ_M1to10',
-'Legacy18V1_TTZ_M10',
-# TT
-'Legacy18V1_TTTo2L',
-'Legacy18V1_TTToSemiLep',
-'Legacy18V1_TTToHad',
-#Conv
-'Legacy18V1_TTGJets', #10
-'Legacy18V1_TGJetsLep',
-'Legacy18V1_WGToLNuG_Tune',
-'Legacy18V1_ZGToLLG_01J',
-'Legacy18V1_W1JetsToLNu',
-'Legacy18V1_W2JetsToLNu',
-'Legacy18V1_W3JetsToLNu',
-'Legacy18V1_W4JetsToLNu',
-'Legacy18V1_DYJets_M10to50',
-'Legacy18V1_DYJets_M50',
-#EWK
-'Legacy18V1_WZTo3LNu',
-'Legacy18V1_ZZTo4L_v1',
-'Legacy18V1_ZZTo4L_ext', #20
-#Rares
-'Legacy18V1_WW_DS',
-'Legacy18V1_WWW',
-'Legacy18V1_WWZ',
-'Legacy18V1_WZZ',
-'Legacy18V1_ZZZ',
-'Legacy18V1_TTTT',
-'Legacy18V1_tWll',
-'Legacy18V1_tZq',
-'Legacy18V1_WpWpJJ',
-'Legacy18V1_TTTW', #30
-'Legacy18V1_TTWH',
-'Legacy18V1_VHToNonbb',
-#### ST #####
-'Legacy18V1_ST_tW_top',
-'Legacy18V1_ST_tW_antitop',
-'Legacy18V1_ST_tCh_top',
-'Legacy18V1_ST_tCh_antitop',
-'Legacy18V1_ST_sCh_lepDecay',
-##### Additional Samples ########
-'Legacy18V1_TTGDiLep', #10
-'Legacy18V1_WGToLNuG_01J',
-'Legacy18V1_WJets',
-#####   MVA samples #######
-'Legacy18V1_ttW_Tune',
-'Legacy18V1_ttZ_Tune',
-'Legacy18V1_TTJets_mad',
-'Legacy18V1_TTJets_amc',
-'Legacy18V1_TTJets_TbarToSingleLep',
-'Legacy18V1_TTJets_TToSingleLep',
-'Legacy18V1_TTJets_DiLep',
+#background
+
+#'Autumn18_TT', #32
+#'Autumn18_ST',
+#'Autumn18_SaT',
+#'Autumn18_ZZ',
+#'Autumn18_WZ',
+#'Autumn18_WW',
+#'Autumn18_WJetsHT70To100',
+#'Autumn18_WJetsHT100To200',
+#'Autumn18_WJetsHT200To400',
+#'Autumn18_WJetsHT400To600',
+#'Autumn18_WJetsHT600To800',
+#'Autumn18_WJetsHT800To1200',
+#'Autumn18_WJetsHT1200To2500',
+#'Autumn18_WJetsHT2500ToInf',
+#'Autumn18_WJets_',
+#'Autumn18_DY',
+
+#Signal mumu
+#'mumujj_18_L4_M1000',
+#'mumujj_18_L4_M2000',
+#'mumujj_18_L4_M3000',
+#'mumujj_18_L5_M500',
+#'mumujj_18_L5_M1000',
+#'mumujj_18_L5_M2000',
+#'mumujj_18_L5_M4000',
+#'mumujj_18_L5_M3000',
+#'mumujj_18_L5_M5000',
+#'mumujj_18_L6_M500',
+#'mumujj_18_L6_M1000',
+#'mumujj_18_L6_M2000',
+#'mumujj_18_L6_M3000',
+#'mumujj_18_L6_M4000',
+#'mumujj_18_L6_M5000',
+#'mumujj_18_L6_M6000',
+#'mumujj_18_L7_M500',
+#'mumujj_18_L7_M1000',
+#'mumujj_18_L7_M2000',
+#'mumujj_18_L7_M3000',
+#'mumujj_18_L7_M4000',
+#'mumujj_18_L7_M5000',
+#'mumujj_18_L7_M6000',
+#'mumujj_18_L7_M7000',
+#'mumujj_18_L9_M500',
+#'mumujj_18_L9_M1000',
+#'mumujj_18_L9_M2000',
+#'mumujj_18_L9_M4000',
+#'mumujj_18_L9_M6000',
+#'mumujj_18_L9_M9000',
+#'mumujj_18_L11_M500',
+#'mumujj_18_L11_M1000',
+#'mumujj_18_L11_M2000',
+#'mumujj_18_L11_M4000',
+#'mumujj_18_L11_M7000',
+#'mumujj_18_L13_M500',
+#'mumujj_18_L13_M1000',
+#'mumujj_18_L13_M2000',
+#'mumujj_18_L13_M5000',
+#'mumujj_18_L13_M8000',
+#'mumujj_18_L15_M500',
+#'mumujj_18_L15_M1000',
+#'mumujj_18_L15_M2000',
+#'mumujj_18_L15_M6000',
+#'mumujj_18_L17_M500',
+#'mumujj_18_L17_M1000',
+#'mumujj_18_L17_M2000',
+#'mumujj_18_L17_M7000',
+#'mumujj_18_L20_M1000',
+#'mumujj_18_L20_M2000',
+#'mumujj_18_L20_M8000',
+
+#Signal ee
+#'eejj_18_L4_M500',
+#'eejj_18_L4_M1000',
+#'eejj_18_L4_M2000',
+#'eejj_18_L4_M3000',
+#'eejj_18_L4_M4000',
+#'eejj_18_L5_M500',
+#'eejj_18_L5_M1000',
+#'eejj_18_L5_M2000',
+#'eejj_18_L5_M3000',
+#'eejj_18_L5_M4000',
+#'eejj_18_L5_M5000',
+#'eejj_18_L6_M500',
+#'eejj_18_L6_M1000',
+#'eejj_18_L6_M2000',
+#'eejj_18_L6_M3000',
+#'eejj_18_L6_M4000',
+#'eejj_18_L6_M5000',
+#'eejj_18_L6_M6000',
+#'eejj_18_L7_M500',
+#'eejj_18_L7_M1000',
+#'eejj_18_L7_M2000',
+#'eejj_18_L7_M3000',
+#'eejj_18_L7_M4000',
+#'eejj_18_L7_M5000',
+#'eejj_18_L7_M6000',
+#'eejj_18_L7_M7000',
+#'eejj_18_L9_M500',
+#'eejj_18_L9_M1000',
+#'eejj_18_L9_M2000',
+#'eejj_18_L9_M4000',
+#'eejj_18_L9_M6000',
+#'eejj_18_L11_M1000',
+#'eejj_18_L11_M2000',
+#'eejj_18_L11_M4000',
+#'eejj_18_L11_M7000',
+#'eejj_18_L13_M500',
+#'eejj_18_L13_M1000',
+#'eejj_18_L13_M2000',
+#'eejj_18_L13_M5000',
+'eejj_18_L13_M8000',
+#'eejj_18_L15_M500',
+#'eejj_18_L15_M2000',
+#'eejj_18_L15_M6000',
+#'eejj_18_L17_M500',
+#'eejj_18_L17_M1000',
+#'eejj_18_L17_M2000',
+#'eejj_18_L17_M7000',
+#'eejj_18_L20_M500',
+#'eejj_18_L20_M2000',
                  ]
  datasetinputs = [
-# signal
-'/ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-'/TTH_4f_ctcvcp_TuneCP5_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-# TH
-'/THQ_4f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/THW_5f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/THQ_ctcvcp_4f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/THW_ctcvcp_5f_Hincl_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-# prompt background
-# TTW
-'/TTWJetsToLNu_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/TTWW_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/TTWW_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext2-v1/MINIAODSIM',
-# TTZ
-'/TTZToLL_M-1to10_TuneCP5_13TeV-amcatnlo-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/TTZToLLNuNu_M-10_TuneCP5_13TeV-amcatnlo-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-# TT
-'/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-#Conv
-'/TTGJets_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/TGJets_leptonDecays_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/WGToLNuG_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/ZGToLLG_01J_5f_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/W1JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-'/W2JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-'/W3JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-'/W4JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-'/DYJetsToLL_M-10to50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-'/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-#EWK
-'/WZTo3LNu_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/ZZTo4L_TuneCP5_13TeV_powheg_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/ZZTo4L_TuneCP5_13TeV_powheg_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext2-v2/MINIAODSIM',
-#Rares
-'/WWTo2L2Nu_DoubleScattering_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/WWW_4F_TuneCP5_13TeV-amcatnlo-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/WWZ_TuneCP5_13TeV-amcatnlo-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/WZZ_TuneCP5_13TeV-amcatnlo-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/ZZZ_TuneCP5_13TeV-amcatnlo-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/TTTT_TuneCP5_13TeV-amcatnlo-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/W4JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-'/tZq_ll_4f_ckm_NLO_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/WWJJToLNuLNu_EWK_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/TTTW_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/TTWH_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/VHToNonbb_M125_13TeV_amcatnloFXFX_madspin_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-#ST
-'/ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM',
-'/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM',
-'/ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/ST_s-channel_4f_leptonDecays_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v4/MINIAODSIM',
-##### Additional Samples ########
-'/TTGamma_Dilept_TuneCP5_13TeV_madgraph_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/WGToLNuG_01J_5f_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM',
-'/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
-###################### MVA Samples ##################
-'/ttWJets_TuneCP5_13TeV_madgraphMLM_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/ttZJets_TuneCP5_13TeV_madgraphMLM_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/TTJets_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/TTJets_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v2/MINIAODSIM',
-'/TTJets_SingleLeptFromTbar_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/TTJets_SingleLeptFromT_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
-'/TTJets_DiLept_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM',
+#'/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM',
+#'/ZZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
+#'/WZ_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v3/MINIAODSIM',
+#'/WW_TuneCP5_13TeV-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
+#'/WJetsToLNu_HT-70To100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/WJetsToLNu_HT-100To200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/WJetsToLNu_HT-200To400_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/WJetsToLNu_HT-400To600_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/WJetsToLNu_HT-800To1200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/WJetsToLNu_HT-1200To2500_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/WJetsToLNu_HT-2500ToInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
+#'/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+
+
+#signal mumu
+#'/HeavyCompositeMajoranaNeutrino_L4000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L4000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L4000_M3000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M500_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M3000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M4000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M5000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M500_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M3000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M4000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M5000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M6000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M500_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M3000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M4000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M5000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M6000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M7000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M500_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M4000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M6000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M9000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L11000_M500_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L11000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L11000_M4000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L11000_M7000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L13000_M500_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L13000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L13000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L13000_M5000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L13000_M8000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L15000_M500_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L15000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L15000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L15000_M6000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L17000_M500_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L17000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L17000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L17000_M7000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L20000_M1000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L20000_M2000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L20000_M8000_mumujj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+
+
+#Signal ee
+#'/HeavyCompositeMajoranaNeutrino_L4000_M500_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L4000_M1000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L4000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L4000_M3000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L4000_M4000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M500_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M1000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M3000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M4000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L5000_M5000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M500_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M1000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M3000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M4000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M5000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L6000_M6000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M500_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M1000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M3000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M4000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M5000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M6000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L7000_M7000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M500_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M1000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M4000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L9000_M6000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L11000_M1000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L11000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L11000_M4000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L11000_M7000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L13000_M500_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L13000_M1000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L13000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L13000_M5000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+'/HeavyCompositeMajoranaNeutrino_L13000_M8000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L15000_M500_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L15000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L15000_M6000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L17000_M500_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L17000_M1000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L17000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L17000_M7000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L20000_M500_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+#'/HeavyCompositeMajoranaNeutrino_L20000_M2000_eejj_CalcHep/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
                 ]
 
-#for d in range(36,len(datasetnames)):
-for d in range(0,1):
+for d in range(0,len(datasetnames)):
+#for d in [1]:
     print 'multicrab.py: Running datasetname: ', datasetnames[d]
 
     config.section_('General')
@@ -169,8 +281,8 @@ for d in range(0,1):
     config.section_('JobType')
     config.JobType.pluginName  = 'Analysis'
     # List of parameters to pass to CMSSW parameter-set configuration file:
-    config.JobType.psetName    = '/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_MC2018.py'
-    config.JobType.inputFiles = ['/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db']
+    config.JobType.psetName    = '/afs/cern.ch/user/v/vmariani/test2/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_MC2018.py'
+    config.JobType.inputFiles = ['/afs/cern.ch/user/v/vmariani/test2/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db']
     config.JobType.sendExternalFolder = True
     config.JobType.maxMemoryMB = 2000 # Default == 2Gb : maximum guaranteed to run on all sites
     #config.JobType.allowUndistributedCMSSW = True
@@ -181,15 +293,15 @@ for d in range(0,1):
     config.Data.inputDataset   = datasetinputs[d]
     config.Data.inputDBS       = 'global'
     config.Data.splitting      = 'FileBased'
-    config.Data.totalUnits     = 40000 #With 'FileBased' splitting tells how many files to analyse
+    config.Data.totalUnits     = 30000 #With 'FileBased' splitting tells how many files to analyse
     config.Data.unitsPerJob    = 1
-    config.Data.outLFNDirBase = '/store/user/binghuan/'# First part of LFN for output files (must be /store/user/<username>/ or /store/group/<username>/  )
+    config.Data.ignoreLocality = True
+    config.Site.whitelist=['T2_IT_*']
     config.Data.outputDatasetTag = datasetnames[d]
 
-    print 'multicrab.py: outLFNDirBase = /store/user/binghuan/'
     #config.Data.publication = True
 
     config.section_('Site')
-    config.Site.storageSite    = 'T2_CN_Beijing'#'T2_CH_CERN' # Site to which output is permenantly copied by crab3
+    config.Site.storageSite    = 'T2_IT_Bari'#'T2_CH_CERN' # Site to which output is permenantly copied by crab3
     print 'multicrab.py: Submitting Jobs'
     submit(config)

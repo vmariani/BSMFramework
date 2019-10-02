@@ -29,14 +29,6 @@ if __name__ == '__main__':
 'Legacy18V1_EleGBlockB',
 'Legacy18V1_EleGBlockC',
 'Legacy18V1_EleGBlockD',
-'Legacy18V1_DblMuBlockA',
-'Legacy18V1_DblMuBlockB',
-'Legacy18V1_DblMuBlockC',
-'Legacy18V1_DblMuBlockD',
-'Legacy18V1_MuEGBlockA',
-'Legacy18V1_MuEGBlockB',
-'Legacy18V1_MuEGBlockC',
-'Legacy18V1_MuEGBlockD',
                  ]
  datasetinputs = [
  # FIXME which samples to use? 
@@ -55,15 +47,6 @@ if __name__ == '__main__':
  '/EGamma/Run2018D-PromptReco-v2/MINIAOD',
  #'/EGamma/Run2018D-22Jan2019-v2/MINIAOD', # FIXME
  # DoubleMuon dataset : AT LEAST 2 high-energy muon in the event.
- '/DoubleMuon/Run2018A-17Sep2018-v2/MINIAOD',
- '/DoubleMuon/Run2018B-17Sep2018-v1/MINIAOD',
- '/DoubleMuon/Run2018C-17Sep2018-v1/MINIAOD',
- '/DoubleMuon/Run2018D-PromptReco-v2/MINIAOD',
- # MuonEG dataset : AT LEAST 1 high-energy electron and 1 high-energy muon in the event.
- '/MuonEG/Run2018A-17Sep2018-v1/MINIAOD',
- '/MuonEG/Run2018B-17Sep2018-v1/MINIAOD',
- '/MuonEG/Run2018C-17Sep2018-v1/MINIAOD',
- '/MuonEG/Run2018D-PromptReco-v2/MINIAOD',
                 ]
 
 JECBlockA = [
@@ -141,12 +124,12 @@ JECBlockD = [
 
 
 goodRunsLists = [
-'/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/JSON/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt',
+'/afs/cern.ch/user/v/vmariani/test2/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/JSON/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt',
 ]
 
 #for d in range(0,len(datasetnames)):
 #for d in range(10,len(datasetnames)):
-for d in range(0,4):
+for d in range(0,len(datasetnames)):
 #for d in [4,9,14,19,24]:
     print 'multicrab.py: Running datasetname: ', datasetnames[d]
     JECFiles = []
@@ -211,8 +194,8 @@ for d in range(0,4):
     config.section_('JobType')
     config.JobType.pluginName  = 'Analysis'
     # List of parameters to pass to CMSSW parameter-set configuration file:
-    config.JobType.psetName    = '/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_RD2018.py'
-    config.JobType.inputFiles = ['/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db']
+    config.JobType.psetName    = '/afs/cern.ch/user/v/vmariani/test2/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_RD2018.py'
+    config.JobType.inputFiles = ['/afs/cern.ch/user/v/vmariani/test2/CMSSW_10_2_10/src/BSMFramework/BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db']
     config.JobType.allowUndistributedCMSSW = True
     config.JobType.sendExternalFolder = True
     ofParam = 'ofName=' + datasetnames[d]
@@ -242,11 +225,9 @@ for d in range(0,4):
     config.Data.unitsPerJob    = 30
     # Golden
     config.Data.lumiMask       = tempJSON
-    config.Data.outLFNDirBase = '/store/user/binghuan/'
-    print 'multicrab.py: outLFNDirBase = /store/user/binghuan/'
     #config.Data.publication = True
 
     config.section_('Site')
-    config.Site.storageSite    = 'T2_CN_Beijing'#'T2_CH_CERN'
+    config.Site.storageSite    = 'T2_IT_Bari'#'T2_CH_CERN'
     print 'multicrab.py: Submitting Jobs'
     submit(config)

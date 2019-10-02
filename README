@@ -43,9 +43,9 @@ git cms-addpkg RecoMET/METFilters
 scram b
 
 ## set BSM Framework
-git clone https://github.com/BinghuanLi/BSMFramework.git
+git clone https://github.com/vmariani/BSMFramework.git
 cd BSMFramework/
-git checkout CMSSW_10_2_10
+git checkout HN18
 cd ..
 scram b -j 8
 
