@@ -261,14 +261,13 @@ process.puppiNoLep.useExistingWeights = False
 process.puppi.useExistingWeights = False
 
 
-
 #####
 ##   Output file
 #####
-options.ofName += ".root"
+options.ofName += ".root"
 process.TFileService = cms.Service("TFileService",
   #fileName = cms.string("OutTree.root")
-  fileName = cms.string("RDOut.root")
+  fileName = cms.string(options.ofName)
 )
 
 #####

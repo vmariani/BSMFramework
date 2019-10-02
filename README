@@ -24,9 +24,9 @@ scram b -j 8
 
 
 ## set BSM Framework
-git clone https://github.com/BinghuanLi/BSMFramework.git
+git clone https://github.com/vmariani/BSMFramework.git
 cd BSMFramework/
-git checkout CMSSW_9_4_6_patch1
+git checkout HN17
 cd ..
 scram b -j 8
 

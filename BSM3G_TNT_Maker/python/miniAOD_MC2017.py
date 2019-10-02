@@ -20,8 +20,7 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 #####
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
-'/store/user/mpresill/mu_L4_M2000/mu_L4_M2000_step4/170716_101900/0000/ele_L4_M500-miniAODSIM_99.root '
-# '/store/mc/RunIIFall17MiniAODv2/WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/20000/C20A6BE7-C94F-E811-A21B-F01FAFE13F0F.root'
+ '/store/mc/RunIIFall17MiniAODv2/WJetsToLNu_HT-600To800_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/20000/C20A6BE7-C94F-E811-A21B-F01FAFE13F0F.root'
  #  '/store/mc/RunIIFall17MiniAODv2/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/00000/523E450B-CB41-E811-AACA-001E6739B849.root'
   # '/store/mc/RunIIFall17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/90000/FEFADA2F-8C44-E811-914F-B496910A8618.root' 
 # '/store/mc/RunIIFall17MiniAODv2/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/PU2017RECOSIMstep_12Apr2018_94X_mc2017_realistic_v14-v1/910000/ECC11159-F647-E811-A157-001E67792510.root'
@@ -144,16 +143,26 @@ runMetCorAndUncFromMiniAOD(process,
 process.puppiNoLep.useExistingWeights = False
 process.puppi.useExistingWeights = False
 
+import FWCore.ParameterSet.VarParsing as VarParsing
 
+
+options = VarParsing.VarParsing ('standard')
+
+options.register ('ofName',
+                  "", # default value
+                  VarParsing.VarParsing.multiplicity.singleton, # singleton or list
+                  VarParsing.VarParsing.varType.string,          # string, int, or float
+                  "Number of events to process (-1 for all)")
+
+options.parseArguments()
 #####
 ##   Output file
 #####
-#options.ofName += ".root"
+options.ofName += ".root"
 process.TFileService = cms.Service("TFileService",
-  fileName = cms.string("WJetsHT800To1200.root")
- # fileName = cms.string(options.ofName)
+ # fileName = cms.string("WJetsHT800To1200.root")
+ fileName = cms.string(options.ofName)
 )
-
 #####
 ##   Analysis parameters
 #####

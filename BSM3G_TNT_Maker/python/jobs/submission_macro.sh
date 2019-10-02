@@ -1,11 +1,11 @@
 
-TASK="Sign_mumu_L13_M5000_" #name of the output directory and the files
-INPUT_DATASET=(`cat listSign_mumu_L13_M5000.txt`) 
+TASK="WZ_" #name of the output directory and the files
+INPUT_DATASET=(`cat listWZ.txt`) 
 
 i=0
 JOB_FOLDER=jobs_test #folder for jobs
 
-OUTPUT_FOLDER=/eos/user/v/vmariani/NTuples/HN/$TASK
+OUTPUT_FOLDER=/eos/user/v/vmariani/NTuples/HN_2017/$TASK
 echo "$OUTPUT_FOLDER"
 
 RESUBMIT=$1 

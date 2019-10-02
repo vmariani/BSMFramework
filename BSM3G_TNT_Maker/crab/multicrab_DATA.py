@@ -239,6 +239,6 @@ for d in range(0,len(datasetnames)):
     #config.Data.publication = True
 
     config.section_('Site')
-    config.Site.storageSite    = 'T2_IT_Pisa'#'T2_CH_CERN'
+    config.Site.storageSite    = 'T2_IT_Bari'#'T2_CH_CERN'
     print 'multicrab.py: Submitting Jobs'
     submit(config)

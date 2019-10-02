@@ -110,6 +110,9 @@ void  filename_(const char*  Input = "", const char*  Output =""){
   //int rHLT_DoubleEle33_CaloIdL_GsfTrkIdVL; rHLT_DoubleEle33_CaloIdL_GsfTrkIdVL = 0; TBranch* b_rHLT_DoubleEle33_CaloIdL_GsfTrkIdVL = 0; readingtree->SetBranchAddress("HLT_DoubleEle33_CaloIdL_GsfTrkIdVL",&rHLT_DoubleEle33_CaloIdL_GsfTrkIdVL,&b_rHLT_DoubleEle33_CaloIdL_GsfTrkIdVL);
   int rHLT_Ele115_CaloIdVT_GsfTrkIdT; rHLT_Ele115_CaloIdVT_GsfTrkIdT = 0; TBranch* b_rHLT_Ele115_CaloIdVT_GsfTrkIdT = 0; readingtree->SetBranchAddress("HLT_Ele115_CaloIdVT_GsfTrkIdT",&rHLT_Ele115_CaloIdVT_GsfTrkIdT,&b_rHLT_Ele115_CaloIdVT_GsfTrkIdT);
   int rHLT_Mu50; rHLT_Mu50 = 0; TBranch* b_rHLT_Mu50 = 0; readingtree->SetBranchAddress("HLT_Mu50",&rHLT_Mu50,&b_rHLT_Mu50);
+  int rHLT_TkMu50; rHLT_TkMu50 = 0; TBranch* b_rHLT_TkMu50 = 0; readingtree->SetBranchAddress("HLT_TkMu50",&rHLT_TkMu50,&b_rHLT_TkMu50);
+  int rHLT_OldMu100; rHLT_OldMu100 = 0; TBranch* b_rHLT_OldMu100 = 0; readingtree->SetBranchAddress("HLT_OldMu100",&rHLT_OldMu100,&b_rHLT_OldMu100);
+  int rHLT_TkMu100; rHLT_TkMu100 = 0; TBranch* b_rHLT_TkMu100 = 0; readingtree->SetBranchAddress("HLT_TkMu100",&rHLT_TkMu100,&b_rHLT_TkMu100);
 
   //PU
   double rPUWeight; rPUWeight = 0; TBranch* b_rPUWeight = 0; readingtree->SetBranchAddress("PUWeight",&rPUWeight,&b_rPUWeight);
@@ -244,8 +247,11 @@ void  filename_(const char*  Input = "", const char*  Output =""){
    //Trigger:
   //int HLT_Ele27_eta2p1_WPLoose_Gsf; newtree->Branch("HLT_Ele27_eta2p1_WPLoose_Gsf",&HLT_Ele27_eta2p1_WPLoose_Gsf);
   //int HLT_DoubleEle33_CaloIdL_GsfTrkIdVL; newtree->Branch("HLT_DoubleEle33_CaloIdL_GsfTrkIdVL",&HLT_DoubleEle33_CaloIdL_GsfTrkIdVL);
-  int HLT_Ele115_CaloIdVT_GsfTrkIdT; newtree->Branch("HLT_Ele115_CaloIdVT_GsfTrkIdT",&HLT_Ele115_CaloIdVT_GsfTrkIdT);
+   int HLT_Ele115_CaloIdVT_GsfTrkIdT; newtree->Branch("HLT_Ele115_CaloIdVT_GsfTrkIdT",&HLT_Ele115_CaloIdVT_GsfTrkIdT);
    int HLT_Mu50; newtree->Branch("HLT_Mu50",&HLT_Mu50);
+   int HLT_TkMu50; newtree->Branch("HLT_TkMu50",&HLT_TkMu50);
+   int HLT_OldMu100; newtree->Branch("HLT_OldMu100",&HLT_OldMu100);
+   int HLT_TkMu100; newtree->Branch("HLT_TkMu100",&HLT_TkMu100);
 
    //Muons:
    vector<double>* Muon_pt = new std::vector<double>; newtree->Branch("Muon_pt",&Muon_pt);
@@ -629,7 +635,10 @@ void  filename_(const char*  Input = "", const char*  Output =""){
     //HLT_Ele27_eta2p1_WPLoose_Gsf = -999;
     //HLT_DoubleEle33_CaloIdL_GsfTrkIdVL = -999;
     HLT_Ele115_CaloIdVT_GsfTrkIdT = -999;
+    HLT_TkMu50 = -999;
     HLT_Mu50 = -999;
+    HLT_TkMu100 = -999;
+    HLT_OldMu100 = -999;
 
     PUWeight = -999; nBestVtx = -999; trueInteractions = -999; lumi_wgt = -999;
     Met_type1PF_pt = -999;
@@ -672,7 +681,9 @@ void  filename_(const char*  Input = "", const char*  Output =""){
    //HLT_DoubleEle33_CaloIdL_GsfTrkIdVL = rHLT_DoubleEle33_CaloIdL_GsfTrkIdVL;
    HLT_Ele115_CaloIdVT_GsfTrkIdT = rHLT_Ele115_CaloIdVT_GsfTrkIdT;
    HLT_Mu50 = rHLT_Mu50;
- 
+   HLT_TkMu50 = rHLT_TkMu50;
+   HLT_OldMu100 = rHLT_OldMu100;
+   HLT_TkMu100 = rHLT_TkMu100;
 
     PUWeight = rPUWeight;
     //trueInteractions = rtrueInteractions;
@@ -1205,10 +1216,10 @@ void  filename_(const char*  Input = "", const char*  Output =""){
 
    if(HLT_Ele115_CaloIdVT_GsfTrkIdT==1 && numOfHighptEle==2 && patElectron_pt->at(0)>130 && patElectron_pt->at(1)>35 && numOfLooseMu==0 && numOfBoostedJets>=1 && M_leplep>300) SRe=1;
    if(HLT_Ele115_CaloIdVT_GsfTrkIdT==1 && numOfHighptEle==1 && patElectron_pt->at(0)>130 && numOfHighptMu==1 &&  Muon_pt->at(0)>35 && numOfBoostedJets>=1 && M_leplep>300) TRe=1;
-   if(HLT_Mu50==1 && numOfHighptMu==1 &&  Muon_pt->at(0)>53 && numOfHighptEle==1 && patElectron_pt->at(0)>30 && numOfBoostedJets>=1 && M_leplep>300) TRmu=1;
-   if(HLT_Mu50==1 && numOfHighptMu==2 && Muon_pt->at(0)>53 && Muon_pt->at(1)>30 && numOfVetoEle==0 && numOfBoostedJets>=1 && M_leplep>300) SRmu=1;
+   if(HLT_Mu50==1 && HLT_OldMu100==1 && HLT_TkMu50==1 && HLT_TkMu100==1 && numOfHighptMu==1 &&  Muon_pt->at(0)>53 && numOfHighptEle==1 && patElectron_pt->at(0)>30 && numOfBoostedJets>=1 && M_leplep>300) TRmu=1;
+   if(HLT_Mu50==1 && HLT_OldMu100==1 && HLT_TkMu50==1 && HLT_TkMu100==1 && numOfHighptMu==2 && Muon_pt->at(0)>53 && Muon_pt->at(1)>30 && numOfVetoEle==0 && numOfBoostedJets>=1 && M_leplep>300) SRmu=1;
    if(HLT_Ele115_CaloIdVT_GsfTrkIdT==1 && numOfHighptEle==2 && patElectron_pt->at(0)>130 && patElectron_pt->at(1)>35 && numOfLooseMu==0 && numOfBoostedJets>=1) DYRe=1;
-   if(HLT_Mu50==1 && numOfHighptMu==2 && Muon_pt->at(0)>53 && Muon_pt->at(1)>30 && numOfVetoEle==0 && numOfBoostedJets>=1) DYRmu=1;
+   if(HLT_Mu50==1 && HLT_OldMu100==1 && HLT_TkMu50==1 && HLT_TkMu100==1 && numOfHighptMu==2 && Muon_pt->at(0)>53 && Muon_pt->at(1)>30 && numOfVetoEle==0 && numOfBoostedJets>=1) DYRmu=1;
 
 
    newtree->Fill();    
