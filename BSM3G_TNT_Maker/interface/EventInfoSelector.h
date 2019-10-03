@@ -142,6 +142,12 @@ class EventInfoSelector : public baseTree{
   double EVENT_fixedGridRhoFastjetCentral, EVENT_fixedGridRhoFastjetCentralChargedPileUp, EVENT_fixedGridRhoFastjetCentralNeutral;
   // L1 prefiring weights
   double EVENT_prefireWeight_, EVENT_prefireWeightUp_, EVENT_prefireWeightDown_;
+  // lhe higgs
+  int n_lhe_higgs;
+  vector<double> lhe_higgs_pt;
+  vector<double> lhe_higgs_eta;
+  vector<double> lhe_higgs_phi;
+  vector<double> lhe_higgs_energy;
   //Event filters
   int Flag_HBHENoiseFilter;
   int Flag_HBHENoiseIsoFilter;

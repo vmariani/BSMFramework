@@ -109,6 +109,7 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
     bool lbarCheck = false;
     bool vlCheck = false;
     bool vlbarCheck = false;
+    int nof_higgs=0;
     TLorentzVector l, lbar, vl, vlbar, V_tlv;
     if(lheEventProduct.isValid()){
       const lhef::HEPEUP& lheEvent = lheEventProduct->hepeup();
@@ -118,6 +119,15 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
         int absPdgId = TMath::Abs(lheEvent.IDUP[idxParticle]);
         int id       = lheEvent.IDUP[idxParticle];
         int status = lheEvent.ISTUP[idxParticle];
+        if(status==1 && absPdgId==25){ // higgs
+            nof_higgs ++;
+            TLorentzVector p4(lheParticles[idxParticle][0],lheParticles[idxParticle][1],lheParticles[idxParticle][2],lheParticles[idxParticle][3]); // x,y,z,t
+            lhe_higgs_pt.push_back(p4.Pt());
+            lhe_higgs_eta.push_back(p4.Eta());
+            lhe_higgs_phi.push_back(p4.Phi());
+            lhe_higgs_energy.push_back(p4.E());
+        }
+        
         if(status == 1 && ((absPdgId >= 1 && absPdgId <= 6) || absPdgId == 21)){ // quarks and gluons
           lheHt += TMath::Sqrt(TMath::Power(lheParticles[idxParticle][0], 2.) + TMath::Power(lheParticles[idxParticle][1], 2.)); // first entry is px, second py
         }
@@ -158,6 +168,7 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
     }
     EVENT_genHT = lheHt;
     EVENT_genPt = lheV_pt;
+    n_lhe_higgs = nof_higgs;
   } else {
     EVENT_originalXWGTUP_ = 1;
     EVENT_rWeightSUM_ = 1;
@@ -343,6 +354,12 @@ void EventInfoSelector::SetBranches(){
   AddBranch(&EVENT_prefireWeight_     ,"EVENT_prefireWeight");
   AddBranch(&EVENT_prefireWeightUp_     ,"EVENT_prefireWeightUp");
   AddBranch(&EVENT_prefireWeightDown_     ,"EVENT_prefireWeightDown");
+  //lhe higgs
+  AddBranch(&n_lhe_higgs   ,"n_lhe_higgs");
+  AddBranch(&lhe_higgs_pt   ,"lhe_higgs_pt");
+  AddBranch(&lhe_higgs_eta   ,"lhe_higgs_eta");
+  AddBranch(&lhe_higgs_phi   ,"lhe_higgs_phi");
+  AddBranch(&lhe_higgs_energy   ,"lhe_higgs_energy");
   //Event filters
   AddBranch(&Flag_HBHENoiseFilter                    ,"Flag_HBHENoiseFilter");
   AddBranch(&Flag_HBHENoiseIsoFilter                 ,"Flag_HBHENoiseIsoFilter");
@@ -429,6 +446,12 @@ void EventInfoSelector::Initialise(){
   EVENT_prefireWeight_ = -9999;
   EVENT_prefireWeightUp_ = -9999;
   EVENT_prefireWeightDown_ = -9999;
+  // lhe higgs
+  n_lhe_higgs = -9999;
+  lhe_higgs_pt.clear();
+  lhe_higgs_eta.clear();
+  lhe_higgs_phi.clear();
+  lhe_higgs_energy.clear();
   //Event filters
   Flag_HBHENoiseFilter                    = -9999;
   Flag_HBHENoiseIsoFilter                 = -9999;
