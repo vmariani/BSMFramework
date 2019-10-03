@@ -1,0 +1,2 @@
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HeavyCompositeMajoranaNeutrino_L20000_M8000_mumujj_CalcHep\/mumujj_18_L20_M8000\/190806_141408\/0000\/log
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HeavyCompositeMajoranaNeutrino_L20000_M8000_mumujj_CalcHep\/mumujj_18_L20_M8000\/190806_141408\/0000\/mumujj_18_L20_M8000_1.root

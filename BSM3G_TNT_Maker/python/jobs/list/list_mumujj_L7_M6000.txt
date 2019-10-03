@@ -1,0 +1,4 @@
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HeavyCompositeMajoranaNeutrino_L7000_M6000_mumujj_CalcHep\/mumujj_18_L7_M6000\/190806_135306\/0000\/log
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HeavyCompositeMajoranaNeutrino_L7000_M6000_mumujj_CalcHep\/mumujj_18_L7_M6000\/190806_135306\/0000\/mumujj_18_L7_M6000_1.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HeavyCompositeMajoranaNeutrino_L7000_M6000_mumujj_CalcHep\/mumujj_18_L7_M6000\/190806_135306\/0000\/mumujj_18_L7_M6000_2.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HeavyCompositeMajoranaNeutrino_L7000_M6000_mumujj_CalcHep\/mumujj_18_L7_M6000\/190806_135306\/0000\/mumujj_18_L7_M6000_3.root
