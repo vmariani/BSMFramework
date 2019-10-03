@@ -10,8 +10,8 @@ This version of code is used for 2016 miniAOD v3 && 2017 miniAOD v2 and v1 & 201
 ####################################################
 
 
-cmsrel CMSSW_10_2_14
-cd CMSSW_10_2_14/src
+cmsrel CMSSW_10_2_16
+cd CMSSW_10_2_16/src
 cmsenv
 
 git cms-init
@@ -23,13 +23,12 @@ git config merge.renameLimit 999999
 ## https://twiki.cern.ch/twiki/bin/view/CMS/EgammaMiniAODV2#2018_Preliminary_Energy_Correcti 
 git cms-merge-topic cms-egamma:EgammaPostRecoTools #just adds in an extra file to have a setup function to make things easier
 git cms-merge-topic cms-egamma:slava77-btvDictFix_10210 #fixes the Run2018D dictionary issue, see https://github.com/cms-sw/cmssw/issues/26182
+#now to add the scale and smearing for 2018 (eventually this will not be necessary in later releases but is harmless to do regardless)
+git cms-addpkg EgammaAnalysis/ElectronTools
+rm EgammaAnalysis/ElectronTools/data -rf
+git clone git@github.com:cms-data/EgammaAnalysis-ElectronTools.git EgammaAnalysis/ElectronTools/data
+#now build everything
 scram b -j 8
-git clone git@github.com:cms-egamma/EgammaAnalysis-ElectronTools.git EgammaAnalysis/ElectronTools/data
-cd EgammaAnalysis/ElectronTools/data
-git checkout ScalesSmearing2018_Dev
-cd -
-git cms-merge-topic cms-egamma:EgammaPostRecoTools_dev
-scram b -j 8  
          
 
 ## set up MET corrections with EE nosie fix
@@ -42,25 +41,17 @@ scram b -j 8
 git cms-addpkg RecoMET/METFilters
 scram b
 
-## set up DeepTau v2
+## set up DeepTau v2p1
 # https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuidePFTauID#Running_of_the_DNN_based_tau_ID
-git cms-merge-topic -u cms-tau-pog:CMSSW_10_2_X_tau-pog_DeepTau2017v2
-git clone -b DeepTau2017v2_alone https://github.com/cms-tau-pog/RecoTauTag-TrainingFiles.git RecoTauTag/TrainingFiles/data
-scram b -j 8
-rm -rf RecoTauTag/TrainingFiles/data/.git/ # remove the .git otherwise it exceed the maximum tarball size
+git cms-merge-topic -u cms-tau-pog:CMSSW_10_2_X_tau-pog_DeepTau2017v2p1_nanoAOD
+scram b -j 4
 
 ## set BSM Framework
 git clone https://github.com/BinghuanLi/BSMFramework.git
 cd BSMFramework/
-git checkout CMSSW_10_2_14
+git checkout CMSSW_10_2_16
 cd ..
 scram b -j 8
-
-## add most updated 2018 electron scale&smear #####
-## the official maintained RecoEgammaTool.py is not updated, so I do it manually for the moment
-## v2 files are taken from https://github.com/cms-data/EgammaAnalysis-ElectronTools/tree/master/ScalesSmearings
-cp BSMFramework/BSM3G_TNT_Maker/data/Egamma/*.dat EgammaAnalysis/ElectronTools/data/ScalesSmearings/
-cp BSMFramework/BSM3G_TNT_Maker/data/Egamma/EgammaPostRecoTools.py RecoEgamma/EgammaTools/python/
 
 ## To Run ##
 cd BSMFramework/BSM3G_TNT_Maker/python/
@@ -81,7 +72,7 @@ python multicrab_MC(DATA)2016(2017)(2018).py
     HLT you want is contained in TriggerSelector
     ifevtriggers in miniADO_RD(MC).py is set to true (false)
 
-- Please change the absolute path of certain input files in multicrab_MC(DATA)2016(2017)(2018).py
+- Please change the absolute path of baseDir in multicrab_MC(DATA)2016(2017)(2018).py
 - Please set outLFNDirBase to your DIR path at IHEP Tier 2 farm
   Highly suggest to create an empty DIR as output for the IHEP Tier 2 to Tier 3 Ntuple Handlings
  

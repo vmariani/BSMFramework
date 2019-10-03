@@ -244,6 +244,9 @@ tWLists = [
 'Legacy16V1_WJetsToQQ_HT600toInf',
 ]
 
+# baseDir
+baseDir = "/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_16/src/BSMFramework/"
+
 for d in range(0,len(datasetnames)):
 #for d in range(0,1):
     print 'multicrab.py: Running datasetname: ', datasetnames[d]
@@ -267,8 +270,8 @@ for d in range(0,len(datasetnames)):
     config.section_('JobType')
     config.JobType.pluginName  = 'Analysis'
     # List of parameters to pass to CMSSW parameter-set configuration file:
-    config.JobType.psetName    = '/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_14/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_MC2016.py'
-    config.JobType.inputFiles = ['/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_14/src/BSMFramework/BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db']
+    config.JobType.psetName    = baseDir+'BSM3G_TNT_Maker/python/miniAOD_MC2016.py'
+    config.JobType.inputFiles = [(baseDir+'BSM3G_TNT_Maker/data/QG/QGL_AK4chs_94X.db')]
     config.JobType.sendExternalFolder = True
     config.JobType.maxMemoryMB = 2000 # Default == 2Gb : maximum guaranteed to run on all sites
     #config.JobType.allowUndistributedCMSSW = True
@@ -279,10 +282,10 @@ for d in range(0,len(datasetnames)):
     config.Data.allowNonValidInputDataset = True
     config.Data.inputDataset   = datasetinputs[d]
     config.Data.inputDBS       = 'global'
-    #config.Data.splitting      = 'FileBased'
-    config.Data.splitting      = 'Automatic'
-    #config.Data.totalUnits     = 40000 #With 'FileBased' splitting tells how many files to analyse
-    config.Data.unitsPerJob    = 180
+    config.Data.splitting      = 'FileBased'
+    #config.Data.splitting      = 'Automatic'
+    config.Data.totalUnits     = 4000 #With 'FileBased' splitting tells how many files to analyse
+    config.Data.unitsPerJob    = 1
     config.Data.outLFNDirBase = '/store/user/binghuan/'# First part of LFN for output files (must be /store/user/<username>/ or /store/group/<username>/  )
     config.Data.outputDatasetTag = datasetnames[d]
 
