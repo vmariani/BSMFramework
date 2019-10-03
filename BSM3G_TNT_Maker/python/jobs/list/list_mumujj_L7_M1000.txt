@@ -1,0 +1,3 @@
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L7000_M1000_mumujj_CalcHep\/mumujj_17_L7_M1000\/190601_145553\/0000\/mumujj_17_L7_M1000_1.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L7000_M1000_mumujj_CalcHep\/mumujj_17_L7_M1000\/190601_145553\/0000\/mumujj_17_L7_M1000_2.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L7000_M1000_mumujj_CalcHep\/mumujj_17_L7_M1000\/190601_145553\/0000\/log

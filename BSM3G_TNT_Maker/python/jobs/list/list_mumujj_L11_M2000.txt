@@ -1,0 +1,11 @@
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/mumujj_17_L11_M2000_7.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/failed
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/mumujj_17_L11_M2000_9.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/mumujj_17_L11_M2000_8.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/mumujj_17_L11_M2000_4.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/mumujj_17_L11_M2000_3.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/log
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/mumujj_17_L11_M2000_5.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/mumujj_17_L11_M2000_1.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/mumujj_17_L11_M2000_2.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L11000_M2000_mumujj_CalcHep\/mumujj_17_L11_M2000\/190531_135827\/0000\/mumujj_17_L11_M2000_6.root

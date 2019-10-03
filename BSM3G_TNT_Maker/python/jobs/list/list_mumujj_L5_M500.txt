@@ -1,0 +1,4 @@
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L5000_M500_mumujj_CalcHep\/mumujj_17_L5_M500\/190531_133658\/0000\/mumujj_17_L5_M500_2.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L5000_M500_mumujj_CalcHep\/mumujj_17_L5_M500\/190531_133658\/0000\/mumujj_17_L5_M500_1.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L5000_M500_mumujj_CalcHep\/mumujj_17_L5_M500\/190531_133658\/0000\/mumujj_17_L5_M500_3.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HavyCompositeMajoranaNeutrino_L5000_M500_mumujj_CalcHep\/mumujj_17_L5_M500\/190531_133658\/0000\/log

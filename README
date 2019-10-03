@@ -22,7 +22,6 @@ git cms-init
 git cms-merge-topic cms-egamma:EgammaPostRecoTools_940 #just adds in an extra file to have a setup function to make things easier
 scram b -j 8
 
-
 ## set BSM Framework
 git clone https://github.com/vmariani/BSMFramework.git
 cd BSMFramework/

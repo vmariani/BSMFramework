@@ -217,7 +217,7 @@ if __name__ == '__main__':
 #'/HavyCompositeMajoranaNeutrino_L17000_M2000_eejj_CalcHep/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
 #'/HavyCompositeMajoranaNeutrino_L17000_M7000_eejj_CalcHep/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
 #'/HavyCompositeMajoranaNeutrino_L20000_M500_eejj_CalcHep/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
-'/HavyCompositeMajoranaNeutrino_L20000_M500_eejj_CalcHep/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+'/HavyCompositeMajoranaNeutrino_L20000_M2000_eejj_CalcHep/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM'
 
 #Signal mumujj #26
 #'/HavyCompositeMajoranaNeutrino_L4000_M500_mumujj_CalcHep_New/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM',
