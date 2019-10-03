@@ -145,8 +145,12 @@ class TauSelector : public baseTree{
   vector<int> Tau_byLooseIsolationMVArun2v1DBdR03oldDMwLT, Tau_byMediumIsolationMVArun2v1DBdR03oldDMwLT;
   vector<double> Tau_byIsolationMVArun2017v2DBoldDMdR0p3wLTraw2017;
   vector<int> Tau_byVVLooseIsolationMVArun2017v2DBoldDMdR0p3wLT2017, Tau_byVLooseIsolationMVArun2017v2DBoldDMdR0p3wLT2017, Tau_byLooseIsolationMVArun2017v2DBoldDMdR0p3wLT2017, Tau_byMediumIsolationMVArun2017v2DBoldDMdR0p3wLT2017, Tau_byTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017, Tau_byVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017, Tau_byVVTightIsolationMVArun2017v2DBoldDMdR0p3wLT2017;
-  vector<double> Tau_byDeepTau2017v2VSjetraw;
-  vector<int> Tau_byVVVLooseDeepTau2017v2VSjet, Tau_byVVLooseDeepTau2017v2VSjet, Tau_byVLooseDeepTau2017v2VSjet, Tau_byLooseDeepTau2017v2VSjet, Tau_byMediumDeepTau2017v2VSjet, Tau_byTightDeepTau2017v2VSjet, Tau_byVTightDeepTau2017v2VSjet, Tau_byVVTightDeepTau2017v2VSjet;
+  vector<double> Tau_byDeepTau2017v2p1VSjetraw;
+  vector<int> Tau_byVVVLooseDeepTau2017v2p1VSjet, Tau_byVVLooseDeepTau2017v2p1VSjet, Tau_byVLooseDeepTau2017v2p1VSjet, Tau_byLooseDeepTau2017v2p1VSjet, Tau_byMediumDeepTau2017v2p1VSjet, Tau_byTightDeepTau2017v2p1VSjet, Tau_byVTightDeepTau2017v2p1VSjet, Tau_byVVTightDeepTau2017v2p1VSjet;
+  vector<double> Tau_byDeepTau2017v2p1VSeraw;
+  vector<int> Tau_byVVVLooseDeepTau2017v2p1VSe, Tau_byVVLooseDeepTau2017v2p1VSe, Tau_byVLooseDeepTau2017v2p1VSe, Tau_byLooseDeepTau2017v2p1VSe, Tau_byMediumDeepTau2017v2p1VSe, Tau_byTightDeepTau2017v2p1VSe, Tau_byVTightDeepTau2017v2p1VSe, Tau_byVVTightDeepTau2017v2p1VSe;
+  vector<double> Tau_byDeepTau2017v2p1VSmuraw;
+  vector<int> Tau_byVLooseDeepTau2017v2p1VSmu, Tau_byLooseDeepTau2017v2p1VSmu, Tau_byMediumDeepTau2017v2p1VSmu, Tau_byTightDeepTau2017v2p1VSmu;
   
   //Other prop and Track related variables
   vector<double> Tau_nProngs, Tau_leadChargedCandNdof, Tau_leadChargedCandChi2, Tau_leadChargedCandValidHits;

@@ -5,7 +5,7 @@ from PhysicsTools.PatAlgos.patEventContent_cff import patEventContent
 options = VarParsing.VarParsing('analysis')
 # ===== Register new variables =====
 options.register('optionlepfilt',
-2,
+0,
 VarParsing.VarParsing.multiplicity.singleton,
 VarParsing.VarParsing.varType.int,
 "Minimum number of leptons")
@@ -40,7 +40,10 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 #####
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
+    # ttH file
     '/store/mc/RunIIFall17MiniAODv2/ttHJetToNonbb_M125_TuneCP5_13TeV_amcatnloFXFX_madspin_pythia8/MINIAODSIM/PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/100000/7C60AC2B-E76F-E811-9D60-0025905B860C.root',
+    # HH file
+    #'/store/mc/RunIIFall17MiniAODv2/GluGluToHHTo2B2VTo2L2Nu_node_SM_13TeV-madgraph_correctedcfg/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/10000/D0D3341C-65B1-E811-B5F7-002590D6005C.root',
   ),
   skipEvents = cms.untracked.uint32(0)
 )
@@ -121,7 +124,7 @@ updatedTauName = "slimmedTausNewID" #name of pat::Tau collection with new tau-Id
 import RecoTauTag.RecoTau.tools.runTauIdMVA as tauIdConfig
 tauIdEmbedder = tauIdConfig.TauIDEmbedder(process, cms, debug = False,
                 updatedTauName = updatedTauName,
-                toKeep = ["deepTau2017v2","dR0p32017v2"]) # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1","deepTau2017v2"]
+                toKeep = ["deepTau2017v2p1","dR0p32017v2"]) # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1","deepTau2017v2"]
 tauIdEmbedder.runTauID()
 
 ############### MET Re-correct ##################
@@ -162,8 +165,8 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
 ##   Output file
 #####
 process.TFileService = cms.Service("TFileService",
-  #fileName = cms.string("OutTree_2017.root")
-  fileName = cms.string("OutTree.root")
+  fileName = cms.string("OutTree_2017.root")
+  #fileName = cms.string("OutTree.root")
 )
 
 #####

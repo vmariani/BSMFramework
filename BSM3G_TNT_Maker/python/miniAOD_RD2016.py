@@ -225,7 +225,7 @@ updatedTauName = "slimmedTausNewID" #name of pat::Tau collection with new tau-Id
 import RecoTauTag.RecoTau.tools.runTauIdMVA as tauIdConfig
 tauIdEmbedder = tauIdConfig.TauIDEmbedder(process, cms, debug = False,
                 updatedTauName = updatedTauName,
-                toKeep = ["deepTau2017v2","dR0p32017v2"]) # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1","deepTau2017v2"]
+                toKeep = ["deepTau2017v2p1","dR0p32017v2"]) # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1","deepTau2017v2"]
 tauIdEmbedder.runTauID()
 
 

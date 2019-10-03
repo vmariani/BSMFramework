@@ -5,7 +5,7 @@ from PhysicsTools.PatAlgos.patEventContent_cff import patEventContent
 options = VarParsing.VarParsing('analysis')
 # ===== Register new variables =====
 options.register('optionlepfilt',
-2,
+0,
 VarParsing.VarParsing.multiplicity.singleton,
 VarParsing.VarParsing.varType.int,
 "Minimum number of leptons")
@@ -41,7 +41,9 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
     # ttH run II 2016 sync file
-    '/store/mc/RunIISummer16MiniAODv3/ttHToNonbb_M125_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/F24F2D5E-DDEC-E811-AF50-90B11C08AD7D.root'
+    '/store/mc/RunIISummer16MiniAODv3/ttHToNonbb_M125_TuneCUETP8M2_ttHtranche3_13TeV-powheg-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/F24F2D5E-DDEC-E811-AF50-90B11C08AD7D.root',
+    # HH file
+    #'/store/mc/RunIISummer16MiniAODv3/GluGluToHHTo2B2VTo2L2Nu_node_SM_13TeV-madgraph-v2/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/70000/EA8037E4-803F-E911-A440-0CC47A7C34D0.root',
   ),
   skipEvents = cms.untracked.uint32(0)
 )
@@ -130,7 +132,7 @@ updatedTauName = "slimmedTausNewID" #name of pat::Tau collection with new tau-Id
 import RecoTauTag.RecoTau.tools.runTauIdMVA as tauIdConfig
 tauIdEmbedder = tauIdConfig.TauIDEmbedder(process, cms, debug = False,
                 updatedTauName = updatedTauName,
-                toKeep = ["deepTau2017v2","dR0p32017v2"]) # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1","deepTau2017v2"]
+                toKeep = ["deepTau2017v2p1","dR0p32017v2"]) # pick the one you need: ["2017v1", "2017v2", "newDM2017v2", "dR0p32017v2", "2016v1", "newDM2016v1","deepTau2017v2"]
 tauIdEmbedder.runTauID()
 
 
@@ -172,8 +174,8 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
 ##   Output file
 #####
 process.TFileService = cms.Service("TFileService",
-  #fileName = cms.string("OutTree_2016.root")
-  fileName = cms.string("OutTree.root")
+  fileName = cms.string("OutTree_2016.root")
+  #fileName = cms.string("OutTree.root")
 )
 
 #####
