@@ -1,0 +1,2 @@
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HeavyCompositeMajoranaNeutrino_L7000_M1000_eejj_CalcHep\/eejj_16_L7_M1000\/190830_094314\/0000\/eejj_16_L7_M1000_1.root
+root:\/\/ss-03.recas.ba.infn.it:8080\/\/store\/user\/vmariani\/HeavyCompositeMajoranaNeutrino_L7000_M1000_eejj_CalcHep\/eejj_16_L7_M1000\/190830_094314\/0000\/log
