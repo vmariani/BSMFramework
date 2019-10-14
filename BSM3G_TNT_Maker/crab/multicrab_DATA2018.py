@@ -67,81 +67,81 @@ if __name__ == '__main__':
                 ]
 
 JECBlockA = [
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L1FastJet_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L2Relative_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L3Absolute_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L2L3Residual_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_Uncertainty_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L1FastJet_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L2Relative_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L3Absolute_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L2L3Residual_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_Uncertainty_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L1FastJet_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L2Relative_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L3Absolute_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_L2L3Residual_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V8_DATA/Autumn18_RunA_V8_DATA_Uncertainty_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L1FastJet_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L2Relative_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L3Absolute_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L2L3Residual_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_Uncertainty_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L1FastJet_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L2Relative_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L3Absolute_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L2L3Residual_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_Uncertainty_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L1FastJet_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L2Relative_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L3Absolute_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_L2L3Residual_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunA_V19_DATA/Autumn18_RunA_V19_DATA_Uncertainty_AK8PFchs.txt',
 ]
 
 JECBlockB = [
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L1FastJet_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L2Relative_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L3Absolute_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L2L3Residual_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_Uncertainty_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L1FastJet_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L2Relative_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L3Absolute_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L2L3Residual_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_Uncertainty_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L1FastJet_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L2Relative_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L3Absolute_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_L2L3Residual_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V8_DATA/Autumn18_RunB_V8_DATA_Uncertainty_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L1FastJet_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L2Relative_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L3Absolute_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L2L3Residual_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_Uncertainty_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L1FastJet_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L2Relative_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L3Absolute_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L2L3Residual_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_Uncertainty_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L1FastJet_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L2Relative_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L3Absolute_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_L2L3Residual_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunB_V19_DATA/Autumn18_RunB_V19_DATA_Uncertainty_AK8PFchs.txt',
 ]
 
 JECBlockC = [
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L1FastJet_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L2Relative_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L3Absolute_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L2L3Residual_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_Uncertainty_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L1FastJet_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L2Relative_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L3Absolute_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L2L3Residual_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_Uncertainty_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L1FastJet_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L2Relative_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L3Absolute_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_L2L3Residual_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V8_DATA/Autumn18_RunC_V8_DATA_Uncertainty_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L1FastJet_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L2Relative_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L3Absolute_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L2L3Residual_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_Uncertainty_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L1FastJet_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L2Relative_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L3Absolute_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L2L3Residual_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_Uncertainty_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L1FastJet_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L2Relative_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L3Absolute_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_L2L3Residual_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunC_V19_DATA/Autumn18_RunC_V19_DATA_Uncertainty_AK8PFchs.txt',
 ]
 
 JECBlockD = [
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L1FastJet_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L2Relative_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L3Absolute_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L2L3Residual_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_Uncertainty_AK4PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L1FastJet_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L2Relative_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L3Absolute_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L2L3Residual_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_Uncertainty_AK4PFPuppi.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L1FastJet_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L2Relative_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L3Absolute_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_L2L3Residual_AK8PFchs.txt',
-'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V8_DATA/Autumn18_RunD_V8_DATA_Uncertainty_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L1FastJet_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L2Relative_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L3Absolute_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L2L3Residual_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_Uncertainty_AK4PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L1FastJet_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L2Relative_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L3Absolute_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L2L3Residual_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_Uncertainty_AK4PFPuppi.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L1FastJet_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L2Relative_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L3Absolute_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_L2L3Residual_AK8PFchs.txt',
+'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Autumn18_RunD_V19_DATA/Autumn18_RunD_V19_DATA_Uncertainty_AK8PFchs.txt',
 ]
 
 
 
 goodRunsLists = [
-'/afs/cern.ch/work/b/binghuan/private/TTHLepRunII/CMSSW_10_2_14/src/BSMFramework/BSM3G_TNT_Maker/data/JSON/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt',
+'/afs/cern.ch/work/b/binghuan/private/TTHLep_RunII/CMSSW_10_2_16/src/BSMFramework/BSM3G_TNT_Maker/data/JSON/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt',
 ]
 
 for d in range(0,len(datasetnames)):
@@ -156,22 +156,22 @@ for d in range(0,len(datasetnames)):
         print 'multicrab.py: Run Block A'
         JECFiles = JECBlockA
         tempJSON = goodRunsLists[0]
-        nameGT = '102X_dataRun2_Sep2018ABC_v2'
+        nameGT = '102X_dataRun2_Sep2018ABC_v12'
     if 'BlockB' in datasetnames[d]:
         print 'multicrab.py: Run Block B'
         JECFiles = JECBlockB
         tempJSON = goodRunsLists[0]
-        nameGT = '102X_dataRun2_Sep2018ABC_v2'
+        nameGT = '102X_dataRun2_Sep2018ABC_v12'
     if 'BlockC' in datasetnames[d]:
         print 'multicrab.py: Run Block C'
         JECFiles = JECBlockC
         tempJSON = goodRunsLists[0]
-        nameGT = '102X_dataRun2_Sep2018ABC_v2'
+        nameGT = '102X_dataRun2_Sep2018ABC_v12'
     if 'BlockD' in datasetnames[d]:
         print 'multicrab.py: Run Block D'
         JECFiles = JECBlockD
         tempJSON = goodRunsLists[0]
-        nameGT = '102X_dataRun2_Prompt_v13'
+        nameGT = '102X_dataRun2_Prompt_v15'
 
     print 'multicrab.py: JSON File = ', tempJSON
     try:

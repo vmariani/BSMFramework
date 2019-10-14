@@ -61,6 +61,7 @@
 #include "baseTree.h"
 #include "DataFormats/BTauReco/interface/CATopJetTagInfo.h"
 #include "FWCore/Framework/interface/ConsumesCollector.h"
+#include <random>
 using namespace std;
 using namespace pat;
 using namespace edm;
@@ -76,6 +77,7 @@ class BoostedJetSelector : public  baseTree{
   void JECInitialization();
   void Clear();
   void GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK8PFchs, float &JERScaleFactor, float &JERScaleFactorUP, float &JERScaleFactorDOWN);
+  void Getjer(pat::Jet jet, float JesSF, float rhoJER, bool AK4PFchs, float &JERScaleFactor, float &JERScaleFactorUP, float &JERScaleFactorDOWN);
   float getPUPPIweight(float puppipt, float puppieta);
  private:
   BoostedJetSelector(){};
@@ -109,6 +111,9 @@ class BoostedJetSelector : public  baseTree{
   boost::shared_ptr<JetCorrectionUncertainty> jecAK8PFchsMCUnc_;
   boost::shared_ptr<FactorizedJetCorrector>   jecAK8PFchsDATA_;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK8PFchsDATAUnc_;
+  
+  // JER
+  std::mt19937 m_random_generator;
   /////
   //   IHEP methods/variables
   /////

@@ -138,7 +138,8 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
     float JERScaleFactor     = 1; 
     float JERScaleFactorUP   = 1;
     float JERScaleFactorDOWN = 1;
-    if(!_is_data) GetJER(j, corrAK8PFchs, rho, true, JERScaleFactor, JERScaleFactorUP, JERScaleFactorDOWN);
+    //if(!_is_data) GetJER(j, corrAK8PFchs, rho, true, JERScaleFactor, JERScaleFactorUP, JERScaleFactorDOWN);
+    if(!_is_data) Getjer(j, corrAK8PFchs, rho, true, JERScaleFactor, JERScaleFactorUP, JERScaleFactorDOWN);
     BoostedJet_JerSF.push_back(JERScaleFactor);
     BoostedJet_JerSFup.push_back(JERScaleFactorUP);
     BoostedJet_JerSFdown.push_back(JERScaleFactorDOWN);
@@ -313,6 +314,76 @@ void BoostedJetSelector::Clear(){
   TopTagging_wMass.clear();
   TopTagging_nSubJets.clear();
 }
+
+void BoostedJetSelector::Getjer(pat::Jet jet, float JesSF, float rhoJER, bool AK8PFchs, float &JERScaleFactor, float &JERScaleFactorUP, float &JERScaleFactorDOWN){
+  // random seed for stochastic method
+  std::uint32_t seed = 1234;
+  m_random_generator = std::mt19937(seed);
+  double cFactorJER = 1.0; 
+  double cFactorJERdown = 1.0;
+  double cFactorJERup = 1.0;
+  //https://twiki.cern.ch/twiki/bin/view/CMS/JetResolution#JER_Scaling_factors_and_Unce_AN1
+  
+  //double recoJetPt = jet.pt();//(jet.correctedJet("Uncorrected").pt())*JesSF;
+  double recoJetPt = (jet.correctedJet("Uncorrected").pt())*JesSF;
+  JME::JetResolution resolution;
+  JME::JetResolutionScaleFactor res_sf;
+  if(AK8PFchs){
+    resolution = JME::JetResolution(jerAK8PFchs_);
+    res_sf = JME::JetResolutionScaleFactor(jerAK8PFchsSF_);
+  } else {
+    resolution = JME::JetResolution(jerAK8PFPuppi_);
+    res_sf = JME::JetResolutionScaleFactor(jerAK8PFPuppiSF_);
+  }
+  JME::JetParameters parameters;
+  parameters.setJetPt(jet.pt());
+  parameters.setJetEta(jet.eta());
+  parameters.setRho(rhoJER);
+  float relpterr = resolution.getResolution(parameters);
+  cFactorJER = res_sf.getScaleFactor(parameters);
+  cFactorJERup = res_sf.getScaleFactor(parameters, Variation::UP);
+  cFactorJERdown = res_sf.getScaleFactor(parameters, Variation::DOWN);
+  if(jet.genJet()){
+    // scale method
+    double genJetPt = jet.genJet()->pt();
+    double diffPt    = recoJetPt - genJetPt;
+    if(genJetPt>0. && deltaR(jet.eta(),jet.phi(),jet.genJet()->eta(),jet.genJet()->phi())<0.4
+     && (abs(jet.pt()-jet.genJet()->pt())<3*relpterr*jet.pt())) {
+        JERScaleFactor     = (std::max(0., genJetPt + cFactorJER*diffPt))/recoJetPt;
+        JERScaleFactorUP   = (std::max(0., genJetPt + cFactorJERup*diffPt))/recoJetPt;
+        JERScaleFactorDOWN = (std::max(0., genJetPt + cFactorJERdown*diffPt))/recoJetPt;
+    } else {
+        JERScaleFactor     = 1.;
+        JERScaleFactorUP   = 1.;
+        JERScaleFactorDOWN = 1.;
+    }
+  }else{
+    // stochastic method
+    // https://github.com/cms-sw/cmssw/blob/CMSSW_8_0_25/PhysicsTools/PatUtils/interface/SmearedJetProducerT.h#L239-L247
+    if(cFactorJERup>1){
+        double sigma = relpterr * std::sqrt(cFactorJER*cFactorJER-1);
+        std::normal_distribution<> d(0, sigma);
+        JERScaleFactor = (std::max(0., 1. + d(m_random_generator)));
+    }else{
+        JERScaleFactor = 1.;
+    }
+    if(cFactorJERup>1){
+        double sigma = relpterr * std::sqrt(cFactorJERup*cFactorJERup-1);
+        std::normal_distribution<> d(0, sigma);
+        JERScaleFactorUP = (std::max(0., 1. + d(m_random_generator)));
+    }else{
+        JERScaleFactorUP = 1.;
+    }
+    if(cFactorJERdown>1){
+        double sigma = relpterr * std::sqrt(cFactorJERdown*cFactorJERdown-1);
+        std::normal_distribution<> d(0, sigma);
+        JERScaleFactorDOWN = (std::max(0., 1. + d(m_random_generator)));
+    }else{
+        JERScaleFactorDOWN = 1.;
+    }
+  }
+}
+
 void BoostedJetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK8PFchs, float &JERScaleFactor, float &JERScaleFactorUP, float &JERScaleFactorDOWN){
   if(!jet.genJet()) return;
   double jetEta=fabs(jet.eta());
@@ -508,7 +579,7 @@ void BoostedJetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK
   parameters.setJetEta(jet.eta());
   parameters.setRho(rhoJER);
   float relpterr = resolution.getResolution(parameters);
-  if(genJetPt>0. && deltaR(jet.eta(),jet.phi(),jet.genJet()->eta(),jet.genJet()->phi())<0.2
+  if(genJetPt>0. && deltaR(jet.eta(),jet.phi(),jet.genJet()->eta(),jet.genJet()->phi())<0.4
      && (abs(jet.pt()-jet.genJet()->pt())<3*relpterr*jet.pt())) {
     JERScaleFactor     = (std::max(0., genJetPt + cFactorJER*diffPt))/recoJetPt;
     JERScaleFactorUP   = (std::max(0., genJetPt + cFactorJERup*diffPt))/recoJetPt;

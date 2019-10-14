@@ -61,6 +61,7 @@
 #include "DataFormats/HepMCCandidate/interface/GenParticle.h"
 #include "FWCore/Framework/interface/ConsumesCollector.h"
 #include "baseTree.h"
+#include <random>
 using namespace std;
 using namespace pat;
 using namespace edm;
@@ -77,6 +78,7 @@ class JetSelector : public  baseTree{
   void JECInitialization();
   void Clear();
   void GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK4PFchs, float &JERScaleFactor, float &JERScaleFactorUP, float &JERScaleFactorDOWN);
+  void Getjer(pat::Jet jet, float JesSF, float rhoJER, bool AK4PFchs, float &JERScaleFactor, float &JERScaleFactorUP, float &JERScaleFactorDOWN);
   void computeQG(const pat::Jet& jet, double& ptD_, double& mult_, double& axis1_, double& axis2_, bool useQualityCut );
  private:
   JetSelector(){};
@@ -189,6 +191,10 @@ class JetSelector : public  baseTree{
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFPuppiMCUnc_;
   boost::shared_ptr<FactorizedJetCorrector>   jecAK4PFPuppiDATA_;
   boost::shared_ptr<JetCorrectionUncertainty> jecAK4PFPuppiDATAUnc_;
+  
+  // JER
+  std::mt19937 m_random_generator;
+   
   /////
   //   BSM variables
   /////
