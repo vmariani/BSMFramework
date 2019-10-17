@@ -16,7 +16,8 @@ options = VarParsing.VarParsing('analysis')
 
 # ===== Register new variables =====
 options.register('optionGlobalTag',
-'102X_dataRun2_Sep2018ABC_v12',
+'102X_dataRun2_v12',
+#'102X_dataRun2_Sep2018ABC_v12',
 VarParsing.VarParsing.multiplicity.singleton,
 VarParsing.VarParsing.varType.string,
 "Name for Global Tag")
@@ -118,7 +119,7 @@ VarParsing.VarParsing.varType.string,
 )
 
 options.register('ofName',
-'sentinel_output_name',
+'',
 VarParsing.VarParsing.multiplicity.singleton,
 VarParsing.VarParsing.varType.string,
 "Name for output file."
@@ -378,14 +379,14 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   packedPFCandidates  = cms.InputTag("packedPFCandidates"), 
   pruned              = cms.InputTag("prunedGenParticles"),
   # JER
-  jerAK4PFchs     =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V1_MC_PtResolution_AK4PFchs.txt"),
-  jerAK4PFchsSF   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V1_MC_SF_AK4PFchs.txt"),
-  jerAK4PFPuppi   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V1_MC_PtResolution_AK4PFPuppi.txt"),
-  jerAK4PFPuppiSF =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V1_MC_SF_AK4PFPuppi.txt"),
-  jerAK8PFchs     =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V1_MC_PtResolution_AK8PFchs.txt"),
-  jerAK8PFchsSF   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V1_MC_SF_AK8PFchs.txt"),
-  jerAK8PFPuppi   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V1_MC_PtResolution_AK8PFPuppi.txt"),
-  jerAK8PFPuppiSF =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V1_MC_SF_AK8PFPuppi.txt"),
+  jerAK4PFchs     =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V7_MC_PtResolution_AK4PFchs.txt"),
+  jerAK4PFchsSF   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V7_MC_SF_AK4PFchs.txt"),
+  jerAK4PFPuppi   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V7_MC_PtResolution_AK4PFPuppi.txt"),
+  jerAK4PFPuppiSF =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V7_MC_SF_AK4PFPuppi.txt"),
+  jerAK8PFchs     =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V7_MC_PtResolution_AK8PFchs.txt"),
+  jerAK8PFchsSF   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V7_MC_SF_AK8PFchs.txt"),
+  jerAK8PFPuppi   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V7_MC_PtResolution_AK8PFPuppi.txt"),
+  jerAK8PFPuppiSF =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Autumn18_V7_MC_SF_AK8PFPuppi.txt"),
   # JEC - CORRECTIONS ON FLY
   jecPayloadNamesAK4PFchsMC1   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Autumn18_V19_MC/Autumn18_V19_MC_L1FastJet_AK4PFchs.txt"),
   jecPayloadNamesAK4PFchsMC2   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Autumn18_V19_MC/Autumn18_V19_MC_L2Relative_AK4PFchs.txt"),

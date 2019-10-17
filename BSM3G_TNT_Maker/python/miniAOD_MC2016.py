@@ -11,7 +11,7 @@ VarParsing.VarParsing.varType.int,
 "Minimum number of leptons")
 
 options.register('ofName',
-'sentinel_output_name',
+'',
 VarParsing.VarParsing.multiplicity.singleton,
 VarParsing.VarParsing.varType.string,
 "Name for output file."
@@ -173,9 +173,10 @@ process.ecalBadCalibReducedMINIAODFilter = cms.EDFilter(
 #####
 ##   Output file
 #####
+options.ofName += ".root"
 process.TFileService = cms.Service("TFileService",
-  fileName = cms.string("OutTree_2016.root")
-  #fileName = cms.string("OutTree.root")
+  fileName = cms.string(options.ofName)
+#  fileName = cms.string("OutTree_2016.root")
 )
 
 #####

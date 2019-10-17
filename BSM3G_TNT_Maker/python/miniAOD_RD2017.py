@@ -112,7 +112,7 @@ VarParsing.VarParsing.varType.string,
 )
 
 options.register('ofName',
-'sentinel_output_name',
+'',
 VarParsing.VarParsing.multiplicity.singleton,
 VarParsing.VarParsing.varType.string,
 "Name for output file."
